@@ -12,11 +12,14 @@ motion / type / sync, fix the 3 worst, ≤ 3 rounds).
 |---|---|
 | `scripts/style-guide-from-reference/` | reference mp4 → contact sheet + measured palette, shot lengths and loudness → `style-guide.md` |
 | `beat-grid/` | shot-list schema (zod, YAML/JSON), `make-beats.mjs` (BPM / VO / snap), hooks `useBeatGrid`, `useCaptionChunk`, `usePop`, `useShot` |
-| `sfx/` | `synth.mjs` (8 code-synthesised SFX), `music-bed.mjs` (loopable placeholder bed), `cues.tsx` (`<SfxCue>`, `<SfxTrack>`, `<MusicBed>`) |
+| `sfx/` | `synth.mjs` (12 code-synthesised SFX), `music-bed.mjs` (loopable placeholder bed), `drone-bed.mjs` (act-driven score for the what-if format), `cues.tsx` (`<SfxCue>`, `<SfxTrack>`, `<MusicBed>`) |
 | `critique/` | `critique.mjs` (middle-frame stills + labelled contact sheet + scoring template), `score.mjs` (totals, 3 worst, stop rule) |
 | `src/` | `index.ts`, `Root.tsx` (the examples get registered here), `smoke/ToolkitSmoke.tsx`, a 4 s composition that uses every piece |
 | `examples/` | reserved for the two example compositions |
 | `public/sfx/` | generated WAVs + `catalog.json` (committed) · `public/music/` beds (git-ignored, `npm run audio`) |
+| `voice/` | `tts.py`: free local voice-over (Kokoro → Piper → mock; ElevenLabs only with a key) + faster-whisper word timings → `voice.wav`, `words.json` (make-beats `--vo` shape), `voice.srt` |
+| `longform/` | 16:9 long-form pipeline: scene templates, `render-chapters.mjs` (per-chapter resumable renders → concat → −14 LUFS mix → thumbnail → description), demo episode |
+| `episodes/` | code for studio short episodes (`/make-short`); their data lives in `../studio/episodes/<id>/` |
 | `out/` | renders (only `out/*.mp4` is tracked) |
 
 ## Install

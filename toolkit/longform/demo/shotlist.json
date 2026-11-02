@@ -1,0 +1,81 @@
+{
+ "id": "LongformDemo",
+ "fps": 30,
+ "width": 1920,
+ "height": 1080,
+ "durationInFrames": 2089,
+ "shots": [
+  {
+   "id": "c00s01",
+   "start": 0,
+   "end": 233,
+   "action": "whatif/shore",
+   "caption": "Tonight, at exactly nine o'clock,",
+   "state": "",
+   "sfx": []
+  },
+  {
+   "id": "c00s02",
+   "start": 233,
+   "end": 449,
+   "action": "narrator/street",
+   "caption": "The sky gets darker, sure.",
+   "state": "",
+   "sfx": []
+  },
+  {
+   "id": "c00s03",
+   "start": 449,
+   "end": 749,
+   "action": "timeline",
+   "caption": "So let's follow it, step",
+   "state": "",
+   "sfx": []
+  },
+  {
+   "id": "c01s01",
+   "start": 749,
+   "end": 908,
+   "action": "title",
+   "caption": "A few hours after the",
+   "state": "",
+   "sfx": []
+  },
+  {
+   "id": "c01s02",
+   "start": 908,
+   "end": 1257,
+   "action": "diagram",
+   "caption": "Tides are mostly the Moon's",
+   "state": "",
+   "sfx": []
+  },
+  {
+   "id": "c01s03",
+   "start": 1257,
+   "end": 1428,
+   "action": "bigNumber",
+   "caption": "The Sun pulls on the",
+   "state": "",
+   "sfx": []
+  },
+  {
+   "id": "c01s04",
+   "start": 1428,
+   "end": 1601,
+   "action": "compareBars",
+   "caption": "Take the Moon away, and",
+   "state": "",
+   "sfx": []
+  },
+  {
+   "id": "c01s05",
+   "start": 1601,
+   "end": 2089,
+   "action": "narrator/shore",
+   "caption": "And there's a second change",
+   "state": "re-hook",
+   "sfx": []
+  }
+ ]
+}

@@ -1,0 +1,90 @@
+{
+ "id": "qrl-demo-moon",
+ "fps": 30,
+ "vo": [
+  {
+   "id": "c00s01-l1",
+   "text": "Tonight, at exactly nine o'clock, the Moon disappears.",
+   "chapter": "c00",
+   "scene": "c00s01",
+   "pauseBefore": 0.2
+  },
+  {
+   "id": "c00s01-l2",
+   "text": "No explosion. No warning. It's just gone.",
+   "chapter": "c00",
+   "scene": "c00s01",
+   "pauseBefore": 0.2
+  },
+  {
+   "id": "c00s02-l1",
+   "text": "The sky gets darker, sure. But the first real change happens a few hours later, at the beach.",
+   "chapter": "c00",
+   "scene": "c00s02",
+   "pauseBefore": 0.35
+  },
+  {
+   "id": "c00s03-l1",
+   "text": "So let's follow it, step by step: the first tide, the first month without big tides, and what that does to every shore on Earth.",
+   "chapter": "c00",
+   "scene": "c00s03",
+   "pauseBefore": 0.35
+  },
+  {
+   "id": "c01s01-l1",
+   "text": "A few hours after the Moon is gone, the tide comes in. And it's small.",
+   "chapter": "c01",
+   "scene": "c01s01",
+   "pauseBefore": 0.8
+  },
+  {
+   "id": "c01s02-l1",
+   "text": "Tides are mostly the Moon's doing.",
+   "chapter": "c01",
+   "scene": "c01s02",
+   "pauseBefore": 0.35
+  },
+  {
+   "id": "c01s02-l2",
+   "text": "Its gravity pulls the oceans into two bulges, and Earth turns through them. That's why most shores get two high tides a day.",
+   "chapter": "c01",
+   "scene": "c01s02",
+   "pauseBefore": 0.2
+  },
+  {
+   "id": "c01s03-l1",
+   "text": "The Sun pulls on the oceans too, but only with about half the Moon's force.",
+   "chapter": "c01",
+   "scene": "c01s03",
+   "pauseBefore": 0.35
+  },
+  {
+   "id": "c01s04-l1",
+   "text": "Take the Moon away, and the tide that's left is roughly a third of what it was.",
+   "chapter": "c01",
+   "scene": "c01s04",
+   "pauseBefore": 0.35
+  },
+  {
+   "id": "c01s05-l1",
+   "text": "And there's a second change hiding in there.",
+   "chapter": "c01",
+   "scene": "c01s05",
+   "pauseBefore": 0.35
+  },
+  {
+   "id": "c01s05-l2",
+   "text": "The biggest tides of the month only happen when the Sun and Moon line up. Without the Moon, every tide is the same small tide.",
+   "chapter": "c01",
+   "scene": "c01s05",
+   "pauseBefore": 0.2
+  },
+  {
+   "id": "c01s05-l3",
+   "text": "That sounds harmless. On the shore, it isn't.",
+   "chapter": "c01",
+   "scene": "c01s05",
+   "pauseBefore": 0.2
+  }
+ ]
+}

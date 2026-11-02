@@ -6,6 +6,8 @@ import { SignalDemo } from '../examples/signal-demo/SignalDemo';
 import signalShots from '../examples/signal-demo/shotlist.json';
 import { QrosityDemo } from '../examples/qrosity-demo/QrosityDemo';
 import qrosityShots from '../examples/qrosity-demo/shotlist.json';
+import { WhatIfDemo, WHATIF_DEMO_FRAMES } from '../examples/whatif-countdown/WhatIfDemo';
+import { StudioCompositions } from '../longform/studio'; // STUDIO (content studio: long-form)
 
 // Pipeline standard: 1080x1920 @ 30 fps. Duration comes from the shot list so the shot list,
 // beat grid and composition can never disagree.
@@ -42,8 +44,13 @@ export const RemotionRoot: React.FC = () => {
       <Folder name="Examples">
         <Composition id="SignalDemo" component={SignalDemo} durationInFrames={signalShots.durationInFrames} fps={FPS} width={W} height={H} />
         <Composition id="QrosityDemo" component={QrosityDemo} durationInFrames={qrosityShots.durationInFrames} fps={FPS} width={W} height={H} />
+        {/* what-if countdown format (examples/whatif-countdown): duration from the episode config */}
+        <Composition id="WhatIfDemo" component={WhatIfDemo} durationInFrames={WHATIF_DEMO_FRAMES} fps={FPS} width={W} height={H} />
       </Folder>
       {/* EXAMPLES:END */}
+      {/* STUDIO:BEGIN */}
+      <StudioCompositions />
+      {/* STUDIO:END */}
     </>
   );
 };

@@ -141,9 +141,22 @@ Round N scores attached. Fix ONLY shots <a>, <b>, <c>. For each: the problem, th
 
 ---
 
+## 7. Channel sheet — Q-ROSITY Long (16:9 long-form)
+- **What it is:** 10–15 min what-if deep dives on YouTube (bible: `studio/channels/longform/bible.md`; pipeline: `toolkit/longform/README.md`). 1920×1080 @ 30.
+- **What changes vs the reels:** §1.3 caption rules and §1.4 vertical layout do NOT apply — no burned-in word captions (upload `captions.srt`), readable text inside x 120–1800, y 96–940 (player chrome + end-screen cards), sources at y ≈ 968. Everything else applies: voice is the clock, every reveal lands on its spoken word, §2 bans, §3 mix (final −14 LUFS, ≤ −1 dBTP), §4 critique (one shot per scene, max 3 rounds).
+- **Structure:** cold open ≤ 30 s → promise → 5–7 chapters of 90–150 s with a re-hook every 60–90 s → payoff → 20 s end screen. A new scene at least every ~20 s; inside a scene a reveal or camera cut every 3–5 s (`narrator` → `shots` cut on words).
+
 ## Learned from reviews
 (append: `- <rule> — <episode id>, <date>`)
 - A bar's height is locked to the number it displays (step-eased per counter step), never eased on its own clock — at mid-count it showed $8 taller than $9 — SignalDemo, 2026-11-02
 - Money words with a `$`/digit stay hidden in the caption until spoken, so the chunk never spoils the reveal — SignalDemo, 2026-11-02
 - 3D over overlays (fov 36°): head below the title/countdown when `target.y ≥ 3.1 − 0.142·dist`, AND the face above the caption block (chin above y ≈ 1050); check both on every still — QrosityDemo, 2026-11-02
 - Mix: catalog SFX peak at −3 dBFS, so cues at +3 dB clip over a bed — run the SfxTrack at −6 dB master, and duck the bed through the pre-reveal pause so riser + impact don't sum to 0 dBFS — QrosityDemo, 2026-11-02
+- Place 3D subjects with a projection check (project key points through the act camera, assert they clear the HUD/caption boxes) instead of guessing from stills — three guessed reframes failed, one computed one passed — WhatIfDemo, 2026-11-02
+- POV hands: tilt them fingers-up (~50°) so the backs face the lens; palm-down hands seen from eye height read as flat bars — WhatIfDemo, 2026-11-02
+- Format variant (what-if countdown): one-line sentences instead of 3–5-word chunks and no VO are allowed ONLY for that format (examples/whatif-countdown/README.md); its HUD clock is content, not the §2 "HUD readouts as decoration" ban — WhatIfDemo, 2026-11-02
+- Sky objects in a fogged 3D set (Moon, stars, far signs) need `fog={false}` on their material, or the fog swallows them — LongformDemo, 2026-11-02
+- A camera push moves far objects across the frame: check a sky object against overlay text on the FIRST and LAST frame of the move, not just the middle still (the Moon slid under the premise text at f60) — LongformDemo, 2026-11-02
+- Long narrator scenes (> 8 s) cut camera on spoken words (`shots`), and the story change must be visible in the shot (a tide-gauge post with marks, not just the sea level) — LongformDemo, 2026-11-02
+- A clock/counter the VO names ("at exactly nine o'clock") reads that exact value ON the spoken word: anchor it to the word (`clock.at` + `clock.on`), never start time + elapsed seconds — LongformDemo, 2026-11-02
+- Thumbnails/stills with the character: register a 1-frame `<Composition fps={30}>`, not a `<Still>` (fps 1) — at fps 1 the blink cycle and mood takes land wrong and the eyes render shut — LongformDemo thumb, 2026-11-02

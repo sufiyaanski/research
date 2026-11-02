@@ -3,9 +3,12 @@ node_modules/
 # Renders: ignore everything in out/ except final mp4s (committed deliberately).
 out/*
 !out/*.mp4
+!out/*-thumb.png
 # Music beds are deterministic and ~1.4 MB per 15 s: regenerate with `npm run audio`.
 public/music/*.wav
 # Extracted reference frames / critique stills (contact sheets + md are kept).
 scripts/style-guide-from-reference/example/frames/
 critique/rounds/stills/
 *.log
+# Voice tracks for short episodes (regenerate with voice/tts.py; ~2 MB per reel)
+public/vo/

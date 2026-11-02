@@ -12,9 +12,25 @@
     "skipLibCheck": true,
     "noEmit": true,
     "allowImportingTsExtensions": true,
-    "lib": ["ES2022", "DOM"],
-    "types": ["react", "react-dom"]
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "types": [
+      "react",
+      "react-dom"
+    ]
   },
-  "include": ["src", "beat-grid", "sfx", "examples"],
-  "exclude": ["node_modules", "out"]
+  "include": [
+    "src",
+    "beat-grid",
+    "sfx",
+    "examples",
+    "longform",
+    "episodes"
+  ],
+  "exclude": [
+    "node_modules",
+    "out"
+  ]
 }

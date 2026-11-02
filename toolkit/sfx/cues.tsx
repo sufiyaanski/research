@@ -12,7 +12,7 @@ import { Sequence, staticFile, useVideoConfig } from 'remotion';
 import catalog from '../public/sfx/catalog.json';
 import type { ShotList } from '../beat-grid/types';
 
-export type SfxId = 'whoosh' | 'pop' | 'click' | 'thump' | 'riser' | 'impact' | 'cash-register' | 'tick';
+export type SfxId = 'whoosh' | 'pop' | 'click' | 'thump' | 'riser' | 'impact' | 'cash-register' | 'tick' | 'power-down' | 'twinkle' | 'noise-wall' | 'glitch';
 
 export interface SfxSound {
   id: string;

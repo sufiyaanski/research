@@ -1,0 +1,26 @@
+# facts.md — "What if Earth stopped spinning for 5 seconds?" (WhatIfDemo)
+
+Every number and claim on screen, with its source or the arithmetic behind it. The premise itself is
+impossible (Earth's angular momentum can't vanish and come back); everything after "it stops" is a
+physics thought experiment, labelled **[derived]** (simple arithmetic from sourced numbers) or
+**[speculative]** (qualitatively plausible, not quantified on screen). Subtitles state no invented
+numbers: the only numbers in the narration are "1,000 mph" and "5 seconds".
+
+| # | on screen | where | status | source / working |
+|---|---|---|---|---|
+| 1 | "THE EQUATOR SPINS AT 1,037 MPH" | end card | sourced | Equatorial rotation speed ≈ 1,670 km/h (1,037 mph) with a 24 h day; ≈ 1,674 km/h (1,040 mph) with the sidereal day. [Universe Today — How fast does the Earth rotate?](https://www.universetoday.com/26623/how-fast-does-the-earth-rotate/), [Sky at Night — How fast does Earth spin?](https://skyatnightmagazine.com/space-science/how-fast-does-earth-spin), [Space Centre NZ FAQ](https://www.spacecentre.nz/resources/faq/solar-system/earth/rotation-speed.html) |
+| 2 | "SINGAPORE · 1.35° NORTH"; "over 1,000 mph" (line 3), "back to 1,000 mph" (line 9) | HUD A, lines 3/9 | derived | Singapore ≈ 1.35° N (city centre ≈ 1.29–1.35° N). Surface speed = 1,037 mph × cos 1.35° ≈ 1,037 mph → "over 1,000 mph" holds anywhere within ~15° of the equator. |
+| 3 | "Earth stops spinning. You don't." / "You keep flying east…" | lines 2–3 | sourced (qualitative) | Sudden stop: the atmosphere, oceans and anything not attached keep their eastward speed and are swept away. [Space.com — What would happen if Earth stopped spinning?](https://www.space.com/what-would-happen-if-earth-stopped-spinning), [Sky at Night](https://skyatnightmagazine.com/space-science/what-happen-earth-stopped-rotating), [Universe Today](https://www.universetoday.com/66570/what-would-happen-if-the-earth-stopped-spinning/) |
+| 4 | "The air flies with you, so there's no wind." | line 4 | derived | You and the air keep the same eastward velocity (≈ 465 m/s), so relative to you the air is (initially) still. The wind exists relative to the ground and everything bolted to it. |
+| 5 | "So the air hits them faster than sound." | line 6 | derived | Speed of sound at 20 °C ≈ 343 m/s ≈ 767 mph < 1,037 mph (Mach ≈ 1.35). |
+| 6 | "4× THE RECORD WIND SPEED" | HUD B sub-label | derived | Highest surface wind recorded by an anemometer (non-tornado): 408 km/h / 253 mph, Barrow Island, Tropical Cyclone Olivia, 10 Apr 1996, ratified by the WMO in 2010. [Guinness World Records](https://www.guinnessworldrecords.com/world-records/93573-fastest-wind-speed-recorded-by-an-anemometer), [AMS — Mt. Washington's record toppled](https://headlines.ametsoc.org/2010/01/26/mt-washingtons-world-record-wind-toppled/). 1,037 / 253 = 4.1 → "4×". |
+| 7 | windows bursting (picture, no number) | shock act | speculative (well supported) | Dynamic pressure of 465 m/s air: ½ρv² = 0.5 × 1.2 × 465² ≈ 130 kPa ≈ 19 psi. Ordinary window glass shatters at ~0.5–1 psi overpressure ([NOAA ALOHA: 1 psi "shatters glass"](https://response.restoration.noaa.gov/node/371), [Atomic Archive — overpressure](https://atomicarchive.com/science/effects/overpressure.html)). Not a blast wave, but the order of magnitude makes "every window bursts" plausible. |
+| 8 | "YOU'VE FLOWN 1,526 → 7,628 FT EAST" counter | HUD B | derived (idealised) | 465 m/s = 1,525.6 ft/s × virtual seconds elapsed (phase B: virtual = (t − 4 s) / 6). Ignores friction and drag (you're moving with the air) and the 0.4 m the curved ground drops away in 5 s. |
+| 9 | "TIME SLOWED DOWN 6×" | HUD B | exact | Phase B runs 5 virtual s across 30 real s (slowFactor 6 in the config; the HUD reads the same number). |
+| 10 | "Up in orbit, nothing changes at all." / "Satellites were never touching the ground." | lines 7–8 | sourced (qualitative) | Satellites and the Moon are in free fall, not attached to the rotating surface; a 5 s change of the surface's spin doesn't touch their orbits (a geostationary satellite would sit ≈ 2 km "off" its spot relative to the ground until the spin resumed). |
+| 11 | "The ground jerks back to 1,000 mph." / "Everything that had stopped gets hit again." | lines 9–10 | speculative | If the spin resumed instantly, the ground and everything attached would lurch back to its old speed; objects that had come to rest against the ground in those 5 s would be struck by it a second time, while still-flying air and debris would roughly match it again. |
+| 12 | "SUNRISE NOW RUNS 5 SECONDS LATE" | HUD C | derived | Earth's rotation angle lags by exactly 5 s of rotation; every clock (UTC/TAI) would be 5 s ahead of the sky. For scale: leap seconds keep UTC within 0.9 s of Earth-rotation time (UT1); 27 were added from 1972 to 2016. [NIST — Leap seconds](https://www.nist.gov/pml/time-and-frequency-division/time-realization/leap-seconds), [Wikipedia — Leap second](https://en.wikipedia.org/wiki/Leap_second) (not on screen). |
+
+Visual liberties (not claims): the world's flow speed on screen is illustrative (the true relative speed,
+465 m/s slowed 6×, would cross the frame in a few frames); the white-out and glow are the format's
+look for the shock front; the planet is a stylised glowing sphere, not a rendering of Earth.

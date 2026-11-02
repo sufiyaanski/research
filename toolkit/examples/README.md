@@ -23,6 +23,7 @@ Then: `node critique/critique.mjs <Comp> --shotlist examples/<name>/shotlist.jso
 |---|---|---|
 | `signal-demo/` | `SignalDemo` | The Signal, 15 s: "$9.99 isn't $10" — the left-digit effect (2D print page + 3D person on a transparent canvas) |
 | `qrosity-demo/` | `QrosityDemo` | Q-ROSITY, 15 s: "What if every screen on Earth went black for 10 seconds?" (four code-built 3D sets) |
+| `whatif-countdown/` | `WhatIfDemo` | reusable "What if X for N seconds?" countdown format (config-driven; HUD clock, slowed time, x-ray / hands / glow / space / point-cloud looks), 45 s demo: "What if Earth stopped spinning for 5 seconds?" |
 | `character/` | — | the shared blocky person + Stage3D kit (copied from `setup/`, adapted to 30 fps / no overshoot / recolourable) |
 
 Each demo folder has `words.json → beats.json`, `shotlist.yaml → shotlist.json`, `style-guide.md`,

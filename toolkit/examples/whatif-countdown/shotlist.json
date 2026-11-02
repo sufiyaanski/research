@@ -1,0 +1,166 @@
+{
+  "id": "WhatIfDemo",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "durationInFrames": 1350,
+  "shots": [
+    {
+      "id": "park",
+      "start": 0,
+      "end": 120,
+      "action": "[normal] calm push-in on three friends picnicking in a city park, skyline behind; title + real-time countdown",
+      "caption": "You're having a picnic in Singapore.",
+      "sfx": []
+    },
+    {
+      "id": "switch",
+      "start": 120,
+      "end": 300,
+      "action": "[xray] the world turns to white edges on black; trees and skyline stream west while the picnic keeps flying east",
+      "caption": "Earth stops spinning. You don't.",
+      "sfx": [
+        {
+          "id": "power-down",
+          "at": 0,
+          "gain": 0
+        },
+        {
+          "id": "thump",
+          "at": 0,
+          "gain": 0
+        }
+      ]
+    },
+    {
+      "id": "hands",
+      "start": 300,
+      "end": 480,
+      "action": "[hands] POV: your own wireframe hands; the star-point ground and trees rush toward and under you",
+      "caption": "The air flies with you, so there's no wind.",
+      "sfx": [
+        {
+          "id": "twinkle",
+          "at": 9,
+          "gain": -2
+        }
+      ]
+    },
+    {
+      "id": "wind",
+      "start": 480,
+      "end": 600,
+      "action": "[glow] the skyline, bolted to the ground, takes the wind: streaks race east and the edges start to glow",
+      "caption": "But the trees and buildings stop dead.",
+      "sfx": [
+        {
+          "id": "whoosh",
+          "at": 0,
+          "gain": 0
+        }
+      ]
+    },
+    {
+      "id": "shock",
+      "start": 600,
+      "end": 720,
+      "action": "[glow] low angle up the towers: the windows burst into sparkles in a wave from west to east, glow to max",
+      "caption": "So the air hits them faster than sound.",
+      "sfx": [
+        {
+          "id": "twinkle",
+          "at": 18,
+          "gain": -3
+        },
+        {
+          "id": "noise-wall",
+          "at": 120,
+          "gain": -1
+        }
+      ]
+    },
+    {
+      "id": "flash",
+      "start": 720,
+      "end": 750,
+      "action": "[whiteout] white-out (the shock front)",
+      "caption": "",
+      "sfx": [
+        {
+          "id": "impact",
+          "at": 0,
+          "gain": 3
+        }
+      ]
+    },
+    {
+      "id": "moon",
+      "start": 750,
+      "end": 900,
+      "action": "[space] scale jump: the glowing planet in space; the dark Moon slides across in front",
+      "caption": "Up in orbit, nothing changes at all.",
+      "sfx": [
+        {
+          "id": "whoosh",
+          "at": 66,
+          "gain": -4
+        }
+      ]
+    },
+    {
+      "id": "orbit",
+      "start": 900,
+      "end": 1020,
+      "action": "[space] low orbit: the bright curved horizon fills the frame, a satellite drifts by untouched",
+      "caption": "Satellites were never touching the ground.",
+      "sfx": [
+        {
+          "id": "riser",
+          "at": 120,
+          "gain": -3
+        }
+      ]
+    },
+    {
+      "id": "respin",
+      "start": 1020,
+      "end": 1206,
+      "action": "[pointcloud] the park and the friends rebuild as a blue point cloud; streaks shoot up; slow orbit",
+      "caption": "",
+      "sfx": [
+        {
+          "id": "impact",
+          "at": 0,
+          "gain": 2
+        },
+        {
+          "id": "glitch",
+          "at": 18,
+          "gain": -3
+        }
+      ]
+    },
+    {
+      "id": "blank",
+      "start": 1206,
+      "end": 1230,
+      "action": "[blank] near-black beat before the end card",
+      "caption": "",
+      "sfx": []
+    },
+    {
+      "id": "end",
+      "start": 1230,
+      "end": 1350,
+      "action": "[endcard] end card: the question again + one fact line (loops into frame 0)",
+      "caption": "",
+      "sfx": [
+        {
+          "id": "thump",
+          "at": 0,
+          "gain": -2
+        }
+      ]
+    }
+  ]
+}

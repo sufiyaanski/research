@@ -1,0 +1,141 @@
+{
+  "id": "c01",
+  "kind": "chapter",
+  "title": "The first tide",
+  "scenes": [
+    {
+      "id": "c01s01",
+      "template": "title",
+      "vo": [
+        {
+          "text": "A few hours after the Moon is gone, the tide comes in. And it's small."
+        }
+      ],
+      "props": {
+        "title": "The first tide"
+      }
+    },
+    {
+      "id": "c01s02",
+      "template": "diagram",
+      "vo": [
+        {
+          "text": "Tides are mostly the Moon's doing."
+        },
+        {
+          "text": "Its gravity pulls the oceans into two bulges, and Earth turns through them. That's why most shores get two high tides a day."
+        }
+      ],
+      "props": {
+        "kind": "orbit",
+        "moonOn": "Moon's",
+        "pullOn": "gravity",
+        "bulgesOn": "bulges,",
+        "spinOn": "turns",
+        "bulgeLabel": "2 BULGES",
+        "source": "NOAA Ocean Service; NASA Science"
+      }
+    },
+    {
+      "id": "c01s03",
+      "template": "bigNumber",
+      "vo": [
+        {
+          "text": "The Sun pulls on the oceans too, but only with about half the Moon's force."
+        }
+      ],
+      "props": {
+        "kicker": "The Sun's tide-raising pull",
+        "value": 50,
+        "prefix": "≈",
+        "suffix": "%",
+        "landOn": "half",
+        "label": "of the Moon's",
+        "source": "NOAA Ocean Service (\"about half\"); NASA (\"a little less than half\")"
+      }
+    },
+    {
+      "id": "c01s04",
+      "template": "compareBars",
+      "vo": [
+        {
+          "text": "Take the Moon away, and the tide that's left is roughly a third of what it was."
+        }
+      ],
+      "props": {
+        "title": "How big the tide can get",
+        "unit": "relative tide-raising force",
+        "bars": [
+          {
+            "label": "Moon + Sun (yesterday)",
+            "value": 100,
+            "on": "Moon"
+          },
+          {
+            "label": "Sun alone (tonight)",
+            "value": 33,
+            "display": "≈ 33",
+            "on": "third",
+            "focus": true
+          }
+        ],
+        "source": "our arithmetic from NOAA's Sun ≈ ½ Moon: 0.5 ÷ 1.5 ≈ ⅓"
+      }
+    },
+    {
+      "id": "c01s05",
+      "template": "narrator",
+      "rehook": true,
+      "vo": [
+        {
+          "text": "And there's a second change hiding in there."
+        },
+        {
+          "text": "The biggest tides of the month only happen when the Sun and Moon line up. Without the Moon, every tide is the same small tide."
+        },
+        {
+          "text": "That sounds harmless. On the shore, it isn't."
+        }
+      ],
+      "props": {
+        "set": "shore",
+        "moon": 0,
+        "tide": {
+          "from": 0.6,
+          "to": -0.4,
+          "on": "small",
+          "dur": 1.2
+        },
+        "headline": "No more spring tides",
+        "headlineOn": "biggest",
+        "character": [
+          {
+            "pose": "point",
+            "on": "same"
+          },
+          {
+            "mood": "worried",
+            "on": "harmless."
+          },
+          {
+            "pose": "idle",
+            "on": "shore,"
+          }
+        ],
+        "shots": [
+          {
+            "camera": "wide"
+          },
+          {
+            "camera": "gauge",
+            "on": "biggest"
+          },
+          {
+            "camera": "close",
+            "on": "harmless."
+          }
+        ]
+      }
+    }
+  ]
+}

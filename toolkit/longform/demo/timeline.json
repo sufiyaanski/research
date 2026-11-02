@@ -1,0 +1,1178 @@
+{
+ "id": "qrl-demo-moon",
+ "title": "What If the Moon Vanished Tonight?",
+ "fps": 30,
+ "width": 1920,
+ "height": 1080,
+ "durationInFrames": 2089,
+ "voice": {
+  "source": "kokoro:am_michael",
+  "aligner": "faster-whisper:base.en",
+  "mock": false,
+  "totalSec": 69.64
+ },
+ "chapters": [
+  {
+   "episode": "qrl-demo-moon",
+   "id": "c00",
+   "kind": "cold-open",
+   "title": "The night the Moon vanished",
+   "index": 0,
+   "label": "",
+   "fps": 30,
+   "width": 1920,
+   "height": 1080,
+   "startFrame": 0,
+   "durationInFrames": 749,
+   "scenes": [
+    {
+     "id": "c00s01",
+     "template": "whatif",
+     "props": {
+      "set": "shore",
+      "premise": "the Moon vanished tonight?",
+      "goneOn": "disappears",
+      "clock": {
+       "at": "21:00:00",
+       "on": "disappears"
+      },
+      "clockLabel": "TONIGHT"
+     },
+     "from": 0,
+     "durationInFrames": 233,
+     "words": [
+      {
+       "w": "Tonight,",
+       "f0": 9,
+       "f1": 17
+      },
+      {
+       "w": "at",
+       "f0": 17,
+       "f1": 25
+      },
+      {
+       "w": "exactly",
+       "f0": 25,
+       "f1": 31
+      },
+      {
+       "w": "nine",
+       "f0": 31,
+       "f1": 52
+      },
+      {
+       "w": "o'clock,",
+       "f0": 52,
+       "f1": 68
+      },
+      {
+       "w": "the",
+       "f0": 83,
+       "f1": 85
+      },
+      {
+       "w": "Moon",
+       "f0": 85,
+       "f1": 91
+      },
+      {
+       "w": "disappears.",
+       "f0": 91,
+       "f1": 104
+      },
+      {
+       "w": "No",
+       "f0": 132,
+       "f1": 138
+      },
+      {
+       "w": "explosion.",
+       "f0": 138,
+       "f1": 157
+      },
+      {
+       "w": "No",
+       "f0": 170,
+       "f1": 173
+      },
+      {
+       "w": "warning.",
+       "f0": 173,
+       "f1": 188
+      },
+      {
+       "w": "It's",
+       "f0": 199,
+       "f1": 203
+      },
+      {
+       "w": "just",
+       "f0": 203,
+       "f1": 206
+      },
+      {
+       "w": "gone.",
+       "f0": 206,
+       "f1": 215
+      }
+     ],
+     "text": "Tonight, at exactly nine o'clock, the Moon disappears. No explosion. No warning. It's just gone."
+    },
+    {
+     "id": "c00s02",
+     "template": "narrator",
+     "props": {
+      "set": "street",
+      "moon": 0,
+      "lookUp": true,
+      "mood": "worried",
+      "character": [
+       {
+        "pose": "point",
+        "on": "beach."
+       },
+       {
+        "mood": "neutral",
+        "on": "first"
+       }
+      ],
+      "shots": [
+       {
+        "camera": "low"
+       },
+       {
+        "camera": "push",
+        "on": "But"
+       }
+      ]
+     },
+     "from": 233,
+     "durationInFrames": 216,
+     "words": [
+      {
+       "w": "The",
+       "f0": 3,
+       "f1": 7
+      },
+      {
+       "w": "sky",
+       "f0": 7,
+       "f1": 14
+      },
+      {
+       "w": "gets",
+       "f0": 14,
+       "f1": 24
+      },
+      {
+       "w": "darker,",
+       "f0": 24,
+       "f1": 36
+      },
+      {
+       "w": "sure.",
+       "f0": 50,
+       "f1": 59
+      },
+      {
+       "w": "But",
+       "f0": 74,
+       "f1": 86
+      },
+      {
+       "w": "the",
+       "f0": 86,
+       "f1": 89
+      },
+      {
+       "w": "first",
+       "f0": 89,
+       "f1": 99
+      },
+      {
+       "w": "real",
+       "f0": 99,
+       "f1": 109
+      },
+      {
+       "w": "change",
+       "f0": 109,
+       "f1": 123
+      },
+      {
+       "w": "happens",
+       "f0": 123,
+       "f1": 142
+      },
+      {
+       "w": "a",
+       "f0": 142,
+       "f1": 149
+      },
+      {
+       "w": "few",
+       "f0": 149,
+       "f1": 153
+      },
+      {
+       "w": "hours",
+       "f0": 153,
+       "f1": 165
+      },
+      {
+       "w": "later,",
+       "f0": 165,
+       "f1": 175
+      },
+      {
+       "w": "at",
+       "f0": 175,
+       "f1": 186
+      },
+      {
+       "w": "the",
+       "f0": 186,
+       "f1": 190
+      },
+      {
+       "w": "beach.",
+       "f0": 190,
+       "f1": 198
+      }
+     ],
+     "text": "The sky gets darker, sure. But the first real change happens a few hours later, at the beach."
+    },
+    {
+     "id": "c00s03",
+     "template": "timeline",
+     "props": {
+      "title": "One night, step by step",
+      "stops": [
+       {
+        "label": "First tide",
+        "sub": "a few hours in",
+        "on": "tide,"
+       },
+       {
+        "label": "First month",
+        "sub": "no big tides",
+        "on": "month"
+       },
+       {
+        "label": "Every shore",
+        "sub": "what changes",
+        "on": "shore"
+       }
+      ]
+     },
+     "from": 449,
+     "durationInFrames": 300,
+     "words": [
+      {
+       "w": "So",
+       "f0": 4,
+       "f1": 9
+      },
+      {
+       "w": "let's",
+       "f0": 9,
+       "f1": 18
+      },
+      {
+       "w": "follow",
+       "f0": 18,
+       "f1": 30
+      },
+      {
+       "w": "it,",
+       "f0": 30,
+       "f1": 37
+      },
+      {
+       "w": "step",
+       "f0": 37,
+       "f1": 44
+      },
+      {
+       "w": "by",
+       "f0": 44,
+       "f1": 52
+      },
+      {
+       "w": "step:",
+       "f0": 52,
+       "f1": 66
+      },
+      {
+       "w": "the",
+       "f0": 89,
+       "f1": 90
+      },
+      {
+       "w": "first",
+       "f0": 90,
+       "f1": 99
+      },
+      {
+       "w": "tide,",
+       "f0": 99,
+       "f1": 109
+      },
+      {
+       "w": "the",
+       "f0": 124,
+       "f1": 127
+      },
+      {
+       "w": "first",
+       "f0": 127,
+       "f1": 136
+      },
+      {
+       "w": "month",
+       "f0": 136,
+       "f1": 145
+      },
+      {
+       "w": "without",
+       "f0": 145,
+       "f1": 156
+      },
+      {
+       "w": "big",
+       "f0": 156,
+       "f1": 168
+      },
+      {
+       "w": "tides,",
+       "f0": 168,
+       "f1": 177
+      },
+      {
+       "w": "and",
+       "f0": 203,
+       "f1": 206
+      },
+      {
+       "w": "what",
+       "f0": 206,
+       "f1": 211
+      },
+      {
+       "w": "that",
+       "f0": 211,
+       "f1": 217
+      },
+      {
+       "w": "does",
+       "f0": 217,
+       "f1": 226
+      },
+      {
+       "w": "to",
+       "f0": 226,
+       "f1": 233
+      },
+      {
+       "w": "every",
+       "f0": 233,
+       "f1": 242
+      },
+      {
+       "w": "shore",
+       "f0": 242,
+       "f1": 253
+      },
+      {
+       "w": "on",
+       "f0": 253,
+       "f1": 262
+      },
+      {
+       "w": "Earth.",
+       "f0": 262,
+       "f1": 270
+      }
+     ],
+     "text": "So let's follow it, step by step: the first tide, the first month without big tides, and what that does to every shore on Earth."
+    }
+   ],
+   "sfx": [
+    {
+     "id": "thump",
+     "at": 9
+    },
+    {
+     "id": "riser",
+     "at": 91
+    },
+    {
+     "id": "impact",
+     "at": 91,
+     "gain": 2
+    },
+    {
+     "id": "click",
+     "at": 548
+    },
+    {
+     "id": "click",
+     "at": 585
+    },
+    {
+     "id": "click",
+     "at": 691
+    }
+   ]
+  },
+  {
+   "episode": "qrl-demo-moon",
+   "id": "c01",
+   "kind": "chapter",
+   "title": "The first tide",
+   "index": 1,
+   "label": "Chapter one",
+   "fps": 30,
+   "width": 1920,
+   "height": 1080,
+   "startFrame": 749,
+   "durationInFrames": 1340,
+   "scenes": [
+    {
+     "id": "c01s01",
+     "template": "title",
+     "props": {
+      "title": "The first tide"
+     },
+     "from": 0,
+     "durationInFrames": 159,
+     "words": [
+      {
+       "w": "A",
+       "f0": 4,
+       "f1": 6
+      },
+      {
+       "w": "few",
+       "f0": 6,
+       "f1": 12
+      },
+      {
+       "w": "hours",
+       "f0": 12,
+       "f1": 23
+      },
+      {
+       "w": "after",
+       "f0": 23,
+       "f1": 35
+      },
+      {
+       "w": "the",
+       "f0": 35,
+       "f1": 40
+      },
+      {
+       "w": "Moon",
+       "f0": 40,
+       "f1": 45
+      },
+      {
+       "w": "is",
+       "f0": 45,
+       "f1": 53
+      },
+      {
+       "w": "gone,",
+       "f0": 53,
+       "f1": 63
+      },
+      {
+       "w": "the",
+       "f0": 72,
+       "f1": 74
+      },
+      {
+       "w": "tide",
+       "f0": 74,
+       "f1": 82
+      },
+      {
+       "w": "comes",
+       "f0": 82,
+       "f1": 95
+      },
+      {
+       "w": "in.",
+       "f0": 95,
+       "f1": 105
+      },
+      {
+       "w": "And",
+       "f0": 118,
+       "f1": 128
+      },
+      {
+       "w": "it's",
+       "f0": 128,
+       "f1": 133
+      },
+      {
+       "w": "small.",
+       "f0": 133,
+       "f1": 141
+      }
+     ],
+     "text": "A few hours after the Moon is gone, the tide comes in. And it's small."
+    },
+    {
+     "id": "c01s02",
+     "template": "diagram",
+     "props": {
+      "kind": "orbit",
+      "moonOn": "Moon's",
+      "pullOn": "gravity",
+      "bulgesOn": "bulges,",
+      "spinOn": "turns",
+      "bulgeLabel": "2 BULGES",
+      "source": "NOAA Ocean Service; NASA Science"
+     },
+     "from": 159,
+     "durationInFrames": 349,
+     "words": [
+      {
+       "w": "Tides",
+       "f0": 3,
+       "f1": 16
+      },
+      {
+       "w": "are",
+       "f0": 16,
+       "f1": 20
+      },
+      {
+       "w": "mostly",
+       "f0": 20,
+       "f1": 30
+      },
+      {
+       "w": "the",
+       "f0": 30,
+       "f1": 39
+      },
+      {
+       "w": "Moon's",
+       "f0": 39,
+       "f1": 53
+      },
+      {
+       "w": "doing.",
+       "f0": 53,
+       "f1": 58
+      },
+      {
+       "w": "Its",
+       "f0": 72,
+       "f1": 77
+      },
+      {
+       "w": "gravity",
+       "f0": 77,
+       "f1": 86
+      },
+      {
+       "w": "pulls",
+       "f0": 86,
+       "f1": 102
+      },
+      {
+       "w": "the",
+       "f0": 102,
+       "f1": 111
+      },
+      {
+       "w": "oceans",
+       "f0": 111,
+       "f1": 119
+      },
+      {
+       "w": "into",
+       "f0": 119,
+       "f1": 132
+      },
+      {
+       "w": "two",
+       "f0": 132,
+       "f1": 141
+      },
+      {
+       "w": "bulges,",
+       "f0": 141,
+       "f1": 157
+      },
+      {
+       "w": "and",
+       "f0": 180,
+       "f1": 182
+      },
+      {
+       "w": "Earth",
+       "f0": 180,
+       "f1": 190
+      },
+      {
+       "w": "turns",
+       "f0": 190,
+       "f1": 203
+      },
+      {
+       "w": "through",
+       "f0": 203,
+       "f1": 215
+      },
+      {
+       "w": "them.",
+       "f0": 215,
+       "f1": 222
+      },
+      {
+       "w": "That's",
+       "f0": 244,
+       "f1": 254
+      },
+      {
+       "w": "why",
+       "f0": 254,
+       "f1": 259
+      },
+      {
+       "w": "most",
+       "f0": 259,
+       "f1": 267
+      },
+      {
+       "w": "shores",
+       "f0": 267,
+       "f1": 279
+      },
+      {
+       "w": "get",
+       "f0": 279,
+       "f1": 291
+      },
+      {
+       "w": "two",
+       "f0": 291,
+       "f1": 297
+      },
+      {
+       "w": "high",
+       "f0": 297,
+       "f1": 308
+      },
+      {
+       "w": "tides",
+       "f0": 308,
+       "f1": 315
+      },
+      {
+       "w": "a",
+       "f0": 315,
+       "f1": 329
+      },
+      {
+       "w": "day.",
+       "f0": 329,
+       "f1": 335
+      }
+     ],
+     "text": "Tides are mostly the Moon's doing. Its gravity pulls the oceans into two bulges, and Earth turns through them. That's why most shores get two high tides a day."
+    },
+    {
+     "id": "c01s03",
+     "template": "bigNumber",
+     "props": {
+      "kicker": "The Sun's tide-raising pull",
+      "value": 50,
+      "prefix": "≈",
+      "suffix": "%",
+      "landOn": "half",
+      "label": "of the Moon's",
+      "source": "NOAA Ocean Service (\"about half\"); NASA (\"a little less than half\")"
+     },
+     "from": 508,
+     "durationInFrames": 171,
+     "words": [
+      {
+       "w": "The",
+       "f0": 4,
+       "f1": 7
+      },
+      {
+       "w": "Sun",
+       "f0": 7,
+       "f1": 14
+      },
+      {
+       "w": "pulls",
+       "f0": 14,
+       "f1": 26
+      },
+      {
+       "w": "on",
+       "f0": 26,
+       "f1": 36
+      },
+      {
+       "w": "the",
+       "f0": 36,
+       "f1": 40
+      },
+      {
+       "w": "oceans",
+       "f0": 40,
+       "f1": 50
+      },
+      {
+       "w": "too,",
+       "f0": 50,
+       "f1": 66
+      },
+      {
+       "w": "but",
+       "f0": 83,
+       "f1": 90
+      },
+      {
+       "w": "only",
+       "f0": 90,
+       "f1": 97
+      },
+      {
+       "w": "with",
+       "f0": 97,
+       "f1": 106
+      },
+      {
+       "w": "about",
+       "f0": 106,
+       "f1": 112
+      },
+      {
+       "w": "half",
+       "f0": 112,
+       "f1": 122
+      },
+      {
+       "w": "the",
+       "f0": 122,
+       "f1": 129
+      },
+      {
+       "w": "Moon's",
+       "f0": 129,
+       "f1": 143
+      },
+      {
+       "w": "force.",
+       "f0": 143,
+       "f1": 150
+      }
+     ],
+     "text": "The Sun pulls on the oceans too, but only with about half the Moon's force."
+    },
+    {
+     "id": "c01s04",
+     "template": "compareBars",
+     "props": {
+      "title": "How big the tide can get",
+      "unit": "relative tide-raising force",
+      "bars": [
+       {
+        "label": "Moon + Sun (yesterday)",
+        "value": 100,
+        "on": "Moon"
+       },
+       {
+        "label": "Sun alone (tonight)",
+        "value": 33,
+        "display": "≈ 33",
+        "on": "third",
+        "focus": true
+       }
+      ],
+      "source": "our arithmetic from NOAA's Sun ≈ ½ Moon: 0.5 ÷ 1.5 ≈ ⅓"
+     },
+     "from": 679,
+     "durationInFrames": 173,
+     "words": [
+      {
+       "w": "Take",
+       "f0": 3,
+       "f1": 9
+      },
+      {
+       "w": "the",
+       "f0": 9,
+       "f1": 15
+      },
+      {
+       "w": "Moon",
+       "f0": 15,
+       "f1": 21
+      },
+      {
+       "w": "away,",
+       "f0": 21,
+       "f1": 35
+      },
+      {
+       "w": "and",
+       "f0": 48,
+       "f1": 59
+      },
+      {
+       "w": "the",
+       "f0": 59,
+       "f1": 62
+      },
+      {
+       "w": "tide",
+       "f0": 62,
+       "f1": 69
+      },
+      {
+       "w": "that's",
+       "f0": 69,
+       "f1": 83
+      },
+      {
+       "w": "left",
+       "f0": 83,
+       "f1": 92
+      },
+      {
+       "w": "is",
+       "f0": 92,
+       "f1": 100
+      },
+      {
+       "w": "roughly",
+       "f0": 100,
+       "f1": 109
+      },
+      {
+       "w": "a",
+       "f0": 109,
+       "f1": 119
+      },
+      {
+       "w": "third",
+       "f0": 119,
+       "f1": 128
+      },
+      {
+       "w": "of",
+       "f0": 128,
+       "f1": 137
+      },
+      {
+       "w": "what",
+       "f0": 137,
+       "f1": 143
+      },
+      {
+       "w": "it",
+       "f0": 143,
+       "f1": 146
+      },
+      {
+       "w": "was.",
+       "f0": 146,
+       "f1": 155
+      }
+     ],
+     "text": "Take the Moon away, and the tide that's left is roughly a third of what it was."
+    },
+    {
+     "id": "c01s05",
+     "template": "narrator",
+     "props": {
+      "set": "shore",
+      "moon": 0,
+      "tide": {
+       "from": 0.6,
+       "to": -0.4,
+       "on": "small",
+       "dur": 1.2
+      },
+      "headline": "No more spring tides",
+      "headlineOn": "biggest",
+      "character": [
+       {
+        "pose": "point",
+        "on": "same"
+       },
+       {
+        "mood": "worried",
+        "on": "harmless."
+       },
+       {
+        "pose": "idle",
+        "on": "shore,"
+       }
+      ],
+      "shots": [
+       {
+        "camera": "wide"
+       },
+       {
+        "camera": "gauge",
+        "on": "biggest"
+       },
+       {
+        "camera": "close",
+        "on": "harmless."
+       }
+      ]
+     },
+     "from": 852,
+     "durationInFrames": 488,
+     "words": [
+      {
+       "w": "And",
+       "f0": 3,
+       "f1": 7
+      },
+      {
+       "w": "there's",
+       "f0": 7,
+       "f1": 12
+      },
+      {
+       "w": "a",
+       "f0": 12,
+       "f1": 15
+      },
+      {
+       "w": "second",
+       "f0": 15,
+       "f1": 24
+      },
+      {
+       "w": "change",
+       "f0": 24,
+       "f1": 36
+      },
+      {
+       "w": "hiding",
+       "f0": 36,
+       "f1": 51
+      },
+      {
+       "w": "in",
+       "f0": 51,
+       "f1": 60
+      },
+      {
+       "w": "there.",
+       "f0": 60,
+       "f1": 67
+      },
+      {
+       "w": "The",
+       "f0": 79,
+       "f1": 82
+      },
+      {
+       "w": "biggest",
+       "f0": 82,
+       "f1": 92
+      },
+      {
+       "w": "tides",
+       "f0": 92,
+       "f1": 102
+      },
+      {
+       "w": "of",
+       "f0": 102,
+       "f1": 111
+      },
+      {
+       "w": "the",
+       "f0": 111,
+       "f1": 114
+      },
+      {
+       "w": "month",
+       "f0": 114,
+       "f1": 121
+      },
+      {
+       "w": "only",
+       "f0": 121,
+       "f1": 131
+      },
+      {
+       "w": "happen",
+       "f0": 131,
+       "f1": 147
+      },
+      {
+       "w": "when",
+       "f0": 147,
+       "f1": 153
+      },
+      {
+       "w": "the",
+       "f0": 153,
+       "f1": 157
+      },
+      {
+       "w": "Sun",
+       "f0": 157,
+       "f1": 165
+      },
+      {
+       "w": "and",
+       "f0": 165,
+       "f1": 174
+      },
+      {
+       "w": "Moon",
+       "f0": 174,
+       "f1": 180
+      },
+      {
+       "w": "line",
+       "f0": 180,
+       "f1": 192
+      },
+      {
+       "w": "up.",
+       "f0": 192,
+       "f1": 204
+      },
+      {
+       "w": "Without",
+       "f0": 225,
+       "f1": 231
+      },
+      {
+       "w": "the",
+       "f0": 231,
+       "f1": 240
+      },
+      {
+       "w": "Moon,",
+       "f0": 240,
+       "f1": 249
+      },
+      {
+       "w": "every",
+       "f0": 264,
+       "f1": 273
+      },
+      {
+       "w": "tide",
+       "f0": 273,
+       "f1": 286
+      },
+      {
+       "w": "is",
+       "f0": 286,
+       "f1": 300
+      },
+      {
+       "w": "the",
+       "f0": 300,
+       "f1": 304
+      },
+      {
+       "w": "same",
+       "f0": 304,
+       "f1": 314
+      },
+      {
+       "w": "small",
+       "f0": 314,
+       "f1": 328
+      },
+      {
+       "w": "tide.",
+       "f0": 328,
+       "f1": 339
+      },
+      {
+       "w": "That",
+       "f0": 358,
+       "f1": 363
+      },
+      {
+       "w": "sounds",
+       "f0": 363,
+       "f1": 371
+      },
+      {
+       "w": "harmless.",
+       "f0": 371,
+       "f1": 384
+      },
+      {
+       "w": "On",
+       "f0": 384,
+       "f1": 411
+      },
+      {
+       "w": "the",
+       "f0": 411,
+       "f1": 416
+      },
+      {
+       "w": "shore,",
+       "f0": 416,
+       "f1": 425
+      },
+      {
+       "w": "it",
+       "f0": 425,
+       "f1": 435
+      },
+      {
+       "w": "isn't.",
+       "f0": 435,
+       "f1": 450
+      }
+     ],
+     "text": "And there's a second change hiding in there. The biggest tides of the month only happen when the Sun and Moon line up. Without the Moon, every tide is the same small tide. That sounds harmless. On the shore, it isn't.",
+     "rehook": true
+    }
+   ],
+   "sfx": [
+    {
+     "id": "whoosh",
+     "at": 0
+    },
+    {
+     "id": "whoosh",
+     "at": 309
+    },
+    {
+     "id": "pop",
+     "at": 620,
+     "gain": 3
+    },
+    {
+     "id": "pop",
+     "at": 700
+    },
+    {
+     "id": "pop",
+     "at": 804
+    }
+   ]
+  }
+ ]
+}

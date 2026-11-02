@@ -19,7 +19,7 @@ import * as THREE from 'three';
 // PUBLIC API
 // =============================================================================
 
-export type Pose = 'idle' | 'walk' | 'point' | 'shocked' | 'phone';
+export type Pose = 'idle' | 'walk' | 'point' | 'shocked' | 'phone' | 'sit';
 export type Mood = 'neutral' | 'worried' | 'shocked' | 'happy' | 'asleep';
 /** `at` = LOCAL frame (of the enclosing <Sequence>) the take toward `mood` begins. */
 export type MoodKey = { at: number; mood: Mood };
@@ -44,6 +44,8 @@ export type BlockyCharacterProps = {
   phoneGlow?: number;
   /** uniform scale (1 = 3.1 m tall) */
   scale?: number;
+  /** 0..1 extra mouth opening for speech (narrator lip-flap from word timings); 0 = mood/pose only */
+  talk?: number;
 };
 
 /** Q-ROSITY colours (setup/channels/q-rosity/brand.md §6). */
@@ -280,6 +282,20 @@ function computeRig(pose: Pose, frame: number, fps: number, seed: number): Rig {
         mouthOpen: 1 * k,
       };
     }
+    case 'sit':
+      // sitting on the ground (picnic): hips lowered to ~0.22 m, legs straight forward, hands
+      // planted slightly behind, torso leaning back a touch. Added for the what-if countdown format.
+      return {
+        ...base,
+        bob: -(HIP_Y - LEG.d / 2 - 0.01),
+        lean: -0.1,
+        lLeg: -1.5,
+        rLeg: -1.5,
+        lArm: [0.42 + 0.02 * sway, 0, -0.22],
+        rArm: [0.42 - 0.02 * sway, 0, 0.22],
+        headPitch: 0.04,
+        headYaw: 0.05 * Math.sin(t * 0.6),
+      };
     case 'phone':
       // right forearm forward + inward: the phone sits in front of the chest; left arm relaxed
       return {
@@ -393,6 +409,7 @@ export const BlockyCharacter: React.FC<BlockyCharacterProps> = ({
   outline = 0.035,
   phoneGlow = 1,
   scale = 1,
+  talk = 0,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -423,7 +440,7 @@ export const BlockyCharacter: React.FC<BlockyCharacterProps> = ({
   const pupilY = clamp(-look.pitch * 0.06, -0.03, 0.03);
 
   const browRaise = clamp(face.browRaise + rig.browRaise, -0.3, 1.2);
-  const mouthOpen = clamp(Math.max(face.mouthOpen, rig.mouthOpen), 0, 1);
+  const mouthOpen = clamp(Math.max(face.mouthOpen, rig.mouthOpen, talk), 0, 1);
   const mouthW = 0.18 + 0.1 * mouthOpen + 0.22 * face.mouthWide;
   const mouthH = 0.04 + 0.22 * mouthOpen;
 

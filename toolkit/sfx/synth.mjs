@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // synth.mjs — code-synthesised SFX library. Pure Node, no deps, deterministic (seeded PRNG).
 //
-//   node sfx/synth.mjs                 # writes public/sfx/*.wav + public/sfx/catalog.json, prints loudness
+//   node sfx/synth.mjs                 # writes public/sfx/*.wav (12 sounds) + public/sfx/catalog.json, prints loudness
 //   node sfx/synth.mjs --seed 7        # different (still deterministic) noise
 //   node sfx/synth.mjs --only pop,tick
 //
@@ -164,6 +164,95 @@ function tick(r) {
   return edgeFade(b, 0.05, 2);
 }
 
+// ---- what-if countdown format (examples/whatif-countdown) --------------------------------------
+
+/** "Power-down": 4 pure sine partials gliding down ~2 octaves over 1.2 s (exp glide), slow decay.
+ *  The world switching mode. Loudest at the start (peakSec ≈ 0) — cue `at` = the switch frame. */
+function powerDown(r) {
+  const dur = 1.6, b = buf(dur);
+  const parts = [[440, 1.0], [660, 0.55], [880, 0.4], [1320, 0.22]];
+  const ph = parts.map(() => r() * TAU);
+  for (let i = 0; i < b.length; i++) {
+    const s = t(i);
+    const glide = Math.pow(0.25, Math.min(1, s / 1.2)); // ×0.25 = −2 octaves over 1.2 s
+    const env = Math.min(1, s / 0.004) * (s < 1.2 ? 1 - 0.55 * (s / 1.2) : 0.45 * expDecay(s - 1.2, 0.12));
+    let v = 0;
+    parts.forEach(([f, a], k) => {
+      ph[k] += (TAU * f * glide * (1 + 0.002 * k)) / SR;
+      v += Math.sin(ph[k]) * a;
+    });
+    b[i] = v * env;
+  }
+  return edgeFade(b, 0.5, 30);
+}
+
+/** "Twinkle": 9 short high sine grains (pentatonic, 1.6–5 kHz) scattered over 1.1 s, each with a fast
+ *  attack and 60–160 ms decay. Stars / glass / sparkle appearing. */
+function twinkle(r) {
+  const dur = 1.3, b = buf(dur);
+  const scale = [0, 2, 4, 7, 9];
+  for (let g = 0; g < 9; g++) {
+    const at = g === 0 ? 0 : 0.04 + r() * 1.0;
+    const semi = scale[Math.floor(r() * scale.length)] + 12 * Math.floor(r() * 2);
+    const f = 1568 * Math.pow(2, semi / 12) * (1 + (r() - 0.5) * 0.004);
+    const dec = 0.06 + r() * 0.1;
+    const amp = g === 0 ? 1 : 0.35 + r() * 0.5;
+    const s0 = Math.round(at * SR);
+    const n = Math.round((dec * 5) * SR);
+    for (let i = 0; i < n && s0 + i < b.length; i++) {
+      const s = t(i);
+      b[s0 + i] += (Math.sin(TAU * f * s) + 0.25 * Math.sin(TAU * f * 2.01 * s)) * Math.min(1, s / 0.0015) * expDecay(s, dec) * amp;
+    }
+  }
+  return edgeFade(b, 0.1, 40);
+}
+
+/** "Noise wall": 2 s band-limited noise swell (band opens 300 Hz → 7 kHz, exp crescendo) that ENDS at
+ *  its peak — cue `at` = the hit / white-out frame. */
+function noiseWall(r) {
+  const dur = 2.0, b = buf(dur), bp = biquad('bp', 400, 0.7), lp = biquad('lp', 1200, 0.7), hp = biquad('hp', 80, 0.7);
+  let ph = 0;
+  for (let i = 0; i < b.length; i++) {
+    const x = t(i) / dur;
+    bp.set(300 + 6700 * x * x, 0.6 + 0.4 * x);
+    lp.set(1200 + 9000 * x, 0.7);
+    const n = r() * 2 - 1;
+    ph += (TAU * (60 + 180 * x * x)) / SR;
+    const env = Math.pow(x, 2.6);
+    b[i] = hp(lp(bp(n) * 1.4 + n * 0.25 * x) + Math.sin(ph) * 0.18 * x) * env;
+  }
+  return edgeFade(b, 5, 2);
+}
+
+/** "Glitch": granular stutter — 14 grains (12–45 ms) of sine / noise / square at jumping pitches,
+ *  some repeated 2–4× like a skipping buffer, over ~0.7 s (soft-clipped sine, not a raw square, so the
+ *  true peak stays near the −3 dBFS sample peak). Digital rebuild / point cloud. */
+function glitch(r) {
+  const dur = 0.75, b = buf(dur);
+  let at = 0;
+  for (let g = 0; g < 14 && at < 0.68; g++) {
+    const len = 0.012 + r() * 0.033;
+    const kind = Math.floor(r() * 3);
+    const f = 180 * Math.pow(2, Math.floor(r() * 30) / 6);
+    const reps = r() < 0.4 ? 2 + Math.floor(r() * 3) : 1;
+    const amp = 0.45 + r() * 0.55;
+    const grain = new Float32Array(Math.round(len * SR));
+    const hp = biquad('hp', 900, 0.7);
+    for (let i = 0; i < grain.length; i++) {
+      const s = t(i);
+      const env = Math.min(1, i / 48) * Math.min(1, (grain.length - i) / 96);
+      const v = kind === 0 ? Math.sin(TAU * f * s) : kind === 1 ? hp(r() * 2 - 1) * 1.3 : Math.tanh(2.5 * Math.sin(TAU * f * s)) * 0.5;
+      grain[i] = v * env * amp;
+    }
+    for (let k = 0; k < reps; k++) mixInto(b, grain, Math.round((at + k * len) * SR), 1 - k * 0.18);
+    at += len * reps + r() * 0.03;
+  }
+  // tame the grain edges (inter-sample peaks): gentle 6 kHz low-pass over the whole stutter
+  const lp = biquad('lp', 6000, 0.6);
+  for (let i = 0; i < b.length; i++) b[i] = lp(b[i]);
+  return edgeFade(b, 0.1, 10);
+}
+
 const SOUNDS = [
   { id: 'whoosh', fn: whoosh, category: 'transition', use: 'morph / cut / camera move — peak lands ON the cut' },
   { id: 'pop', fn: pop, category: 'ui', use: 'number or word pop (pair with usePop on money words)' },
@@ -173,6 +262,10 @@ const SOUNDS = [
   { id: 'impact', fn: impact, category: 'hit', use: 'the payoff / punchline hit' },
   { id: 'cash-register', fn: cashRegister, category: 'money', use: 'money reveal (price, savings, total)' },
   { id: 'tick', fn: tick, category: 'ui', use: 'counter steps (one per digit change), clock ticks' },
+  { id: 'power-down', fn: powerDown, category: 'whatif', use: 'the world switches mode (sine partials gliding down 2 octaves, peak at the start; cue at = switch frame)' },
+  { id: 'twinkle', fn: twinkle, category: 'whatif', use: 'stars / glass / sparkles appearing (high sine grains over ~1.1 s)' },
+  { id: 'noise-wall', fn: noiseWall, category: 'whatif', use: 'build INTO a white-out / explosion (2 s noise swell ending at its peak; cue at = hit frame)' },
+  { id: 'glitch', fn: glitch, category: 'whatif', use: 'digital rebuild / point cloud / time skip (granular stutter, ~0.7 s)' },
 ];
 
 // ----------------------------------------------------------------------------- main

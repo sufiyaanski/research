@@ -78,6 +78,42 @@
       "category": "ui",
       "use": "counter steps (one per digit change), clock ticks",
       "license": "own (code-synthesised)"
+    },
+    {
+      "id": "power-down",
+      "file": "sfx/power-down.wav",
+      "durationSec": 1.6,
+      "peakSec": 0.011,
+      "category": "whatif",
+      "use": "the world switches mode (sine partials gliding down 2 octaves, peak at the start; cue at = switch frame)",
+      "license": "own (code-synthesised)"
+    },
+    {
+      "id": "twinkle",
+      "file": "sfx/twinkle.wav",
+      "durationSec": 1.3,
+      "peakSec": 0.006,
+      "category": "whatif",
+      "use": "stars / glass / sparkles appearing (high sine grains over ~1.1 s)",
+      "license": "own (code-synthesised)"
+    },
+    {
+      "id": "noise-wall",
+      "file": "sfx/noise-wall.wav",
+      "durationSec": 2,
+      "peakSec": 1.979,
+      "category": "whatif",
+      "use": "build INTO a white-out / explosion (2 s noise swell ending at its peak; cue at = hit frame)",
+      "license": "own (code-synthesised)"
+    },
+    {
+      "id": "glitch",
+      "file": "sfx/glitch.wav",
+      "durationSec": 0.75,
+      "peakSec": 0.503,
+      "category": "whatif",
+      "use": "digital rebuild / point cloud / time skip (granular stutter, ~0.7 s)",
+      "license": "own (code-synthesised)"
     }
   ]
 }

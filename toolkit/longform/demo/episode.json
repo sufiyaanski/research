@@ -1,0 +1,17 @@
+{
+  "id": "qrl-demo-moon",
+  "title": "What If the Moon Vanished Tonight?",
+  "channel": "longform",
+  "outName": "LongformDemo",
+  "studioComposition": "LongformDemo",
+  "excerpt": true,
+  "fps": 30,
+  "width": 1920,
+  "height": 1080,
+  "voice": { "engine": "kokoro", "voice": "am_michael", "speed": 0.85, "tail": 1.2 },
+  "music": { "bpm": 84, "bars": 8, "seed": 4, "key": "D", "db": -16 },
+  "hook": "At 9:00 tonight the Moon disappears. The first thing it takes is the tide.",
+  "summary": "A what-if deep dive (demo excerpt: cold open + chapter one). We follow one night without the Moon on a real coastline: why tides exist, how much of them the Sun can keep going on its own, and the change to the monthly tide rhythm nobody would notice until the shore did.",
+  "hashtags": ["whatif", "space", "ocean"],
+  "thumbnail": { "text": "THE MOON VANISHED", "number": "9:00 PM", "set": "shore", "mood": "shocked", "ghostMoon": true }
+}

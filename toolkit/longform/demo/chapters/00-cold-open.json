@@ -1,0 +1,92 @@
+{
+  "id": "c00",
+  "kind": "cold-open",
+  "title": "The night the Moon vanished",
+  "scenes": [
+    {
+      "id": "c00s01",
+      "template": "whatif",
+      "vo": [
+        {
+          "text": "Tonight, at exactly nine o'clock, the Moon disappears."
+        },
+        {
+          "text": "No explosion. No warning. It's just gone."
+        }
+      ],
+      "props": {
+        "set": "shore",
+        "premise": "the Moon vanished tonight?",
+        "goneOn": "disappears",
+        "clock": {
+          "at": "21:00:00",
+          "on": "disappears"
+        },
+        "clockLabel": "TONIGHT"
+      }
+    },
+    {
+      "id": "c00s02",
+      "template": "narrator",
+      "vo": [
+        {
+          "text": "The sky gets darker, sure. But the first real change happens a few hours later, at the beach."
+        }
+      ],
+      "props": {
+        "set": "street",
+        "moon": 0,
+        "lookUp": true,
+        "mood": "worried",
+        "character": [
+          {
+            "pose": "point",
+            "on": "beach."
+          },
+          {
+            "mood": "neutral",
+            "on": "first"
+          }
+        ],
+        "shots": [
+          {
+            "camera": "low"
+          },
+          {
+            "camera": "push",
+            "on": "But"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c00s03",
+      "template": "timeline",
+      "vo": [
+        {
+          "text": "So let's follow it, step by step: the first tide, the first month without big tides, and what that does to every shore on Earth."
+        }
+      ],
+      "props": {
+        "title": "One night, step by step",
+        "stops": [
+          {
+            "label": "First tide",
+            "sub": "a few hours in",
+            "on": "tide,"
+          },
+          {
+            "label": "First month",
+            "sub": "no big tides",
+            "on": "month"
+          },
+          {
+            "label": "Every shore",
+            "sub": "what changes",
+            "on": "shore"
+          }
+        ]
+      }
+    }
+  ]
+}

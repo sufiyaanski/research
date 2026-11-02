@@ -6,10 +6,11 @@ described in `public/sfx/catalog.json` (`{id, file, durationSec, peakSec, catego
 `peakSec` = centre of the loudest 10 ms, so a cue can land the **peak** on a frame).
 
 ```bash
-node sfx/synth.mjs                                   # all 8 sounds + catalog.json, prints RMS / LUFS / true peak
+node sfx/synth.mjs                                   # all 12 sounds + catalog.json, prints RMS / LUFS / true peak
 node sfx/synth.mjs --seed 7 --only pop,tick          # variants (catalog not rewritten with --only)
 node sfx/music-bed.mjs --bpm 120 --duration 15       # public/music/bed-120.wav, −18 LUFS, loopable, stereo
 node sfx/music-bed.mjs --bpm 96 --duration 20 --key A --seed 3 --lufs -20 --out public/music/bed-96-a.wav
+node sfx/drone-bed.mjs --config examples/whatif-countdown/whatif.config.ts   # what-if format score, follows the episode's acts
 ```
 
 Music beds are git-ignored (deterministic, ~2.9 MB per 15 s): `npm run audio` regenerates the
@@ -25,9 +26,18 @@ SFX and the 120 BPM bed. Use whole bars for a musically seamless loop (120 BPM �
 | `cash-register` | "ka" latch clicks + 2.6/3.3 kHz bell partials + inharmonics | 0.9 s | 0.14 s | money reveal (price, saving, total) |
 | `riser` | rising saw 110→880 Hz + noise, ends at its peak | 1.8 s | 1.69 s | tension INTO the reveal — cue `at` = reveal frame |
 | `impact` | thump + noise burst + dark tail | 0.8 s | 39 ms | the payoff / punchline |
+| `power-down` | 4 sine partials gliding −2 octaves over 1.2 s | 1.6 s | 11 ms | the world switches mode (what-if format) — cue `at` = switch frame |
+| `twinkle` | 9 high sine grains (pentatonic 1.6–5 kHz) over ~1.1 s | 1.3 s | 6 ms | stars / glass / sparkles appearing |
+| `noise-wall` | band-opening noise swell, ends at its peak | 2.0 s | 1.98 s | INTO a white-out / explosion — cue `at` = hit frame |
+| `glitch` | granular stutter (soft-clipped sine / noise grains, repeats) | 0.75 s | 0.50 s | digital rebuild, point cloud, time skip |
 
 Measured (ffmpeg ebur128, clip padded to 1 s): whoosh −17.9, pop −21.9, click −32.9, thump −23.5,
-riser −16.9, impact −25.8, cash-register −14.5, tick −31.5 LUFS; true peaks −2.6…−3.0 dBFS.
+riser −16.9, impact −25.8, cash-register −14.5, tick −31.5, power-down −13.5, twinkle −14.7,
+noise-wall −16.9, glitch −13.4 LUFS; true peaks −2.6…−3.0 dBFS.
+
+`drone-bed.mjs --config <episode.ts>` writes one through-composed stereo score as long as the reel
+(park ambience → sine pads → twinkles → rising glide → ring → space pad + riser → glitch texture +
+swell → silence), sectioned by the episode's `acts[].look`; see `examples/whatif-countdown/README.md` §5.
 
 ## In a composition (`cues.tsx`)
 
