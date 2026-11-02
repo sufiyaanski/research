@@ -1,0 +1,13 @@
+[
+  { "w": "This", "start": 0.10, "end": 0.28 },
+  { "w": "lamp:", "start": 0.30, "end": 0.62 },
+  { "w": "$40.", "start": 0.70, "end": 1.20 },
+  { "w": "Made", "start": 1.55, "end": 1.78 },
+  { "w": "for", "start": 1.80, "end": 1.92 },
+  { "w": "$4.", "start": 2.02, "end": 2.45 },
+  { "w": "The", "start": 2.95, "end": 3.05 },
+  { "w": "gap", "start": 3.07, "end": 3.30 },
+  { "w": "is", "start": 3.32, "end": 3.40 },
+  { "w": "the", "start": 3.42, "end": 3.50 },
+  { "w": "story.", "start": 3.52, "end": 3.88 }
+]

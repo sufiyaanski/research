@@ -1,0 +1,140 @@
+{
+  "fps": 30,
+  "source": "vo",
+  "durationInFrames": 120,
+  "beats": [
+    3,
+    9,
+    21,
+    47,
+    54,
+    61,
+    89,
+    92,
+    100,
+    103,
+    106
+  ],
+  "downbeats": [
+    3,
+    21,
+    47,
+    89
+  ],
+  "words": [
+    {
+      "w": "This",
+      "start": 3,
+      "end": 8
+    },
+    {
+      "w": "lamp:",
+      "start": 9,
+      "end": 19
+    },
+    {
+      "w": "$40.",
+      "start": 21,
+      "end": 36
+    },
+    {
+      "w": "Made",
+      "start": 47,
+      "end": 53
+    },
+    {
+      "w": "for",
+      "start": 54,
+      "end": 58
+    },
+    {
+      "w": "$4.",
+      "start": 61,
+      "end": 74
+    },
+    {
+      "w": "The",
+      "start": 89,
+      "end": 92
+    },
+    {
+      "w": "gap",
+      "start": 92,
+      "end": 99
+    },
+    {
+      "w": "is",
+      "start": 100,
+      "end": 102
+    },
+    {
+      "w": "the",
+      "start": 103,
+      "end": 105
+    },
+    {
+      "w": "story.",
+      "start": 106,
+      "end": 116
+    }
+  ],
+  "phrases": [
+    {
+      "start": 3,
+      "end": 19,
+      "text": "This lamp:"
+    },
+    {
+      "start": 21,
+      "end": 36,
+      "text": "$40."
+    },
+    {
+      "start": 47,
+      "end": 74,
+      "text": "Made for $4."
+    },
+    {
+      "start": 89,
+      "end": 116,
+      "text": "The gap is the story."
+    }
+  ],
+  "chunks": [
+    {
+      "text": "This lamp: $40.",
+      "start": 2,
+      "end": 36,
+      "pops": [
+        21
+      ],
+      "wordStart": 0,
+      "wordEnd": 3
+    },
+    {
+      "text": "Made for $4.",
+      "start": 46,
+      "end": 74,
+      "pops": [
+        61
+      ],
+      "wordStart": 3,
+      "wordEnd": 6
+    },
+    {
+      "text": "The gap is the story.",
+      "start": 88,
+      "end": 116,
+      "pops": [],
+      "wordStart": 6,
+      "wordEnd": 11
+    }
+  ],
+  "pops": [
+    21,
+    61
+  ],
+  "popRegex": "\\$|%|price|cost|free|cheap|expensive|save|sale|\\d",
+  "warnings": [],
+  "sourceFile": "smoke.words.json"
+}

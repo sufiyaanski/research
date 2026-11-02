@@ -1,0 +1,83 @@
+{
+  "generatedBy": "sfx/synth.mjs",
+  "seed": 1,
+  "sampleRate": 48000,
+  "channels": 1,
+  "bitDepth": 16,
+  "peakDbfs": -3,
+  "note": "file is relative to public/ (use staticFile(file)). peakSec = centre of the loudest 10 ms window.",
+  "sounds": [
+    {
+      "id": "whoosh",
+      "file": "sfx/whoosh.wav",
+      "durationSec": 0.45,
+      "peakSec": 0.272,
+      "category": "transition",
+      "use": "morph / cut / camera move — peak lands ON the cut",
+      "license": "own (code-synthesised)"
+    },
+    {
+      "id": "pop",
+      "file": "sfx/pop.wav",
+      "durationSec": 0.08,
+      "peakSec": 0.006,
+      "category": "ui",
+      "use": "number or word pop (pair with usePop on money words)",
+      "license": "own (code-synthesised)"
+    },
+    {
+      "id": "click",
+      "file": "sfx/click.wav",
+      "durationSec": 0.03,
+      "peakSec": 0.005,
+      "category": "ui",
+      "use": "button press, toggle, cursor tap",
+      "license": "own (code-synthesised)"
+    },
+    {
+      "id": "thump",
+      "file": "sfx/thump.wav",
+      "durationSec": 0.35,
+      "peakSec": 0.018,
+      "category": "hit",
+      "use": "logo / object landing, price tag slam",
+      "license": "own (code-synthesised)"
+    },
+    {
+      "id": "riser",
+      "file": "sfx/riser.wav",
+      "durationSec": 1.8,
+      "peakSec": 1.686,
+      "category": "build",
+      "use": "tension INTO the reveal (ends at its peak; cue at = reveal frame)",
+      "license": "own (code-synthesised)"
+    },
+    {
+      "id": "impact",
+      "file": "sfx/impact.wav",
+      "durationSec": 0.8,
+      "peakSec": 0.039,
+      "category": "hit",
+      "use": "the payoff / punchline hit",
+      "license": "own (code-synthesised)"
+    },
+    {
+      "id": "cash-register",
+      "file": "sfx/cash-register.wav",
+      "durationSec": 0.9,
+      "peakSec": 0.136,
+      "category": "money",
+      "use": "money reveal (price, savings, total)",
+      "license": "own (code-synthesised)"
+    },
+    {
+      "id": "tick",
+      "file": "sfx/tick.wav",
+      "durationSec": 0.012,
+      "peakSec": 0.005,
+      "category": "ui",
+      "use": "counter steps (one per digit change), clock ticks",
+      "license": "own (code-synthesised)"
+    }
+  ]
+}

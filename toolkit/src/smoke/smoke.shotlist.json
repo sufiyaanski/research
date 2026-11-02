@@ -1,0 +1,62 @@
+{
+  "id": "ToolkitSmoke",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "durationInFrames": 120,
+  "bpm": 120,
+  "beatsFile": "smoke.bpm-beats.json",
+  "shots": [
+    {
+      "id": "hook",
+      "start": 0,
+      "end": 30,
+      "beat": 0,
+      "action": "Price tag $40 drops in and lands with a thump",
+      "caption": "This lamp: $40.",
+      "sfx": [{ "id": "thump", "at": 8 }],
+      "state": "$40 centred, ink on cream, settled"
+    },
+    {
+      "id": "count",
+      "start": 30,
+      "end": 60,
+      "beat": 2,
+      "action": "Number counts down 40 to 4, one tick per step",
+      "caption": "Made for $4.",
+      "sfx": [
+        { "id": "whoosh", "at": 0, "gain": -4 },
+        { "id": "tick", "at": 4 },
+        { "id": "tick", "at": 8 },
+        { "id": "tick", "at": 12 },
+        { "id": "tick", "at": 16 },
+        { "id": "tick", "at": 20 },
+        { "id": "riser", "at": 30, "gain": -9 }
+      ],
+      "state": "counter frozen at 4, still ink"
+    },
+    {
+      "id": "reveal",
+      "start": 60,
+      "end": 90,
+      "beat": 4,
+      "action": "$4 flips to red and pops, ka-ching",
+      "caption": "Made for $4.",
+      "sfx": [
+        { "id": "cash-register", "at": 1, "gain": -2 },
+        { "id": "pop", "at": 1, "gain": -6 }
+      ],
+      "state": "$4 in red, slightly larger than $40 was"
+    },
+    {
+      "id": "payoff",
+      "start": 90,
+      "end": 120,
+      "beat": 6,
+      "action": "Line slams in under the number: the gap is the story",
+      "caption": "The gap is the story.",
+      "sfx": [{ "id": "impact", "at": 2, "gain": -3 }],
+      "state": "$40 struck through, $4 red, payoff line under"
+    }
+  ]
+}
