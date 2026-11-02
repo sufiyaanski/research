@@ -116,7 +116,8 @@ const config = {
       burst: [0.3, 3.2],
       sfx: [
         { id: 'twinkle', at: 0.6, gain: -3 },
-        { id: 'noise-wall', at: 4, gain: -1 },
+        // mix: noise-wall ends ON the impact — together they hit 0 dBFS at −1/+3 dB; −3/0 keeps ≤ −1 dBTP
+        { id: 'noise-wall', at: 4, gain: -3 },
       ],
     },
     {
@@ -125,7 +126,7 @@ const config = {
       end: 25,
       look: 'whiteout',
       action: 'white-out (the shock front)',
-      sfx: [{ id: 'impact', at: 0, gain: 3 }],
+      sfx: [{ id: 'impact', at: 0, gain: 0 }],
     },
     {
       id: 'moon',

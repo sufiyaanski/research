@@ -181,7 +181,18 @@ export const WhatIfReel: React.FC<{ config: WhatIfConfig }> = ({ config }) => {
       <Hud config={config} white={white} />
       <NarrationLine config={config} />
       <EndCard config={config} />
-      <MusicBed src={config.audio.bed} volume={config.audio.bedVolume} loop={false} fadeIn={1} fadeOut={Math.round(0.8 * fps)} />
+      {/* the bed ducks −6 dB around every impact (the glow riser + noise-wall + impact otherwise sum to 0 dBFS) */}
+      <MusicBed
+        src={config.audio.bed}
+        volume={config.audio.bedVolume}
+        loop={false}
+        fadeIn={1}
+        fadeOut={Math.round(0.8 * fps)}
+        duckFrames={cues.filter((c) => c.id === 'impact').map((c) => [c.at - Math.round(0.25 * fps), c.at + Math.round(0.15 * fps)] as [number, number])}
+        duckDb={-6}
+        attack={Math.round(0.2 * fps)}
+        release={Math.round(0.5 * fps)}
+      />
       <SfxTrack cues={cues} gain={config.audio.sfxMasterDb} />
     </AbsoluteFill>
   );

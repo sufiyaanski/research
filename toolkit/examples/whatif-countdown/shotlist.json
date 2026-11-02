@@ -75,7 +75,7 @@
         {
           "id": "noise-wall",
           "at": 120,
-          "gain": -1
+          "gain": -3
         }
       ]
     },
@@ -89,7 +89,7 @@
         {
           "id": "impact",
           "at": 0,
-          "gain": 3
+          "gain": 0
         }
       ]
     },
