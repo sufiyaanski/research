@@ -14,11 +14,12 @@
 //   endcard     near-silence: a very soft pad
 //
 //   node sfx/drone-bed.mjs --config examples/whatif-countdown/whatif.config.ts            # -> public/<config.audio.bed>
-//   node sfx/drone-bed.mjs --config <cfg.ts> [--seed 1] [--lufs -17] [--out public/music/x.wav]
+//   node sfx/drone-bed.mjs --config <cfg.ts> [--seed 1] [--lufs -16] [--out public/music/x.wav]
 //
 // The one-shot hits (power-down, twinkle, noise-wall, impact, glitch, riser) are NOT in the bed: they
 // are catalog cues placed by <SfxTrack> on the picture's frames. Loudness: normalised to --lufs
-// (integrated, ebur128) with a −2 dBFS sample-peak cap; quiet sections stay quiet (the arc matters more
+// (integrated, ebur128, default −16) with a −2 dBFS sample-peak cap; the risers stay ≤ ~−8 dBFS so the
+// noise-wall / riser cues on top of them keep the final mix ≤ −1 dBTP; quiet sections stay quiet (the arc matters more
 // than the average). 48 kHz 16-bit stereo.
 import path from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
@@ -39,7 +40,7 @@ if (!cfgPath) {
 const cfgMod = await import(pathToFileURL(path.resolve(cfgPath)).href, cfgPath.endsWith('.json') ? { with: { type: 'json' } } : undefined);
 const cfg = cfgMod.default;
 const SEED = Number(arg('seed', 1));
-const LUFS = Number(arg('lufs', -17));
+const LUFS = Number(arg('lufs', -16));
 const OUT = path.resolve(ROOT, arg('out', path.join('public', cfg.audio?.bed ?? `music/whatif-${cfg.id}.wav`)));
 const DUR = cfg.durationSec;
 const acts = cfg.acts;
@@ -223,7 +224,7 @@ for (const a of acts) {
   if (look === 'space') {
     pad(s, e, 0.05, (t) => clamp((t - s) / 0.8, 0, 1) * clamp((e - t) / 0.3, 0, 1), [41.2, 55, 82.5, 110]);
     air(s, e, 0.012);
-    if (a === lastSpace) riseInto(s + 0.4, e, 110, 880, 0.1, 0.7);
+    if (a === lastSpace) riseInto(s + 0.4, e, 110, 880, 0.055, 0.7);
   }
   if (look === 'pointcloud') {
     glitchTexture(s, e, 0.05);
@@ -235,7 +236,7 @@ for (const a of acts) {
 if (glowActs.length) {
   const a = glowActs[0].start;
   const b = glowActs[glowActs.length - 1].end;
-  riseInto(a, b, 220, 1760, 0.09, 1);
+  riseInto(a, b, 220, 1760, 0.045, 1);
 }
 
 // ----------------------------------------------------------------------------- loudness
