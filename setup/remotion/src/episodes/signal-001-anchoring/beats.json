@@ -16,9 +16,9 @@
     { "beat": "proof", "text": "In 1974, Kahneman and Tversky spun a rigged wheel.", "start": 27.4, "end": 30.8 },
     { "beat": "proof", "text": "Then asked: what share of UN countries are African?", "start": 31.2, "end": 34.6 },
     { "beat": "proof", "text": "Wheel said 10: people guessed 25%. Wheel said 65: they guessed 45%.", "start": 35.0, "end": 39.4 },
-    { "beat": "everyday", "text": "That's why the menu has a $90 steak, and the tag says was $199.", "start": 39.8, "end": 44.8 },
-    { "beat": "everyday", "text": "The anchor isn't the product.", "start": 45.0, "end": 46.6 },
-    { "beat": "payoff", "text": "It's the first number. So ask: who chose it?", "start": 46.8, "end": 49.8 }
+    { "beat": "everyday", "text": "That's why menus have a $90 steak, and tags say was $199.", "start": 39.7, "end": 44.4 },
+    { "beat": "everyday", "text": "The anchor isn't the product.", "start": 44.7, "end": 46.5 },
+    { "beat": "payoff", "text": "It's the first number. So ask: who chose it?", "start": 46.8, "end": 50.2 }
   ],
   "beats": [
     { "id": "hook", "start": 0, "end": 3.6, "visual": "Headline 'Nobody bought this.' + hero $429 tag, fully composed on frame 0", "sfx": ["impact-soft@0.05"] },

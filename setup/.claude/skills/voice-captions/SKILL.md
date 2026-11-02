@@ -9,20 +9,25 @@ The voice is the clock. Everything else (captions, counters, cuts, SFX) is timed
 spoken word times, never to estimates. One tool does the pass: `tools/gen_voice.py`.
 
 ```
-beats.json (vo[] text + planned starts)
-    │  python3 -I tools/gen_voice.py --beats episodes/<ep>/beats.json --emit-ts <remotion>/vo.gen.ts
+remotion/src/episodes/<id>/beats.json   (vo[] text + planned start/end — written by script-writing / the composition)
+    │  python3 -I tools/gen_voice.py --beats remotion/src/episodes/<id>/beats.json
     ▼
-episodes/<ep>/voice/voice.wav          # the timed voice track (48 kHz stereo, -16 LUFS)
-episodes/<ep>/voice/cache/<id>-<hash>.mp3 (+ .words.json)   # per-line cache, keyed by sha1(text+voice+model+settings)
-beats.json                             # vo[].start/end/words written back (planned_start preserved)
-vo.gen.ts                              # export const VO: {id,text,start,end,words:{w,s,e}[]}[] (seconds)
+episodes/<id>/voice/voice.wav                 # timed voice track (48 kHz stereo, -16 LUFS) — gitignored
+episodes/<id>/voice/cache/<line>-<hash>.mp3   # per-line cache (+ .words.json), keyed by sha1(text+voice+model+settings)
+remotion/public/voice/<id>/voice.wav          # copy for <Audio src={staticFile('voice/<id>/voice.wav')} /> (optional)
+remotion/src/episodes/<id>/beats.json         # vo[].start/end/words [{w,start,end}] written back; planned_start/planned_end kept
+remotion/src/episodes/<id>/vo.gen.ts          # export const VO: VoLine[] (import type from '../../lib/kit') + VO_FPS, VO_TOTAL_SEC, VO_MOCK
 ```
+
+`npm run vo:estimate` writes a PLACEHOLDER `vo.gen.ts` from the planned windows; `gen_voice.py`
+replaces it with the real one (same `VoLine` shape, so the composition does not change).
 
 ## Step by step
 
-1. **Read the contract.** `beats.json` needs `fps` and `vo[]` with `id`, `text`, `start` (planned
-   start, seconds). Optional per line: `tts` (alternate text sent to TTS — phonetic spellings,
-   v3 audio tags) while `text` stays the caption. Optional `durationSec`.
+1. **Read the contract.** `beats.json` needs `format.fps` (or `fps`) and `vo[]` with `beat`,
+   `text`, `start` and `end` (planned window, seconds). Optional per line: `tts` (alternate text
+   sent to TTS — phonetic spellings, v3 audio tags) while `text` stays the caption. The tool
+   adds a stable `id` (`l01`…) per line.
 2. **Pace-check before spending credits.**
    `python3 -I tools/gen_voice.py --beats <beats> --dry-run`
    prints, per line, the words, the mock duration at 2.7 w/s, and `need` = the wpm the line would
@@ -30,10 +35,12 @@ vo.gen.ts                              # export const VO: {id,text,start,end,wor
    or move the planned start) — do not fix pace with `--speed`.
 3. **Generate.** Needs `ELEVENLABS_API_KEY` in the env or `.env` at the repo root.
    ```
-   python3 -I tools/gen_voice.py --beats episodes/<ep>/beats.json \
-       --voice <voice_id> --model eleven_multilingual_v2 --stability 0.6 --style 0 --speed 0.97 \
-       --emit-ts remotion/src/episodes/<ep>/vo.gen.ts --wpm-check
+   python3 -I tools/gen_voice.py --beats remotion/src/episodes/<id>/beats.json \
+       --voice <voice_id> --model eleven_multilingual_v2 --stability 0.6 --style 0 --speed 0.97 --wpm-check
    ```
+   (`vo.gen.ts` lands next to beats.json by default; `--emit-ts`, `--out-dir`, `--public-dir ''`
+   override the paths; `--ts-format compact` emits a self-contained `{id,text,words:{w,s,e}}` module
+   instead of the kit shape.)
    Per line the tool calls `POST /v1/text-to-speech/{voice_id}/with-timestamps` and converts
    the character alignment into word times. Lines are laid on the timeline with
    `start = max(planned_start, previous_end + 0.25 s)`; a pushed line prints `DRIFT +x.xx s`.
@@ -43,8 +50,10 @@ vo.gen.ts                              # export const VO: {id,text,start,end,wor
    is a pacing bug.
 5. **Re-roll one line** by editing its text (or `tts`) and re-running: only that line's hash
    changes, only that line is re-billed. `--force` regenerates everything.
-6. **Render the composition** (it imports `vo.gen.ts`), then mux or hand `voice.wav` to the
-   Remotion `<Audio>`; `--mux renders/<ep>.mp4` writes `<ep>-voiced.mp4` for a quick listen.
+6. **Render the composition** (it imports `vo.gen.ts`; `npm run frames` first, per CLAUDE.md R1).
+   Remotion renders are silent unless the episode mounts `<Audio>`; the voice is mixed in by
+   `mix_sfx.py --vo episodes/<id>/voice/voice.wav`. `--mux out/<Comp>.mp4` writes
+   `out/<Comp>-voiced.mp4` for a quick listen.
 7. **Hand off** to `sound-design` (SFX + music) — both read `beats.json` word times.
 
 ## Mock mode (no key, offline)
@@ -135,16 +144,21 @@ if captions ever come out as spelled-out numbers, the response only carried the 
 
 ### Consuming vo.gen.ts
 
+The kit's `Captions` (`remotion/src/lib/kit.tsx`) already does this: `<Captions brand={B} lines={VO} />`
+with `chunkLines()` (2–4 words per beat type) and `hideBetween` for full-screen graphics. For a
+custom consumer:
+
 ```ts
 import { VO, VO_FPS, VO_MOCK } from './vo.gen';
-const t = frame / fps;                                      // seconds
-const line = VO.find(l => t >= l.start && t < l.end + 0.4);  // +0.4 s hold at line end
-const word = line?.words.find(w => t >= w.s && t < w.e)
-          ?? [...(line?.words ?? [])].reverse().find(w => t >= w.s);   // keep last word lit in gaps
-// chunk: slice line.words into groups of <=4 at punctuation; active chunk = the one containing `word`
+const t = frame / fps;                                           // seconds
+const line = VO.find(l => t >= l.start && t < l.end + 0.4);      // +0.4 s hold at line end
+const words = line?.words ?? [];
+const word = words.find(w => t >= w.start && t < w.end)
+          ?? [...words].reverse().find(w => t >= w.start);       // keep the last word lit in gaps
+// chunk: slice words into groups of <=4 at punctuation; active chunk = the one containing `word`
 ```
-`frame = Math.round(t * VO_FPS)` converts any word time to a frame for counters/cuts
-(e.g. a counter that snaps on the word "60" uses `Math.round(words[i].s * 60)`).
+`Math.round(t * fps)` converts any word time to a frame for counters/cuts (a counter that
+snaps on the word "25%" uses `Math.round(words[i].start * fps) - sequenceFrom` inside its Sequence).
 
 ## Troubleshooting
 

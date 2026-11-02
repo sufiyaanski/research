@@ -272,7 +272,7 @@ const Everyday: React.FC = () => {
       <Kicker brand={B} text="You saw this today" at={0} until={exitAt} />
       <PriceTag brand={B} price="$90" label="the steak" x={90} y={420} w={420} at={cue(40.7)} rotate={-4} until={exitAt} />
       <PriceTag brand={B} price="$129" was="was $199" label="the deal" x={570} y={400} w={420} at={cue(43.6)} fill={B.accent} rotate={3} until={exitAt} />
-      <BigTitle brand={B} lines={['The anchor isn’t', 'the *product.*']} y={940} size={96} at={cue(45.0)} until={exitAt} uppercase={false} />
+      <BigTitle brand={B} lines={['The anchor isn’t', 'the *product.*']} y={940} size={96} at={cue(44.8)} until={exitAt} uppercase={false} />
     </>
   );
 };

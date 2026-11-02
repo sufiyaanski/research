@@ -54,8 +54,9 @@ LOOP     Which is why $9.99 is a lie your brain believes.
 production. A Signal script ships with a `sources` list in beats.json.)
 
 beats.json: `examples/signal-anchoring.beats.json` (fps 60, durationSec 54, 9 vo lines,
-8 beats with visuals). Planned starts leave ≥ 0.4 s between a line's mock end and the next
-start so the real VO never drifts.
+8 beats with visuals + sfx hints). Planned windows leave ≥ 0.4 s between a line's mock end and
+the next start so the real VO never drifts. (The kit's shipped episode `signal-001-anchoring`
+— the $429 bread-maker anchoring story — follows the same template at 51 s / 118 words.)
 
 ## The Q-ROSITY template ("what if", blocky character POV)
 
@@ -92,26 +93,33 @@ beats.json: `examples/qrosity-no-sleep.beats.json`. For the dramatic voice (see
 
 ## beats.json — the contract
 
+Lives at `remotion/src/episodes/<id>/beats.json` (CLAUDE.md R0). Minimal shape:
+
 ```jsonc
 {
-  "id": "signal-001-anchoring", "channel": "signal", "title": "...",
-  "fps": 60, "durationSec": 54,
+  "id": "signal-002-left-digit", "channel": "the-signal", "title": "...", "composition": "SignalLeftDigit",
+  "format": { "width": 1080, "height": 1920, "fps": 60, "durationSec": 54 },
   "vo": [
-    { "id": "hook", "beat": "hook", "text": "$9.99 is a lie your brain believes.", "start": 0.2 },
-    { "id": "idea", "beat": "idea", "text": "...", "start": 3.2, "tts": "optional: how to SAY it" }
+    { "beat": "hook", "text": "$9.99 is a lie your brain believes.", "start": 0.2, "end": 2.9 },
+    { "beat": "idea", "text": "...", "start": 3.2, "end": 10.0, "tts": "optional: how to SAY it ([v3 tags], phonetics)" }
   ],
   "beats": [
-    { "id": "hook", "from_s": 0.2, "to_s": 3.2, "visual": "what is on screen", "captions": true }
+    { "id": "hook", "start": 0.0, "end": 3.2, "visual": "what is on screen", "sfx": ["impact-soft@0.05", "whoosh-soft@3.2?"] }
   ],
   "sources": [ { "claim": "...", "ref": "..." } ]
 }
 ```
-- `vo[].start` is the PLANNED start; after `gen_voice.py` runs, `start/end/words` are the real
-  ones and `planned_start` keeps your plan. Captions and SFX use the real values.
-- `vo[].id` is stable (re-rolling a line keeps its id). `beat` links the line to its visual.
-- `beats[].visual` is the brief for the Remotion side; `captions: false` hides captions when
-  the graphic owns the caption zone.
-- Keep the hook at `start: 0.2` (not 0.0) so the first phoneme is never clipped by players.
+- `vo[].start/end` is the PLANNED window (plan `end − start ≥ words / 2.7 + 0.3`); after
+  `gen_voice.py` runs they become the REAL times, `words: [{w,start,end}]` is added and
+  `planned_start/planned_end` keep your plan. Captions, counters and SFX use the real values.
+- `beat` links a line to its visual (several lines may share a beat). The tool adds a stable
+  `id` per line for caching.
+- `beats[].visual` is the brief for the Remotion side; `beats[].sfx` are seed hints for the
+  cue sheet (`"id@seconds"`, `?` = optional) — the sound-design pass turns them into
+  `episodes/<id>/sfx-plan.json`. Captions over a full-screen graphic are hidden with the
+  `Captions` component's `hideBetween`.
+- Keep the hook at `start: 0.2–0.3` (not 0.0) so the first phoneme is never clipped by players.
+- Every number also goes in `episodes/<id>/facts.json` with a source and confidence (CLAUDE.md R8).
 
 ## Writing checks (run before handing off)
 

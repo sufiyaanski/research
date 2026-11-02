@@ -21,6 +21,8 @@ sfx-plan.json:
   }
   at_s / at_f (frames at `fps`) is WHERE THE HIT LANDS: the clip is started `peak_s` (catalog)
   earlier so a whoosh peaks ON the cut. "align": "start" places the file start at at_s instead.
+  Also accepted (composition-side shape): { "master", "master_fps", "music": {"bed": ...},
+  "events": [{ "at_s", "sfx", "gain_db", "cue", "optional" }] }.
 
 No plan yet? Build one from the composition's beats.json hints (beats[].sfx = ["id@seconds", "id@seconds?"],
 '?' = optional):
@@ -62,11 +64,14 @@ def run(cmd: list[str]) -> str:
 def resolve(p: str, bases: list[str]) -> str:
     if os.path.isabs(p):
         return p
-    for b in bases:
-        c = os.path.normpath(os.path.join(b, p))
+    cands = [os.path.normpath(os.path.join(b, p)) for b in bases]
+    for c in cands:
         if os.path.exists(c):
             return c
-    return os.path.normpath(os.path.join(bases[0], p))
+    for c in cands:  # not rendered yet: prefer the base whose folder exists (e.g. <root>/out/)
+        if os.path.isdir(os.path.dirname(c)):
+            return c
+    return cands[0]
 
 
 def show(p: str | None) -> str:

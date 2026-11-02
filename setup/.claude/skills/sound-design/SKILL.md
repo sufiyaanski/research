@@ -11,14 +11,22 @@ narration. The voice track (`voice-captions`) is finished BEFORE this pass — e
 to a real frame or a real word.
 
 ```
-beats.json (words)  +  the composition's hit frames
+remotion/src/episodes/<id>/beats.json (vo[].words + beats[].sfx hints)  +  Episode.tsx hit frames
         │
-        ▼  author episodes/<ep>/sfx-plan.json  (cue sheet, seconds or frames)
-python3 -I tools/mix_sfx.py <plan> --print          # audit: frames, gains, missing clips, density
-python3 -I tools/mix_sfx.py <plan> [--bus sfx.wav]  # -> <render>-sfx.mp4
-python3 -I tools/mix_music.py --video <render>-sfx.mp4 --bed <id> --beats beats.json --out <final>.mp4
-python3 -I tools/check_audio.py <final>.mp4 --beats beats.json   # gate: LUFS, true peak, duration, silence
+        ▼  author episodes/<id>/sfx-plan.json  (cue sheet; seed it with --from-beats)
+python3 -I tools/mix_sfx.py --from-beats remotion/src/episodes/<id>/beats.json --print   # hints -> cue sheet
+python3 -I tools/mix_sfx.py episodes/<id>/sfx-plan.json --print                          # AUDIT: frames, gains, missing, density
+python3 -I tools/mix_sfx.py episodes/<id>/sfx-plan.json --vo episodes/<id>/voice/voice.wav  # -> out/<Comp>-sfx.mp4 (VO + SFX)
+python3 -I tools/mix_music.py --video out/<Comp>-sfx.mp4 --bed <id> --beats remotion/src/episodes/<id>/beats.json --out out/<Comp>-final.mp4
+python3 -I tools/check_audio.py out/<Comp>-final.mp4 --beats remotion/src/episodes/<id>/beats.json   # gate
 ```
+
+The plan file accepts two shapes — the composition-side one
+(`master`, `master_fps`, `music: {bed}`, `events: [{at_s, sfx, gain_db, cue, optional}]`) and the
+audio-side one (`video`, `vo`, `fps`, `cues: [{id, at_s | at_f, gain_db, note, optional, align}]`,
+see `episodes/signal-001-anchoring/sfx-plan.example.json`). `beats[].sfx` hints are
+`"id@seconds"` (global seconds; trailing `?` = optional) and are only a seed: the plan is where
+frame-accurate times and gains live. Remotion renders are silent, so `--vo` mixes the voice in.
 
 ## 1. Pick cues by FUNCTION, not by vibe
 
@@ -95,8 +103,9 @@ Pick one bed per channel mood (`media/library/music/catalog.json`: `signal-focus
 and hats fight consonants). Then:
 
 ```
-python3 -I tools/mix_music.py --video renders/<ep>-sfx.mp4 --bed signal-focus-pad \
-    --beats episodes/<ep>/beats.json --out renders/<ep>-final.mp4
+python3 -I tools/mix_music.py --video out/<Comp>-sfx.mp4 --bed signal-focus-pad \
+    --beats remotion/src/episodes/<id>/beats.json --out out/<Comp>-final.mp4
+# --plan episodes/<id>/sfx-plan.json reads music.bed instead of --bed; --music <file> for an ad-hoc bed
 ```
 
 | Parameter | Default | Meaning |
@@ -136,7 +145,8 @@ Certainty:
 
 `check_audio.py` enforces: |I − target| ≤ 1 LU (WARN above 0.5), TP ≤ −1 dBTP, audio/video
 duration within 50 ms, head silence ≤ 0.3 s, no mock voice (unless `--allow-mock`), and
-writes `qa/audio-report.json` for the review loop.
+writes `out/qa/audio-report.json` for the review loop. `npm run check -- out/<Comp>-final.mp4`
+(the Remotion side's delivery check, −16..−13 LUFS window) should pass on the same file.
 
 ## 7. Growing the library
 
