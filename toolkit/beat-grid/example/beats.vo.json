@@ -1,0 +1,322 @@
+{
+  "fps": 30,
+  "source": "vo",
+  "durationInFrames": 450,
+  "beats": [
+    9,
+    20,
+    30,
+    43,
+    56,
+    64,
+    77,
+    90,
+    96,
+    117,
+    125,
+    137,
+    151,
+    164,
+    171,
+    181,
+    194,
+    213,
+    230,
+    238,
+    248,
+    266,
+    275,
+    321,
+    330,
+    342,
+    351,
+    366,
+    374,
+    385,
+    394
+  ],
+  "downbeats": [
+    9,
+    117,
+    213,
+    230,
+    266,
+    321
+  ],
+  "words": [
+    {
+      "w": "This",
+      "start": 9,
+      "end": 18
+    },
+    {
+      "w": "$429",
+      "start": 20,
+      "end": 29
+    },
+    {
+      "w": "bread",
+      "start": 30,
+      "end": 41
+    },
+    {
+      "w": "maker",
+      "start": 43,
+      "end": 54
+    },
+    {
+      "w": "was",
+      "start": 56,
+      "end": 63
+    },
+    {
+      "w": "never",
+      "start": 64,
+      "end": 75
+    },
+    {
+      "w": "meant",
+      "start": 77,
+      "end": 88
+    },
+    {
+      "w": "to",
+      "start": 90,
+      "end": 96
+    },
+    {
+      "w": "sell.",
+      "start": 96,
+      "end": 107
+    },
+    {
+      "w": "It",
+      "start": 117,
+      "end": 124
+    },
+    {
+      "w": "sits",
+      "start": 125,
+      "end": 136
+    },
+    {
+      "w": "right",
+      "start": 137,
+      "end": 150
+    },
+    {
+      "w": "next",
+      "start": 151,
+      "end": 162
+    },
+    {
+      "w": "to",
+      "start": 164,
+      "end": 171
+    },
+    {
+      "w": "the",
+      "start": 171,
+      "end": 180
+    },
+    {
+      "w": "$199",
+      "start": 181,
+      "end": 192
+    },
+    {
+      "w": "one.",
+      "start": 194,
+      "end": 204
+    },
+    {
+      "w": "Suddenly,",
+      "start": 213,
+      "end": 225
+    },
+    {
+      "w": "$199",
+      "start": 230,
+      "end": 237
+    },
+    {
+      "w": "feels",
+      "start": 238,
+      "end": 246
+    },
+    {
+      "w": "cheap.",
+      "start": 248,
+      "end": 257
+    },
+    {
+      "w": "That's",
+      "start": 266,
+      "end": 274
+    },
+    {
+      "w": "anchoring.",
+      "start": 275,
+      "end": 289
+    },
+    {
+      "w": "The",
+      "start": 321,
+      "end": 329
+    },
+    {
+      "w": "$429",
+      "start": 330,
+      "end": 340
+    },
+    {
+      "w": "one",
+      "start": 342,
+      "end": 350
+    },
+    {
+      "w": "exists",
+      "start": 351,
+      "end": 365
+    },
+    {
+      "w": "to",
+      "start": 366,
+      "end": 373
+    },
+    {
+      "w": "sell",
+      "start": 374,
+      "end": 384
+    },
+    {
+      "w": "the",
+      "start": 385,
+      "end": 393
+    },
+    {
+      "w": "other.",
+      "start": 394,
+      "end": 408
+    }
+  ],
+  "phrases": [
+    {
+      "start": 9,
+      "end": 107,
+      "text": "This $429 bread maker was never meant to sell."
+    },
+    {
+      "start": 117,
+      "end": 204,
+      "text": "It sits right next to the $199 one."
+    },
+    {
+      "start": 213,
+      "end": 225,
+      "text": "Suddenly,"
+    },
+    {
+      "start": 230,
+      "end": 257,
+      "text": "$199 feels cheap."
+    },
+    {
+      "start": 266,
+      "end": 289,
+      "text": "That's anchoring."
+    },
+    {
+      "start": 321,
+      "end": 408,
+      "text": "The $429 one exists to sell the other."
+    }
+  ],
+  "chunks": [
+    {
+      "text": "This $429 bread maker",
+      "start": 8,
+      "end": 55,
+      "pops": [
+        20
+      ],
+      "wordStart": 0,
+      "wordEnd": 4
+    },
+    {
+      "text": "was never meant to sell.",
+      "start": 55,
+      "end": 107,
+      "pops": [],
+      "wordStart": 4,
+      "wordEnd": 9
+    },
+    {
+      "text": "It sits right next",
+      "start": 116,
+      "end": 163,
+      "pops": [],
+      "wordStart": 9,
+      "wordEnd": 13
+    },
+    {
+      "text": "to the $199 one.",
+      "start": 163,
+      "end": 204,
+      "pops": [
+        181
+      ],
+      "wordStart": 13,
+      "wordEnd": 17
+    },
+    {
+      "text": "Suddenly, $199 feels cheap.",
+      "start": 212,
+      "end": 257,
+      "pops": [
+        230,
+        248
+      ],
+      "wordStart": 17,
+      "wordEnd": 21
+    },
+    {
+      "text": "That's anchoring.",
+      "start": 265,
+      "end": 289,
+      "pops": [],
+      "wordStart": 21,
+      "wordEnd": 23
+    },
+    {
+      "text": "The $429 one exists",
+      "start": 320,
+      "end": 365,
+      "pops": [
+        330
+      ],
+      "wordStart": 23,
+      "wordEnd": 27
+    },
+    {
+      "text": "to sell the other.",
+      "start": 365,
+      "end": 408,
+      "pops": [],
+      "wordStart": 27,
+      "wordEnd": 31
+    }
+  ],
+  "pops": [
+    20,
+    181,
+    230,
+    248,
+    330
+  ],
+  "popRegex": "\\$|%|price|cost|free|cheap|expensive|save|sale|\\d",
+  "warnings": [
+    "chunk \"That's anchoring.\" has 2 word(s) (< 3) — short phrase in the VO"
+  ],
+  "sourceFile": "words.example.json"
+}

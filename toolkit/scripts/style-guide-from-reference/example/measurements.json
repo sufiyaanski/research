@@ -1,0 +1,98 @@
+{
+  "reference": "SignalAnchoring-draft.mp4",
+  "width": 540,
+  "height": 960,
+  "fps": 60,
+  "durationSec": 51,
+  "every": 0.5,
+  "frames": 102,
+  "palette": {
+    "dominant": [
+      {
+        "hex": "#0E0F0F",
+        "pct": 86.94,
+        "saturation": 0.07,
+        "luma": 15
+      },
+      {
+        "hex": "#2B2415",
+        "pct": 4.92,
+        "saturation": 0.51,
+        "luma": 37
+      },
+      {
+        "hex": "#F9AE1E",
+        "pct": 1.4,
+        "saturation": 0.88,
+        "luma": 180
+      },
+      {
+        "hex": "#785617",
+        "pct": 1.17,
+        "saturation": 0.81,
+        "luma": 88
+      },
+      {
+        "hex": "#3F403F",
+        "pct": 1.16,
+        "saturation": 0.01,
+        "luma": 64
+      },
+      {
+        "hex": "#503A15",
+        "pct": 0.75,
+        "saturation": 0.74,
+        "luma": 60
+      },
+      {
+        "hex": "#5D5C58",
+        "pct": 0.57,
+        "saturation": 0.06,
+        "luma": 92
+      },
+      {
+        "hex": "#9E9F9E",
+        "pct": 0.56,
+        "saturation": 0.01,
+        "luma": 159
+      }
+    ],
+    "accents": [
+      {
+        "hex": "#F9AE1E",
+        "pct": 1.4,
+        "saturation": 0.88
+      },
+      {
+        "hex": "#785617",
+        "pct": 1.17,
+        "saturation": 0.81
+      },
+      {
+        "hex": "#503A15",
+        "pct": 0.75,
+        "saturation": 0.74
+      },
+      {
+        "hex": "#A2721A",
+        "pct": 0.45,
+        "saturation": 0.84
+      }
+    ],
+    "meanLuma": 24,
+    "method": "4-bit/channel histogram of all sampled frames at 64 px, bins merged within RGB distance 30"
+  },
+  "shots": {
+    "threshold": 0.3,
+    "cuts": [],
+    "lengthsSec": [
+      51
+    ],
+    "count": 1,
+    "mean": 51,
+    "median": 51,
+    "min": 51,
+    "max": 51
+  },
+  "loudness": null
+}

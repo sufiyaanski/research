@@ -1,0 +1,214 @@
+{
+  "id": "toolkit-example-anchoring",
+  "composition": "ExampleAnchoring",
+  "format": {
+    "fps": 30,
+    "durationSec": 15.744
+  },
+  "vo": [
+    {
+      "beat": "hook",
+      "text": "This $429 bread maker was never meant to sell.",
+      "start": 0.3,
+      "end": 3.633,
+      "id": "l01",
+      "planned_start": 0.3,
+      "planned_end": 3.2,
+      "words": [
+        {
+          "w": "This",
+          "start": 0.3,
+          "end": 0.613
+        },
+        {
+          "w": "$429",
+          "start": 0.656,
+          "end": 0.969
+        },
+        {
+          "w": "bread",
+          "start": 1.012,
+          "end": 1.382
+        },
+        {
+          "w": "maker",
+          "start": 1.433,
+          "end": 1.803
+        },
+        {
+          "w": "was",
+          "start": 1.853,
+          "end": 2.11
+        },
+        {
+          "w": "never",
+          "start": 2.145,
+          "end": 2.515
+        },
+        {
+          "w": "meant",
+          "start": 2.565,
+          "end": 2.936
+        },
+        {
+          "w": "to",
+          "start": 2.986,
+          "end": 3.185
+        },
+        {
+          "w": "sell.",
+          "start": 3.213,
+          "end": 3.583
+        }
+      ],
+      "wpm": 162
+    },
+    {
+      "beat": "setup",
+      "text": "It sits right next to the $199 one.",
+      "start": 3.9,
+      "end": 6.863,
+      "id": "l02",
+      "planned_start": 3.9,
+      "planned_end": 6.6,
+      "words": [
+        {
+          "w": "It",
+          "start": 3.9,
+          "end": 4.128
+        },
+        {
+          "w": "sits",
+          "start": 4.159,
+          "end": 4.518
+        },
+        {
+          "w": "right",
+          "start": 4.567,
+          "end": 4.99
+        },
+        {
+          "w": "next",
+          "start": 5.048,
+          "end": 5.407
+        },
+        {
+          "w": "to",
+          "start": 5.456,
+          "end": 5.684
+        },
+        {
+          "w": "the",
+          "start": 5.715,
+          "end": 6.008
+        },
+        {
+          "w": "$199",
+          "start": 6.048,
+          "end": 6.407
+        },
+        {
+          "w": "one.",
+          "start": 6.456,
+          "end": 6.814
+        }
+      ],
+      "wpm": 162
+    },
+    {
+      "beat": "turn",
+      "text": "Suddenly, $199 feels cheap. That's anchoring.",
+      "start": 7.113,
+      "end": 9.705,
+      "id": "l03",
+      "planned_start": 7.1,
+      "planned_end": 10.3,
+      "words": [
+        {
+          "w": "Suddenly,",
+          "start": 7.113,
+          "end": 7.508
+        },
+        {
+          "w": "$199",
+          "start": 7.682,
+          "end": 7.911
+        },
+        {
+          "w": "feels",
+          "start": 7.942,
+          "end": 8.213
+        },
+        {
+          "w": "cheap.",
+          "start": 8.25,
+          "end": 8.562
+        },
+        {
+          "w": "That's",
+          "start": 8.854,
+          "end": 9.125
+        },
+        {
+          "w": "anchoring.",
+          "start": 9.161,
+          "end": 9.64
+        }
+      ],
+      "wpm": 139
+    },
+    {
+      "beat": "payoff",
+      "text": "The $429 one exists to sell the other.",
+      "start": 10.7,
+      "end": 13.663,
+      "id": "l04",
+      "planned_start": 10.7,
+      "planned_end": 14.4,
+      "words": [
+        {
+          "w": "The",
+          "start": 10.7,
+          "end": 10.973
+        },
+        {
+          "w": "$429",
+          "start": 11.01,
+          "end": 11.344
+        },
+        {
+          "w": "one",
+          "start": 11.389,
+          "end": 11.662
+        },
+        {
+          "w": "exists",
+          "start": 11.699,
+          "end": 12.154
+        },
+        {
+          "w": "to",
+          "start": 12.216,
+          "end": 12.428
+        },
+        {
+          "w": "sell",
+          "start": 12.457,
+          "end": 12.791
+        },
+        {
+          "w": "the",
+          "start": 12.836,
+          "end": 13.109
+        },
+        {
+          "w": "other.",
+          "start": 13.146,
+          "end": 13.601
+        }
+      ],
+      "wpm": 162
+    }
+  ],
+  "voiceStatus": "mock (silent, 2.7 w/s timings) — run gen_voice.py without --mock before shipping"
+}

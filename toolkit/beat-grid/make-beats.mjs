@@ -3,7 +3,7 @@
 //
 //   BPM:   node beat-grid/make-beats.mjs --bpm 120 --duration 15 [--fps 30] [--offset 0] [--subdivide 2] [--bars 4] [--out beats.json]
 //   VO:    node beat-grid/make-beats.mjs --vo words.json [--fps 30] [--lead 1] [--min-on 0.6] [--pause 0.25]
-//                [--chars 16] [--pop-regex '\$|%|price|...'] [--duration 15] [--out vo-beats.json]
+//                [--chars 16] [--bridge 0.2] [--pop-regex '\$|%|price|...'] [--duration 15] [--out vo-beats.json]
 //   SNAP:  node beat-grid/make-beats.mjs --from-shotlist shots.yaml [--beats beats.json] [--out shots.json] [--max-drift 3]
 //
 // BPM:   frames per beat = fps*60/BPM (float). Beat i = round(offset + i*fpb/subdivide) — each beat is
@@ -11,7 +11,8 @@
 // VO:    accepts setup/tools/gen_voice.py beats.json (vo[].words[{w,start,end}], seconds) or a plain
 //        [{w,start,end}] list. beats = word onsets; downbeats = phrase starts; phrases split on a pause
 //        ≥ 0.25 s or punctuation; caption chunks of 3–5 words / ≤ 2 lines, start = first word − lead,
-//        on screen ≥ 0.6 s (extended into the gap, never over the next chunk); pops = money/key words.
+//        on screen ≥ 0.6 s (extended into the gap, never over the next chunk; gaps ≤ --bridge s are
+//        bridged so captions never blink); pops = money/key words.
 // SNAP:  beats from --beats, else the shot list's beatsFile, else its bpm. Each shot start → nearest
 //        beat; prints drift per shot; --out writes the snapped, validated shot list as JSON (the form
 //        compositions import). Exit 2 if any |drift| > --max-drift.
@@ -74,7 +75,7 @@ if (opt('from-shotlist', undefined)) {
   for (const r of rows) {
     const flag = r.unsnapped ? '  UNSNAPPED (would collapse a shot)' : Math.abs(r.drift) > maxDrift ? `  > ${maxDrift}` : '';
     if (Math.abs(r.drift) > maxDrift) bad++;
-    console.log(`  ${r.id.padEnd(20)} ${String(r.from).padStart(5)}  -> ${String(r.beat).padStart(5)}  ${String(r.to).padStart(7)}  ${(r.drift >= 0 ? '+' : '') + r.drift}${flag}`);
+    console.log(`  ${r.id.padEnd(20)} ${String(r.from).padStart(5)}  -> ${String(r.beat < 0 ? "-" : r.beat).padStart(5)}  ${String(r.to).padStart(7)}  ${(r.drift >= 0 ? '+' : '') + r.drift}${flag}`);
   }
   const mean = rows.reduce((s, r) => s + Math.abs(r.drift), 0) / rows.length;
   console.log(`  mean |drift| ${mean.toFixed(2)} f, max |drift| ${Math.max(...rows.map((r) => Math.abs(r.drift)))} f`);
@@ -119,6 +120,7 @@ if (opt('vo', undefined)) {
     maxCharsPerLine: num('chars', 16),
     maxLines: num('lines', 2),
     popRegex: opt('pop-regex', DEFAULT_POP_REGEX),
+    bridgeSec: num('bridge', 0.2),
     durationInFrames: duration === undefined ? undefined : Math.round(duration * fps),
   });
   grid.sourceFile = path.basename(src);

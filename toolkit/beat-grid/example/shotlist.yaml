@@ -1,0 +1,53 @@
+# Example shot list — 15 s, 120 BPM (15 frames/beat at 30 fps), The Signal "anchoring" story.
+# Frames are GLOBAL composition frames; `end` is exclusive and equals the next shot's `start`.
+# sfx[].at is RELATIVE to the shot's start and marks where the sound's PEAK lands.
+# `state` = what the LAST frame of the shot must show ("shot list as states").
+# Starts here are deliberately a few frames off the grid — run:
+#   node beat-grid/make-beats.mjs --from-shotlist beat-grid/example/shotlist.yaml --out beat-grid/example/shotlist.snapped.json --max-drift 8
+id: ExampleAnchoring
+fps: 30
+width: 1080
+height: 1920
+durationInFrames: 450
+bpm: 120
+beatsFile: beats.bpm.json
+shots:
+  - id: hook
+    start: 0
+    end: 92
+    beat: 0
+    action: $429 price tag slams onto the bread maker; character flinches
+    caption: Never meant to sell
+    sfx:
+      - { id: thump, at: 20 }
+      - { id: pop, at: 20, gain: -6 }
+    state: $429 tag on the machine, character leaning back
+  - id: setup
+    start: 92
+    end: 208
+    action: Camera trucks right; a plain $199 machine slides in beside it
+    caption: Right next to $199
+    sfx:
+      - { id: whoosh, at: 0, gain: -4 }
+      - { id: click, at: 40 }
+    state: both machines side by side, $429 left, $199 right
+  - id: turn
+    start: 208
+    end: 318
+    action: $199 tag scales up and turns red as the character smiles
+    caption: Suddenly feels cheap
+    sfx:
+      - { id: riser, at: 0, gain: -8 }
+      - { id: cash-register, at: 6, gain: -2 }
+      - { id: tick, at: 30 }
+      - { id: tick, at: 34 }
+      - { id: tick, at: 38 }
+    state: $199 in red, character holding it, $429 dimmed
+  - id: payoff
+    start: 318
+    end: 450
+    action: $429 machine flips to show it was never stocked; ANCHOR stamp lands
+    caption: It exists to sell
+    sfx:
+      - { id: impact, at: 4, gain: -3 }
+    state: ANCHOR stamp over the $429 machine, $199 boxed in a cart

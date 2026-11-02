@@ -91,10 +91,14 @@ export interface VoGridOptions {
   maxLines?: number;
   popRegex?: string;
   durationInFrames?: number;
+  /** gaps between chunks up to this many seconds are bridged (previous chunk holds) — no blank flicker. Default 0.2 */
+  bridgeSec?: number;
 }
 
 const PUNCT_END = /[.!?;:,—–…]["')\]]*$/;
 const SENTENCE_END = /[.!?…]["')\]]*$/;
+/** words a caption chunk should not end on */
+const WEAK_END = /^(a|an|the|to|of|and|or|but|was|is|are|were|be|for|in|on|at|by|with|from|as|it|its|it's|my|your|our|their|this|that|than|so|if|i)$/i;
 
 /** Greedy word-wrap line count. */
 export const lineCount = (ws: string[], maxChars: number) => {
@@ -122,6 +126,7 @@ export function voGrid(input: SecondsWord[], opts: VoGridOptions = {}): BeatsFil
     maxCharsPerLine = 16,
     maxLines = 2,
     popRegex = DEFAULT_POP_REGEX,
+    bridgeSec = 0.2,
   } = opts;
   const pop = new RegExp(popRegex, 'i');
   const warnings: string[] = [];
@@ -134,27 +139,49 @@ export function voGrid(input: SecondsWord[], opts: VoGridOptions = {}): BeatsFil
   const phraseEndAt = (i: number) => i === input.length - 1 || gapAfter(i) >= pauseSec || PUNCT_END.test(input[i].w);
   const hardEndAt = (i: number) => i === input.length - 1 || gapAfter(i) >= Math.max(0.5, pauseSec * 2) || SENTENCE_END.test(input[i].w);
 
-  const phrases: Phrase[] = [];
+  // 1) phrases: [start, end) word-index ranges split on pause / punctuation
+  const phraseIdx: [number, number][] = [];
   let ps = 0;
   for (let i = 0; i < words.length; i++) {
     if (phraseEndAt(i)) {
-      phrases.push({ start: words[ps].start, end: words[i].end, text: words.slice(ps, i + 1).map((x) => x.w).join(' ') });
+      phraseIdx.push([ps, i + 1]);
       ps = i + 1;
     }
   }
+  const phrases: Phrase[] = phraseIdx.map(([a, b]) => ({ start: words[a].start, end: words[b - 1].end, text: words.slice(a, b).map((x) => x.w).join(' ') }));
 
-  // caption chunks: close at maxWords, at a phrase end once ≥ minWords, at a hard (sentence/long
-  // pause) end regardless, or when the next word would wrap past maxLines.
+  // 2) units: merge a short phrase (< minWords) into the next one across a SOFT boundary (comma,
+  //    short pause) when the result still fits maxWords / maxLines
+  const fits = (a: number, b: number) => b - a <= maxWords && lineCount(words.slice(a, b).map((x) => x.w), maxCharsPerLine) <= maxLines;
+  const units: [number, number][] = [];
+  for (const [a, b] of phraseIdx) {
+    const last = units[units.length - 1];
+    if (last && last[1] - last[0] < minWords && !hardEndAt(last[1] - 1) && fits(last[0], b)) last[1] = b;
+    else units.push([a, b]);
+  }
+
+  // 3) split long units into k near-equal chunks (k grows until every chunk fits), nudging each
+  //    split ±1 word so a chunk never ends on a weak word ("was", "the", "to", ...)
   const groups: [number, number][] = [];
-  let cs = 0;
-  for (let i = 0; i < words.length; i++) {
-    const n = i - cs + 1;
-    const next = words[i + 1];
-    const wouldOverflow = next ? lineCount(words.slice(cs, i + 2).map((x) => x.w), maxCharsPerLine) > maxLines : false;
-    if (n >= maxWords || hardEndAt(i) || (phraseEndAt(i) && n >= minWords) || wouldOverflow) {
-      groups.push([cs, i + 1]);
-      cs = i + 1;
+  for (const [a, b] of units) {
+    const n = b - a;
+    let k = Math.max(1, Math.ceil(n / maxWords));
+    let parts: [number, number][] = [];
+    for (; k <= n; k++) {
+      parts = [];
+      let s0 = a;
+      for (let j = 0; j < k; j++) {
+        let e = j === k - 1 ? b : a + Math.round(((j + 1) * n) / k);
+        if (j < k - 1 && WEAK_END.test(words[e - 1].w)) {
+          if (e - 1 - s0 >= minWords - 1 && e - 1 > s0) e -= 1;
+          else if (e + 1 < b) e += 1;
+        }
+        parts.push([s0, e]);
+        s0 = e;
+      }
+      if (parts.every(([x, y]) => y > x && fits(x, y))) break;
     }
+    groups.push(...parts.filter(([x, y]) => y > x));
   }
   const chunks: CaptionChunk[] = groups.map(([a, b]) => {
     const ws = words.slice(a, b);
@@ -174,6 +201,7 @@ export function voGrid(input: SecondsWord[], opts: VoGridOptions = {}): BeatsFil
   chunks.forEach((c, i) => {
     const cap = i + 1 < chunks.length ? chunks[i + 1].start : durationInFrames;
     c.end = Math.min(Math.max(c.end, c.start + minFrames), cap);
+    if (i + 1 < chunks.length && cap - c.end <= Math.round(bridgeSec * fps)) c.end = cap;
     if (c.end - c.start < minFrames) warnings.push(`chunk "${c.text}" is on screen ${c.end - c.start} frames (< ${minFrames}) — the next chunk starts too soon`);
   });
 
