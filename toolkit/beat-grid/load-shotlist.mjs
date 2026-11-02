@@ -26,8 +26,10 @@ export const sfxIds = () => (existsSync(CATALOG) ? JSON.parse(readFileSync(CATAL
  */
 export function loadShotList(file, opts = {}) {
   const abs = path.resolve(file);
-  const res = parseShotList(readStructured(abs), { sfxIds: sfxIds(), strict: opts.strict ?? true });
+  const res = parseShotList(readStructured(abs), { sfxIds: sfxIds(), strict: false });
   if (!opts.quiet) for (const w of res.warnings) console.warn(`  warn: ${w}`);
+  if ((opts.strict ?? true) && res.errors.length)
+    throw new Error(`shot list "${res.shotList.id}" (${path.basename(abs)}) invalid:\n  - ${res.errors.join('\n  - ')}`);
   const beatsPath = res.shotList.beatsFile ? path.resolve(path.dirname(abs), res.shotList.beatsFile) : undefined;
   return { ...res, file: abs, beatsPath };
 }

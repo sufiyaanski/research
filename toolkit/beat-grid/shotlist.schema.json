@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "motion-toolkit/shotlist.schema.json",
+  "title": "Shot list (states on a beat grid)",
+  "description": "All times are frames of the composition. Mirrors ShotListSchema in beat-grid/types.ts (zod is the source of truth).",
+  "type": "object",
+  "required": ["id", "durationInFrames", "shots"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1, "description": "composition id" },
+    "fps": { "type": "integer", "minimum": 1, "default": 30 },
+    "width": { "type": "integer", "minimum": 1, "default": 1080 },
+    "height": { "type": "integer", "minimum": 1, "default": 1920 },
+    "durationInFrames": { "type": "integer", "minimum": 1 },
+    "bpm": { "type": "number", "exclusiveMinimum": 0 },
+    "beatsFile": { "type": "string", "description": "beats.json path relative to this file" },
+    "shots": {
+      "type": "array",
+      "minItems": 1,
+      "description": "contiguous: shots[i].start === shots[i-1].end",
+      "items": {
+        "type": "object",
+        "required": ["id", "start", "end"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "start": { "type": "integer", "minimum": 0, "description": "global frame, inclusive" },
+          "end": { "type": "integer", "minimum": 1, "description": "global frame, exclusive" },
+          "beat": { "type": "integer", "minimum": 0, "description": "beat index the shot starts on" },
+          "action": { "type": "string", "default": "" },
+          "caption": { "type": "string", "default": "", "description": "3-5 words (warned)" },
+          "sfx": {
+            "type": "array",
+            "default": [],
+            "items": {
+              "type": "object",
+              "required": ["id", "at"],
+              "properties": {
+                "id": { "type": "string", "enum": ["whoosh", "pop", "click", "thump", "riser", "impact", "cash-register", "tick"], "description": "id in public/sfx/catalog.json (others are warned, not rejected, by the loader)" },
+                "at": { "type": "integer", "description": "frames RELATIVE TO SHOT START where the sound's peak lands" },
+                "gain": { "type": "number", "description": "dB, default 0" }
+              },
+              "additionalProperties": false
+            }
+          },
+          "state": { "type": "string", "description": "on-screen state at the shot's last frame" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -3,7 +3,7 @@
 - shot list: `src/smoke/smoke.shotlist.json` (4 shots, 120 frames @ 30 fps)
 - stills: middle frame of each shot, `floor((start+end)/2)`, scale 0.5 — `critique/rounds/stills/ToolkitSmoke-r1/`
 - contact sheet: ![ToolkitSmoke round 1](ToolkitSmoke-round-1-sheet.jpg)
-- generated: 2026-11-02 by `node critique/critique.mjs ToolkitSmoke --shotlist src/smoke/smoke.shotlist.json --round 1 --fast`
+- generated: 2026-11-02 by `node critique/critique.mjs ToolkitSmoke --shotlist src/smoke/smoke.shotlist.json --round 1`
 
 ## How to score
 

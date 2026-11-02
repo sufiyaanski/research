@@ -22,6 +22,10 @@ import { bpmGrid, voGrid, normalizeWordsInput, snapShotsToBeats, DEFAULT_POP_REG
 import { parseShotList } from './types.ts';
 import { loadShotList, sfxIds } from './load-shotlist.mjs';
 
+process.on('uncaughtException', (e) => {
+  console.error(`make-beats: ${e.message}`);
+  process.exit(1);
+});
 const argv = process.argv.slice(2);
 const opt = (name, def) => {
   const i = argv.findIndex((a) => a === `--${name}` || a.startsWith(`--${name}=`));
