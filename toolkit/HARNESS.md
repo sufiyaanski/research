@@ -23,6 +23,20 @@
 ### 1.2 Build order (never skip a step)
 1. **Story** (2–6 lines) → 2. **References** (1–3 reels we admire; run `scripts/style-guide-from-reference` on each) → 3. **style-guide.md** filled (palette, type, shot lengths, transitions, camera, grain, how text enters/exits) → 4. **Voice-over first**, with word timings → 5. **beats.json** from the VO (`beat-grid/make-beats.mjs --vo`) or from a BPM grid when there's no VO → 6. **Shot list as states on the beat grid** (`beat-grid/shotlist.schema.json`: each shot = start/end frame on a beat, one on-screen action, the state at its end, caption chunk, SFX cues) → 7. **Build** the composition from the shot list → 8. **Sound** (§3) → 9. **Critique loop** (§4) → 10. Final render.
 - Show the user steps 1, 3 and 6 and wait for "go" before step 7. That is where changes are cheap.
+- Take a reference's **grammar** (pace, type behaviour, transitions, camera), never its content, logos or characters.
+- **Director's brief** (fill before step 6; adapted from the Movez course that Lukas Margerie teaches from, see `research/videos/01-lukas-margerie.md`):
+  ```text
+  CREW: you are the director, writer, animator, composer, sound designer and render engineer.
+        Treat this as a multi-session production; don't rush to a final render.
+  FILM IN ONE LINE: <logline> — what the viewer should feel at the end.
+  REFERENCES: refs/<name>/style-guide.md (+ contact sheet). Grammar only.
+  LOOK: 3–5 lines (palette from the channel sheet, faces, texture, camera language) + the §2 bans.
+  CHARACTER BIBLE: blocky person — proportions, outfit colours, moods used in this reel.
+  BEAT SHEET: timestamped beats; hook in the first 2 s; a visual payoff every 3–5 s; last frame sets up the first.
+  TEXT ON SCREEN: which words go big (headline/number), which stay as captions; leave room for both.
+  GATES: plan → shot list → stills → draft → critique ×≤3 → audio → final. Don't skip gates.
+  DELIVERABLES: out/<Comp>.mp4, poster frame (frame 0 PNG), critique contact sheet + round file, loop/seam check.
+  ```
 
 ### 1.3 Timing (the voice is the clock)
 - Captions: **3–5-word chunks, max 2 lines, lower-middle of the frame** (block centred at **y ≈ 1180**, inside y 1080–1280), lead the voice by **0–2 frames**, each on screen **≥ 0.6 s** (18 frames).
@@ -90,11 +104,14 @@ No GPU (cloud): add `--gl=swangle` for anything with the 3D character. Behind a 
 
 ## 4. Feedback Loop (how a draft becomes 80+ in ≤ 3 rounds)
 1. **Critique render:** `node critique/critique.mjs <Comp> --shotlist <file> --round N` renders the **middle frame of every shot** and a contact sheet.
-2. **Score every shot 1–10** on **story** (does this frame advance the story?), **composition** (one hero, layout rules, safe zones), **motion** (eases/holds/staggers per §1.3; check by scrubbing that shot), **type** (sizes, chunking, ≤ 2 lines, readable at phone size), **sync** (caption/number/SFX on the spoken frame). Be a strict reviewer comparing against the best reels in the niche, not against our last draft.
+2. **Score every shot 1–10** on **story** (does this frame advance the story? for shot 1: is the hook clear within 2 s?), **composition** (one hero, depth, layout rules, safe zones, brand accuracy), **motion** (eases/holds/staggers per §1.3, no dead frames, something new every 2–4 s; check by scrubbing that shot), **type** (sizes, chunking, ≤ 2 lines, readable at **360 px wide**), **sync** (caption/number/SFX on the spoken frame or beat). These five fold in the seven axes of the Movez/Lukas loop (hook, phone readability, motion, variety, composition and depth, brand accuracy, sound sync). Be a strict reviewer comparing against the best reels in the niche, not against our last draft.
+   - **Hunt list** (check every round): text overlapping during swaps · anything sliding instead of easing · corner labels / frame borders · centred-on-gradient shots · blurry scaled text · dead beats · a stutter at the loop seam · the character's feet off the ground · captions over the face.
+   - **Extra checks before the final:** a 12-frame strip around the fastest action; a phone sheet (`fps=1,scale=360:-1`); render frame 0 and the last frame and compare (loop seam); render one frame twice and compare hashes (determinism).
 3. **Fix the 3 worst shots** (lowest total; ties → lowest sync). **Targeted fixes only: lock every shot and every element that scored ≥ 8** — don't touch, restyle or "improve" it. No restarts.
 4. Re-render the critique stills; re-score. **Repeat until every shot is ≥ 8 in every column. Max 3 rounds.** After round 3, ship the best round and log what is still under 8.
 5. Whole-reel score (out of 100, the quality bar is **80**): hook 15 · readability 15 · one idea per shot 10 · motion 10 · sync 15 · pacing 10 · sound 10 · ending/loop 5 · safe zones 5 · brand + facts 5.
 6. **Save the lesson:** every fix that generalises becomes one line in this file (§2 bans or the channel sheet), with the episode id. The next reel's first draft starts from the improved harness.
+7. **Log every round** in `episodes/<id>/review_log.md`: scores, the 3 worst problems with timestamps, what changed. Re-render only the affected shots' stills between rounds.
 
 **Fix prompt template** (paste with the round file):
 ```text

@@ -18,10 +18,10 @@ Open each still (and the contact sheet) at phone size. Score 1–10 per column; 
 <!-- SCORES:BEGIN -->
 | # | shot | frames | mid frame | caption | action → end state | story | composition | motion | type | sync | total | notes |
 |---|------|--------|-----------|---------|--------------------|---|---|---|---|---|-------|-------|
-| 1 | hook | 0–30 | [15](stills/ToolkitSmoke-r1/hook-f0015.png) (0.50s) | This lamp: $40. | Price tag $40 drops in and lands with a thump → **$40 centred, ink on cream, settled** | 9 | 9 | 9 | 9 | 9 |  | |
-| 2 | count | 30–60 | [45](stills/ToolkitSmoke-r1/count-f0045.png) (1.50s) | Made for $4. | Number counts down 40 to 4, one tick per step → **counter frozen at 4, still ink** | 7 | 8 | 8 | 8 | 8 |  | |
-| 3 | reveal | 60–90 | [75](stills/ToolkitSmoke-r1/reveal-f0075.png) (2.50s) | Made for $4. | $4 flips to red and pops, ka-ching → **$4 in red, slightly larger than $40 was** | 9 | 9 | 9 | 9 | 9 |  | |
-| 4 | payoff | 90–120 | [105](stills/ToolkitSmoke-r1/payoff-f0105.png) (3.50s) | The gap is the story. | Struck-through $40 appears above, 10x MARKUP slams in under the $4 → **$40 struck through on top, $4 red centre, 10x MARKUP under** | 9 | 9 | 9 | 9 | 9 |  | |
+| 1 | hook | 0–30 | [15](stills/ToolkitSmoke-r1/hook-f0015.png) (0.50s) | This lamp: $40. | Price tag $40 drops in and lands with a thump → **$40 centred, ink on cream, settled** |  |  |  |  |  |  | |
+| 2 | count | 30–60 | [45](stills/ToolkitSmoke-r1/count-f0045.png) (1.50s) | Made for $4. | Number counts down 40 to 4, one tick per step → **counter frozen at 4, still ink** |  |  |  |  |  |  | |
+| 3 | reveal | 60–90 | [75](stills/ToolkitSmoke-r1/reveal-f0075.png) (2.50s) | Made for $4. | $4 flips to red and pops, ka-ching → **$4 in red, slightly larger than $40 was** |  |  |  |  |  |  | |
+| 4 | payoff | 90–120 | [105](stills/ToolkitSmoke-r1/payoff-f0105.png) (3.50s) | The gap is the story. | Struck-through $40 appears above, 10x MARKUP slams in under the $4 → **$40 struck through on top, $4 red centre, 10x MARKUP under** |  |  |  |  |  |  | |
 <!-- SCORES:END -->
 
 ## Rule
