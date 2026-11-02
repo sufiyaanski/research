@@ -53,10 +53,10 @@
       "start": 90,
       "end": 120,
       "beat": 6,
-      "action": "Line slams in under the number: the gap is the story",
+      "action": "Struck-through $40 appears above, 10x MARKUP slams in under the $4",
       "caption": "The gap is the story.",
       "sfx": [{ "id": "impact", "at": 2, "gain": -3 }],
-      "state": "$40 struck through, $4 red, payoff line under"
+      "state": "$40 struck through on top, $4 red centre, 10x MARKUP under"
     }
   ]
 }

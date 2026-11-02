@@ -67,7 +67,7 @@ const PriceStage: React.FC = () => {
   // hook: drop in, land on frame 8 (thump)
   const drop = interpolate(frame, [0, 8], [-420, 0], { ...clamp, easing: Easing.in(Easing.cubic) });
   const squash = interpolate(frame, [8, 11, 16], [0.9, 1.04, 1], clamp);
-  const lift = isPayoff ? interpolate(localFrame, [0, 10], [0, -170], { ...clamp, easing: Easing.bezier(0.16, 1, 0.3, 1) }) : 0;
+  const lift = isPayoff ? interpolate(localFrame, [0, 10], [0, -60], { ...clamp, easing: Easing.bezier(0.16, 1, 0.3, 1) }) : 0;
 
   return (
     <AbsoluteFill style={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -91,7 +91,7 @@ const PriceStage: React.FC = () => {
           <div
             style={{
               position: 'absolute',
-              top: 610,
+              top: 330,
               fontFamily: display,
               fontWeight: 800,
               fontSize: 120,
@@ -106,7 +106,7 @@ const PriceStage: React.FC = () => {
           <div
             style={{
               position: 'absolute',
-              top: 1040,
+              top: 1010,
               left: 64,
               right: 160,
               textAlign: 'center',
@@ -120,7 +120,7 @@ const PriceStage: React.FC = () => {
               opacity: interpolate(localFrame, [0, 4], [0, 1], clamp),
             }}
           >
-            The gap is the story
+            10× markup
           </div>
         </>
       ) : null}
