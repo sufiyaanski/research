@@ -4,6 +4,7 @@
 //   node remotion/scripts/render.mjs SignalAnchoring                 # final: scale 1, 1080x1920 @ 60 fps
 //   node remotion/scripts/render.mjs SignalAnchoring --scale=0.5     # draft: 540x960, ~4x faster
 //   node remotion/scripts/render.mjs SignalAnchoring --out=out/custom.mp4 --crf=18 --concurrency=8
+//   node remotion/scripts/render.mjs QrosityVolcano --scale=0.5 --gl=swangle   # 3D scene, no GPU
 //
 // Output: out/<Comp>.mp4 (or out/<Comp>-draft.mp4 when scale < 1). Then run:
 //   node remotion/scripts/check-media.mjs out/<Comp>.mp4
@@ -27,10 +28,15 @@ const CONCURRENCY = opt('concurrency', null);
 const BROWSER = process.env.REMOTION_BROWSER_EXECUTABLE || opt('browser', undefined);
 // Behind a corporate proxy / sandbox with a private CA, Google Fonts fail with
 // ERR_CERT_AUTHORITY_INVALID inside headless Chrome. Opt in with REMOTION_IGNORE_CERT_ERRORS=1.
-const CHROMIUM = { gl: 'angle', ignoreCertificateErrors: process.env.REMOTION_IGNORE_CERT_ERRORS === '1' };
+// OpenGL renderer for <ThreeCanvas> scenes (Q-ROSITY): `angle` on a desktop with a GPU (default),
+// `swangle` (SwiftShader-ANGLE, CPU) on a machine without one — CI, cloud boxes, Lambda. `swiftshader`
+// and `egl` fail with "Error creating WebGL context" there. Pass --gl=swangle or REMOTION_GL=swangle.
+// The remotion.config.ts setting does NOT apply to these Node-API scripts, so it is passed here.
+const GL = opt('gl', process.env.REMOTION_GL || 'angle');
+const CHROMIUM = { gl: GL, ignoreCertificateErrors: process.env.REMOTION_IGNORE_CERT_ERRORS === '1' };
 
 if (!id || id.startsWith('--')) {
-  console.error('usage: node remotion/scripts/render.mjs <CompId> [--scale=1] [--crf=18] [--concurrency=N] [--out=path.mp4]');
+  console.error('usage: node remotion/scripts/render.mjs <CompId> [--scale=1] [--crf=18] [--concurrency=N] [--out=path.mp4] [--gl=angle|swangle]');
   process.exit(1);
 }
 
@@ -46,7 +52,7 @@ const serveUrl = await bundle({
 });
 const composition = await selectComposition({ serveUrl, id, inputProps: {}, browserExecutable: BROWSER, chromiumOptions: CHROMIUM });
 const { fps, durationInFrames, width, height } = composition;
-console.log(`${id}: ${width * SCALE}x${height * SCALE} @ ${fps} fps, ${durationInFrames} frames (${(durationInFrames / fps).toFixed(1)} s), crf ${CRF}`);
+console.log(`${id}: ${width * SCALE}x${height * SCALE} @ ${fps} fps, ${durationInFrames} frames (${(durationInFrames / fps).toFixed(1)} s), crf ${CRF}, gl ${GL}`);
 
 const t0 = Date.now();
 await renderMedia({
@@ -68,5 +74,6 @@ await renderMedia({
   },
 });
 process.stdout.write('\n');
-console.log(`-> ${path.relative(root, out)}  in ${((Date.now() - t0) / 1000).toFixed(0)} s`);
+const secs = (Date.now() - t0) / 1000;
+console.log(`-> ${path.relative(root, out)}  in ${secs.toFixed(0)} s  (${(secs / durationInFrames).toFixed(3)} s/frame at scale ${SCALE})`);
 console.log(`next: node remotion/scripts/check-media.mjs ${path.relative(root, out)}`);

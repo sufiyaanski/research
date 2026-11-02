@@ -5,15 +5,17 @@ A ready-made setup so Claude's **first** render of a vertical reel is good: hard
 render, and a review loop that turns your notes into rules.
 
 - **The Signal** — price-psychology motion graphics, "a story told with numbers". 1080×1920 @ 60 fps, 45–70 s.
-- **Q-ROSITY** — "what if" curiosity reels with a blocky character. Placeholder 2D composition + a slot for the 3D character.
+- **Q-ROSITY** — "what if" curiosity reels with **Q**, an original blocky 3D character (`@remotion/three`), 1080×1920 @ 60 fps, 30–60 s.
 
-Demo episode: `SignalAnchoring` (51 s, price anchoring) — stills in `episodes/signal-001-anchoring/qa/frames/`.
+Demo episodes: `SignalAnchoring` (51 s, price anchoring) — stills in `episodes/signal-001-anchoring/qa/frames/`;
+`QrosityVolcano` (30 s, "What if you fell into a volcano?") — stills in `episodes/qrosity-001-volcano/qa/frames/`.
 
 ## Install
 
 ```bash
 cd setup
-npm install            # Remotion 4.0.540, React 19, Google Fonts, transitions, captions, paths, zod
+npm install            # Remotion 4.0.540, React 19, Google Fonts, transitions, captions, paths, zod,
+                       # + three 0.187 / @react-three/fiber 9.8.2 / @remotion/three 4.0.540 (Q-ROSITY 3D)
 npm run typecheck      # tsc --noEmit
 npm run studio         # optional: Remotion Studio preview at http://localhost:3000
 ```
@@ -33,6 +35,24 @@ Ask Claude Code: **"/make-signal-reel — new episode about <topic>"**. It will:
 6. **Review loop** — open `review/index.html`, load the mp4, press **N** to note problems at the current time, score the rubric, click **Copy notes for Claude**, paste. Claude fixes, re-renders, and on **"save to skill"** appends the generalized rule to `channels/<channel>/brand.md` or `.claude/skills/reel-design-rules/SKILL.md`.
 
 Sound: `episodes/<id>/sfx-plan.json` is the cue sheet (global seconds, clip ids, gains); mux VO/music with ffmpeg and re-run `npm run check` for loudness.
+
+## Q-ROSITY: the 3D character reel
+
+Ask: **"/make-qrosity-reel — new episode: what if <premise>?"**. Same 6 steps, but the composition
+mounts ONE `<Stage3D>` (a `ThreeCanvas` with ground, fog, 3-point + rim lighting) and one
+`<Sequence layout="none">` per beat inside it, each with a `<CameraRig preset="pushIn|hero|orbit|bust|lowAngle|loop">`
+and `<BlockyCharacter pose mood lookAt>`; the kit's 2D layers (Kicker, BigTitle, Counter, Stamp,
+SourceLine, Captions) sit on top using the `QROSITY_STAGE` palette. Q's colours come from
+`brand.ts → QROSITY`; the rig is `remotion/src/lib/character/BlockyCharacter.tsx` (poses
+`idle/walk/point/shocked`, moods `neutral/worried/shocked/happy/asleep`, every mood change is a
+30-frame "take"). Reference: `qrosity-001-volcano` — read it before writing a new one.
+
+**GPU note.** Three.js needs a WebGL context in headless Chrome. On a desktop with a GPU the
+default `angle` renderer works; on a machine **without** a GPU (CI, cloud sandbox, Lambda) pass
+`--gl=swangle` to `npm run frames` / `npm run render` (or `REMOTION_GL=swangle` for the CLI).
+`swiftshader` and `egl` fail with "Error creating WebGL context". Measured on a 4-vCPU no-GPU box
+with swangle: ≈ 5–7 s per still, ≈ 0.4 s per frame for the draft video (the 3D renders at full
+1080 px even at `--scale=0.5`), so a 30 s reel ≈ 12 min.
 
 ## How the review loop works
 
@@ -54,26 +74,31 @@ CLAUDE.md                        hard rules R0–R10 (Claude reads this every se
 PRE-RENDER-CHECKLIST.md          tick before every render
 CREDITS.md                       MIT credit for hassancs91/claude-faceless-shorts-creator + Remotion skills
 .claude/skills/
-  make-signal-reel/              the 7-stage recipe
+  make-signal-reel/              the 7-stage recipe (The Signal)
+  make-qrosity-reel/             the same stages for Q-ROSITY + rig API, camera grammar, what breaks
   reel-design-rules/             numbers: type, motion, counters, charts, color, safe zones, sound
   frame-qa/                      how to QA stills + the 100-pt rubric + thresholds
   review-loop/                   notes → fixes → "save to skill"
   remotion-*/                    official Remotion Agent Skills (npx skills add remotion-dev/skills)
 channels/the-signal/brand.md     palette, 2 fonts, motion, layout, sound taste, learned rules
-channels/q-rosity/brand.md       placeholder brand + TODO for the 3D character slot
+channels/q-rosity/brand.md       palette (+ dark-stage variant), fonts, takes, layout, the character spec
 remotion/
   src/Root.tsx                   registers compositions (1080×1920 @ 60 fps)
-  src/brand.ts                   palettes as code (mirror of brand.md)
+  src/brand.ts                   palettes as code (mirror of brand.md) incl. QROSITY_STAGE
   src/fonts.ts                   @remotion/google-fonts (Archivo + Manrope; Rubik + Nunito)
   src/lib/kit.tsx                shared components, SAFE zones, SPRING/EASE presets, Captions
   src/lib/timing.ts              beatsToFrames, toLocal, holdFrames, sec, prog
+  src/lib/character/BlockyCharacter.tsx   Q: procedural box rig, poses, moods, takes
+  src/lib/character/Stage3D.tsx           ThreeCanvas stage: ground, fog, lights, CameraRig presets
   src/episodes/signal-001-anchoring/   Episode.tsx · beats.json · vo.gen.ts (demo)
-  src/episodes/qrosity-000-placeholder/Episode.tsx
-  scripts/frames.mjs             QA stills + contact sheet
-  scripts/render.mjs             mp4 render (h264, --scale for drafts)
+  src/episodes/qrosity-001-volcano/    Episode.tsx · beats.json · vo.gen.ts (3D reference)
+  src/episodes/qrosity-000-placeholder/Episode.tsx   retired 2D stand-in (kit-only example)
+  scripts/frames.mjs             QA stills + contact sheet (--gl=swangle without a GPU)
+  scripts/render.mjs             mp4 render (h264, --scale for drafts, --gl)
   scripts/check-media.mjs        ffprobe/ebur128 delivery check → qa/report.json
   scripts/estimate-vo.mjs        beats.json → vo.gen.ts
 episodes/signal-001-anchoring/   script.md · facts.json · sfx-plan.json · publish.json · qa/frames/
+episodes/qrosity-001-volcano/    same contract for the Q-ROSITY reference episode
 review/index.html                local review app (file://, no build)
 ```
 
@@ -81,8 +106,8 @@ review/index.html                local review app (file://, no build)
 
 | Command | What |
 |---|---|
-| `npm run frames -- <Comp> beats --scale=0.5` | stills at every beat boundary + midpoint (also `0,2s,10s,last`, `--guides`) |
-| `npm run render -- <Comp> [--scale=0.5] [--crf=18] [--concurrency=N]` | mp4 to `out/` |
+| `npm run frames -- <Comp> beats --scale=0.5 [--gl=swangle]` | stills at every beat boundary + midpoint (also `0,2s,10s,last`, `--guides`) |
+| `npm run render -- <Comp> [--scale=0.5] [--crf=18] [--concurrency=N] [--gl=swangle]` | mp4 to `out/` |
 | `npm run check -- out/<Comp>.mp4 [--draft]` | delivery check, `qa/report.json` |
 | `npm run vo:estimate -- <episode-id>` | regenerate `vo.gen.ts` from `beats.json` |
 | `npm run typecheck` | `tsc --noEmit` |

@@ -1,6 +1,6 @@
 // Q-ROSITY · 000 · placeholder. 10 s, 2D only, built from the shared kit with the Q-ROSITY brand.
-// The blocky 3D character is handled elsewhere (see channels/q-rosity/brand.md → "3D character
-// slot"). When it lands, it mounts in <CharacterSlot/> below; everything else stays.
+// RETIRED as the reference: the real 3D character lives in lib/character/ and the reference
+// episode is qrosity-001-volcano (see /make-qrosity-reel). Kept as a kit-only 2D example.
 import React from 'react';
 import { AbsoluteFill, Sequence, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
 import { QROSITY as B, alpha } from '../../brand';

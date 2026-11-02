@@ -7,12 +7,13 @@ reasoning and the numbers behind these live in `.claude/skills/reel-design-rules
 - Run everything from `setup/`. Node 22, npm, ffmpeg/ffprobe on PATH.
 - Compositions are **1080×1920 @ 60 fps**. Derive frames from `fps` (`2 * fps`), never write `60`.
 - Episode = `remotion/src/episodes/<id>/{Episode.tsx, beats.json, vo.gen.ts}` + `episodes/<id>/{script.md, facts.json, sfx-plan.json, publish.json, qa/}`.
-- Skills: `/make-signal-reel` (the recipe), `/reel-design-rules`, `/frame-qa`, `/review-loop`, plus the official `remotion-*` skills; voice/sound passes live in `/voice-captions`, `/sound-design`, `/script-writing` (tools/*.py) when present. Read `channels/<channel>/brand.md` before touching a scene.
+- Skills: `/make-signal-reel` (the recipe), `/make-qrosity-reel` (3D character reels), `/reel-design-rules`, `/frame-qa`, `/review-loop`, plus the official `remotion-*` skills; voice/sound passes live in `/voice-captions`, `/sound-design`, `/script-writing` (tools/*.py) when present. Read `channels/<channel>/brand.md` before touching a scene.
 
 ## R1. Always QA before video
 - `npm run frames -- <Comp> beats --scale=0.5`, then **READ every PNG** (phone scale) and fix. Only then `npm run render`.
 - Draft video = `--scale=0.5`. Final = scale 1. Then `npm run check -- out/<Comp>.mp4`.
 - Behind a proxy with a private CA set `REMOTION_IGNORE_CERT_ERRORS=1` (Google Fonts fetch inside Chrome).
+- 3D compositions (Q-ROSITY, `<Stage3D>`): add `--gl=swangle` to frames/render on a machine without a GPU; `angle` (default) on a desktop GPU. The 3D renders at full 1080 px even at `--scale=0.5`.
 
 ## R2. Frame 0 is the thumbnail
 - Frame 0 fully composed: hook text + hero number visible, no fade from black, no logo card.

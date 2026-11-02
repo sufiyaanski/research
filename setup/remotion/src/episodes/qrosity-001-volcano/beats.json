@@ -1,0 +1,29 @@
+{
+  "id": "qrosity-001-volcano",
+  "channel": "q-rosity",
+  "title": "What if you fell into a volcano?",
+  "composition": "QrosityVolcano",
+  "format": { "width": 1080, "height": 1920, "fps": 60, "durationSec": 30 },
+  "voiceStatus": "estimated (run a TTS tool with word timestamps and regenerate vo.gen.ts)",
+  "vo": [
+    { "beat": "hook", "text": "What if you fell into a volcano?", "start": 0.3, "end": 2.7 },
+    { "beat": "heat", "text": "First problem: the heat.", "start": 3.7, "end": 5.3 },
+    { "beat": "heat-number", "text": "Basalt lava runs around 1,100 degrees Celsius.", "start": 6.9, "end": 9.6 },
+    { "beat": "surface", "text": "Second problem: you don't sink.", "start": 10.3, "end": 12.4 },
+    { "beat": "float", "text": "Lava is three times denser than you. You float.", "start": 13.3, "end": 16.2 },
+    { "beat": "physics", "text": "A hundred thousand times thicker than water. No swimming out.", "start": 16.9, "end": 20.6 },
+    { "beat": "consequence", "text": "So you'd lie on top. And burn.", "start": 21.4, "end": 23.8 },
+    { "beat": "consequence", "text": "Not survivable.", "start": 24.4, "end": 25.6 },
+    { "beat": "loop", "text": "So… what if you fell into a volcano?", "start": 26.6, "end": 29.2 }
+  ],
+  "beats": [
+    { "id": "hook", "start": 0, "end": 3.4, "visual": "Title 'WHAT IF / you fell into a volcano?' composed on frame 0; Q idle on a rock island in a lava field; slow push-in; neutral → worried take on 'volcano'", "sfx": ["lava-rumble-loop@0", "ember-crackle@0.4"], "camera": "pushIn" },
+    { "id": "heat", "start": 3.4, "end": 6.6, "visual": "Kicker '01 · the heat'; headline FIRST: THE HEAT; Q points up-right at the lava on 'heat' (4.6 s); 17° orbit", "sfx": ["whoosh-soft@3.3", "pop-reveal@4.95"], "camera": "orbit" },
+    { "id": "heat-number", "start": 6.6, "end": 10.0, "visual": "Bust shot; counter 0 → 1,100 °C lands on '1,100' (8.1 s); worried → shocked take; source line", "sfx": ["riser-soft@7.1", "impact-soft@8.1"], "camera": "bust" },
+    { "id": "surface", "start": 10.0, "end": 13.0, "visual": "Kicker '02 · the surface'; headline YOU DON'T SINK; Q walks off the island onto the lava; hero shot creeping in", "sfx": ["whoosh-soft@9.9", "block-step@10.3", "block-step@10.6", "block-step@10.9", "block-step@11.2", "block-step@11.5"], "camera": "hero" },
+    { "id": "float", "start": 13.0, "end": 16.6, "visual": "Bust; counter 3× lands on 'three' (13.9 s); stamp YOU FLOAT on 'float' (15.6 s); worried → happy take", "sfx": ["pop-reveal@13.9", "stamp-hit@15.6", "boing-soft@15.7"], "camera": "bust" },
+    { "id": "physics", "start": 16.6, "end": 21.0, "visual": "Kicker '03 · the physics'; counter 0 → 100,000× lands on 'thousand' (18.4 s); Q walks in place, shins sunk in lava; happy → worried take; orbit", "sfx": ["whoosh-soft@16.5", "riser-soft@17.3", "impact-soft@18.4", "lava-glop@19.4"], "camera": "orbit" },
+    { "id": "consequence", "start": 21.0, "end": 26.2, "visual": "Low angle; headline ON TOP. BURNING.; worried → shocked take + shocked pose on 'lie' (21.6 s) with a 7-frame shake; stamp NOT SURVIVABLE on 'Not' (24.4 s)", "sfx": ["impact-deep-soft@21.6", "stamp-hit@24.4"], "camera": "lowAngle" },
+    { "id": "loop", "start": 26.2, "end": 30.0, "visual": "Camera glides back to the hook framing; title returns on 'what if' (27.0 s); shocked → neutral take; last frame ≈ frame 0", "sfx": ["whoosh-reverse@26.1", "lava-rumble-loop@26.2"], "camera": "loop" }
+  ]
+}

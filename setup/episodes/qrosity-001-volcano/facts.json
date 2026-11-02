@@ -1,0 +1,67 @@
+{
+  "episode": "qrosity-001-volcano",
+  "rule": "Every number on screen or in VO must be listed here with a source URL. `display` is the exact on-screen string. `confidence`: verified = read in the primary source this session; secondary = reputable secondary source read this session; anecdote = widely reported story, label it on screen.",
+  "facts": [
+    {
+      "id": "basalt-lava-temperature",
+      "claim": "Basaltic lava (the common Hawaiian kind) erupts at roughly 1,000–1,250 °C; Hawaiian basalt is usually around 1,100 °C. Kīlauea Iki 1959 measurements: 1,060–1,190 °C.",
+      "value": 1100,
+      "unit": "°C",
+      "display": "1,100 °C",
+      "source": "https://volcano.oregonstate.edu/faq/how-hot-lava",
+      "sourceTitle": "Oregon State University, Volcano World — 'How hot is lava?' (table: Basalt 1000–1250 °C; 'Hawaiian lava (basalt) is usually around 1100 C.')",
+      "quote": "Hawaiian lava (basalt) is usually around 1100 C.",
+      "confidence": "secondary",
+      "secondarySource": "https://www.usgs.gov/publications/lava-temperatures-1959-kilauea-eruption-and-cooling-lake",
+      "secondaryTitle": "Ault, Eaton & Richter (1961), USGS — 'Temperatures of the erupting basalt ranged between 1060° and 1190°C.'",
+      "onScreenSource": "Oregon State Volcano World · USGS 1961 (Kīlauea)",
+      "note": "VO says 'around 1,100 degrees Celsius'. Rhyolite is cooler (700–900 °C) — the reel is about a basaltic volcano; do not generalise to all volcanoes."
+    },
+    {
+      "id": "lava-vs-body-density",
+      "claim": "Molten basaltic lava is about 3,100 kg/m³, roughly three times the density of a human body (≈ 1,000 kg/m³, close to water), so a person would not sink into it.",
+      "value": { "lava": 3100, "body": 1000, "ratio": 3 },
+      "unit": "kg/m³",
+      "display": "3×",
+      "source": "https://www.sciencing.com/1785353/what-if-you-fell-into-lava",
+      "sourceTitle": "Eric James Beyer, 'What If You Fell Into Lava?', Sciencing (Feb 10, 2025) — 'Lava … has a density of roughly 3,100 kilograms per cubic meter, making it three times denser' than a human body of 'around 1,000 kilograms per cubic meter'.",
+      "quote": "Lava, on the other hand, has a density of roughly 3,100 kilograms per cubic meter, making it three times denser.",
+      "confidence": "secondary",
+      "secondarySource": "https://en.wikipedia.org/wiki/Basalt",
+      "secondaryTitle": "Wikipedia, 'Basalt' — average density of solid basalt 2.9 g/cm³ (2,900 kg/m³); the melt is a little less dense. Either way the ratio to a human body rounds to 3×.",
+      "onScreenSource": "Lava ≈3,100 vs you ≈1,000 kg/m³ · Sciencing 2025",
+      "note": "Human-body density ≈ 1,000 kg/m³ is textbook general knowledge (945–1,020 kg/m³ between full inhale and exhale); no primary study cited. Some volcanologists argue a body could slowly sink in very fluid lava; the reel says 'you float' as the first-order physics, which every source agrees on."
+    },
+    {
+      "id": "lava-viscosity-vs-water",
+      "claim": "Basaltic lava has a viscosity of about 10²–10³ Pa·s; water is about 10⁻³ Pa·s — lava is on the order of 100,000 to 1,000,000 times more viscous than water.",
+      "value": { "basaltPaS": [100, 1000], "waterPaS": 0.001, "ratio": 100000 },
+      "unit": "Pa·s",
+      "display": "100,000×",
+      "source": "https://www.sfu.ca/earth-sciences/courses/ugrad/webpages/OLD/421/Lect_3_Effusive.pdf",
+      "sourceTitle": "Simon Fraser University, EASC 421 'Effusive volcanism' lecture notes — 'basalt = 10² – 10³ Pa·s, water = 10⁻³ Pa·s, olive oil = 10⁻¹ Pa·s'.",
+      "quote": "basalt = 10² - 10³ Pa*s, water = 10⁻³ Pa*s",
+      "confidence": "secondary",
+      "secondarySource": "https://www.sciencing.com/1785353/what-if-you-fell-into-lava",
+      "secondaryTitle": "Sciencing (2025): 'Lava is also around 100,000 times more viscous than water'.",
+      "onScreenSource": "Basalt 10²–10³ Pa·s · water 10⁻³ · SFU Earth Sci.",
+      "note": "100,000× is the LOW end of the range (10² / 10⁻³); the high end is 1,000,000×. The VO says 'a hundred thousand times' — conservative on purpose. Pāhoehoe field measurements (380–6,000 Pa·s) sit inside this range."
+    }
+  ],
+  "notUsed": [
+    {
+      "id": "sink-debate",
+      "claim": "Some discussions argue a person might initially float, then sink as body water flashes to steam, or that low-viscosity alkaline basalts (Erta Ale) could let a body sink slowly.",
+      "source": "https://www.discovermagazine.com/the-sciences/the-right-and-wrong-way-to-die-when-you-fall-into-lava",
+      "confidence": "unverified (page could not be fetched this session; seen only in search snippets)",
+      "why": "Nuance that does not fit a 30 s reel; mention in the caption if challenged."
+    },
+    {
+      "id": "lava-speed",
+      "claim": "A 1927 HVO bulletin measured a fast Hawaiian flow at 16 ft/s (~17 km/h); typical flows move a few km/h or less.",
+      "source": "https://pubs.usgs.gov/unnumbered/70268180/report.pdf",
+      "confidence": "unverified (snippet only)",
+      "why": "Not needed; sources conflict on 'typical' speed."
+    }
+  ]
+}

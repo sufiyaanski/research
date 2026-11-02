@@ -311,13 +311,15 @@ export const Kicker: React.FC<{ brand: Brand; text: string; y?: number; at?: num
 };
 
 /** Small source credit. Mandatory whenever a number is on screen. Sits above the caption block. */
-export const SourceLine: React.FC<{ brand: Brand; text: string; y?: number; at?: number; until?: number }> = ({
-  brand,
-  text,
-  y = SAFE.captionY - 190,
-  at = 0,
-  until,
-}) => {
+export const SourceLine: React.FC<{
+  brand: Brand;
+  text: string;
+  y?: number;
+  at?: number;
+  until?: number;
+  /** dark plate behind the text (3D stages, photos — anywhere the background is busy) */
+  plate?: boolean;
+}> = ({ brand, text, y = SAFE.captionY - 190, at = 0, until, plate = false }) => {
   const { presence } = useReveal({ at, dur: 12, until });
   const font = FONTS[brand.id];
   if (presence <= 0.001) return null;
@@ -337,7 +339,7 @@ export const SourceLine: React.FC<{ brand: Brand; text: string; y?: number; at?:
         opacity: presence,
       }}
     >
-      {text}
+      <span style={plate ? { display: 'inline-block', background: alpha(brand.ink, 0.78), borderRadius: 12, padding: '6px 18px' } : undefined}>{text}</span>
     </div>
   );
 };

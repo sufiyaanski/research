@@ -23,5 +23,13 @@ Config.setCodec('h264');
 Config.setCrf(18);
 Config.setPixelFormat('yuv420p');
 
+// OpenGL renderer for @remotion/three scenes (Q-ROSITY character). `angle` is right for a desktop
+// with a GPU; on a machine WITHOUT a GPU (CI, cloud sandbox, Lambda) use `swangle`:
+//   REMOTION_GL=swangle npx remotion still ...      (CLI; this config)
+//   node remotion/scripts/frames.mjs <Comp> beats --gl=swangle   (scripts pass chromiumOptions.gl)
+// `swiftshader` and `egl` both fail with "THREE.WebGLRenderer: Error creating WebGL context".
+// https://www.remotion.dev/docs/gl-options
+Config.setChromiumOpenGlRenderer((process.env.REMOTION_GL as 'angle' | 'swangle' | undefined) ?? 'angle');
+
 // Corporate proxy / sandbox with a private CA: `REMOTION_IGNORE_CERT_ERRORS=1 npx remotion ...`
 if (process.env.REMOTION_IGNORE_CERT_ERRORS === '1') Config.setChromiumIgnoreCertificateErrors(true);

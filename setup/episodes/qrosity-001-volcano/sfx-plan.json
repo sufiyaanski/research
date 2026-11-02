@@ -1,0 +1,33 @@
+{
+  "episode": "qrosity-001-volcano",
+  "master": "out/QrosityVolcano.mp4",
+  "master_fps": 60,
+  "rule": "at_s is global seconds = (local_frame + sequence_from) / 60, taken from the exact landing frame in Episode.tsx. gain_db is relative to a clip normalized to -20 LUFS (brand.md §7). optional cues are deniable texture. Mix target -14 LUFS integrated, <= -1 dBTP; bed -18..-25 dB under the VO.",
+  "music": { "bed": "lava-rumble-loop", "gain_db": -24, "duck_under_vo_db": -6, "note": "a low rumble bed, not music: 40-120 Hz, no transients; fade in over 0.3 s, out over 0.5 s at 29.5 s" },
+  "events": [
+    { "at_s": 0.05, "sfx": "ember-crackle", "gain_db": -10, "cue": "frame 0 — embers already rising", "function": "texture", "optional": true },
+    { "at_s": 1.95, "sfx": "ui-click-soft", "gain_db": -6, "cue": "worried take lands (hook local f114 + 10)", "function": "snap", "optional": true },
+    { "at_s": 3.3, "sfx": "whoosh-soft", "gain_db": -3, "cue": "before the cut to HEAT (3.4)", "function": "motion" },
+    { "at_s": 4.95, "sfx": "pop-reveal", "gain_db": 0, "cue": "point arm ramp ends (4.6 + 0.35 s)", "function": "emphasis" },
+    { "at_s": 6.5, "sfx": "whoosh-soft", "gain_db": -3, "cue": "before the cut to the bust shot (6.6)", "function": "motion" },
+    { "at_s": 7.3, "sfx": "riser-soft", "gain_db": 0, "cue": "counter starts (7.3) under 'runs around'", "function": "tension" },
+    { "at_s": 8.1, "sfx": "impact-deep-soft", "gain_db": 3, "cue": "1,100 °C lands on the word — hero layer 1", "function": "emphasis" },
+    { "at_s": 8.17, "sfx": "boing-soft", "gain_db": -4, "cue": "shocked take squash (8.0 + 10 f)", "function": "emphasis" },
+    { "at_s": 9.9, "sfx": "whoosh-soft", "gain_db": -3, "cue": "before the cut to SURFACE (10.0)", "function": "motion" },
+    { "at_s": 10.3, "sfx": "block-step", "gain_db": -6, "cue": "foot plant; repeat every 0.3125 s (19 f at 1.6 steps/s) until 12.9", "function": "motion" },
+    { "at_s": 12.9, "sfx": "whoosh-soft", "gain_db": -3, "cue": "before the cut to the bust shot (13.0)", "function": "motion" },
+    { "at_s": 13.9, "sfx": "pop-reveal", "gain_db": 1, "cue": "3× lands on 'three' (13.75 + 24 f)", "function": "emphasis" },
+    { "at_s": 15.6, "sfx": "stamp-hit", "gain_db": 2, "cue": "YOU FLOAT stamp", "function": "emphasis" },
+    { "at_s": 15.67, "sfx": "boing-soft", "gain_db": -2, "cue": "happy take squash (15.5 + 10 f)", "function": "emphasis" },
+    { "at_s": 16.5, "sfx": "whoosh-soft", "gain_db": -3, "cue": "before the cut to PHYSICS (16.6)", "function": "motion" },
+    { "at_s": 17.3, "sfx": "riser-soft", "gain_db": 0, "cue": "counter 0 → 100,000 starts", "function": "tension" },
+    { "at_s": 18.4, "sfx": "impact-soft", "gain_db": 2, "cue": "100,000× lands on 'thousand'", "function": "emphasis" },
+    { "at_s": 19.4, "sfx": "lava-glop", "gain_db": -8, "cue": "walking in place, shins in lava", "function": "texture", "optional": true },
+    { "at_s": 20.9, "sfx": "whoosh-soft", "gain_db": -3, "cue": "before the cut to CONSEQUENCE (21.0)", "function": "motion" },
+    { "at_s": 21.6, "sfx": "impact-deep-soft", "gain_db": 4, "cue": "shocked hop + 7-frame camera shake — hero layer 2", "function": "emphasis" },
+    { "at_s": 24.4, "sfx": "stamp-hit", "gain_db": 3, "cue": "NOT SURVIVABLE stamp", "function": "emphasis" },
+    { "at_s": 26.1, "sfx": "whoosh-reverse", "gain_db": -4, "cue": "before the cut to LOOP (26.2)", "function": "motion" },
+    { "at_s": 26.67, "sfx": "ui-click-soft", "gain_db": -6, "cue": "neutral take lands (26.5 + 10 f)", "function": "snap", "optional": true },
+    { "at_s": 27.0, "sfx": "pop-reveal", "gain_db": -2, "cue": "title returns", "function": "emphasis" }
+  ]
+}

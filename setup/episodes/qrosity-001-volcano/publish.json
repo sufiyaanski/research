@@ -1,0 +1,27 @@
+{
+  "episode": "qrosity-001-volcano",
+  "channel": "q-rosity",
+  "composition": "QrosityVolcano",
+  "status": "draft",
+  "title": "What if you fell into a volcano? (you don't sink)",
+  "hook": "WHAT IF you fell into a volcano?",
+  "altHooks": ["Would you sink in lava?", "Lava: 1,100 °C. You: on top of it."],
+  "caption": "You wouldn't sink. Lava is ~1,100 °C, three times denser than you and a hundred thousand times thicker than water — so you'd lie on top of it and burn. Sources: Oregon State Volcano World, USGS (1961), Sciencing, SFU Earth Sciences.",
+  "hashtags": ["#whatif", "#volcano", "#lava", "#science", "#qrosity"],
+  "sources": [
+    "https://volcano.oregonstate.edu/faq/how-hot-lava",
+    "https://www.usgs.gov/publications/lava-temperatures-1959-kilauea-eruption-and-cooling-lake",
+    "https://www.sciencing.com/1785353/what-if-you-fell-into-lava",
+    "https://www.sfu.ca/earth-sciences/courses/ugrad/webpages/OLD/421/Lect_3_Effusive.pdf"
+  ],
+  "voice": { "provider": null, "voiceId": null, "status": "placeholder timings in vo.gen.ts" },
+  "render": { "draft": "out/QrosityVolcano-draft.mp4", "final": null, "fps": 60, "size": "1080x1920", "durationSec": 30, "gl": "swangle (no GPU box); use angle on a desktop GPU" },
+  "qa": {
+    "rounds": 3,
+    "score": null,
+    "rubric": { "hook": null, "readability": null, "oneIdea": null, "motion": null, "sync": null, "pacing": null, "sound": null, "loop": null, "safeZones": null, "brandFacts": null },
+    "selfReview": "Stills read 3x at phone scale. Fixed: crater-rim blocks spawning between lens and character (blacked out 9 frames), source lines wrapping under the caption plate on bust shots, shocked arms clipped at the frame edges on the low-angle shot. Open: no VO/audio yet; 30 s is under the kit's 45–70 s check (Q-ROSITY target is 30–60 s); physics beat has 0.7 s of kicker-only before the counter starts; hair is a plain cap; walk is a treadmill.",
+    "notes": []
+  },
+  "postingNotes": "Trial-reel variant plan: render 3 versions with altHooks (same body), post to non-followers, keep the hook with the best 3-second retention. Verify the facts' secondary sources against a current USGS page before the final render."
+}

@@ -65,6 +65,27 @@ export const QROSITY: Brand = {
   glow: '#FFD23F',
 };
 
+/**
+ * Q-ROSITY over the 3D stage (qrosity-001+). The character keeps the QROSITY colours (purple
+ * hoodie, yellow drawstrings), but the Stage3D background is dark and fogged, so the 2D overlay
+ * layer needs light text and a yellow accent that reads on near-black: text 18.6:1, accent
+ * #FFD23F 13.1:1, muted 9.2:1, negative #FF5A6E 5.6:1 on ink #1A0D0F. Plates (captions, kicker,
+ * stamps) use `ink`, which equals the volcano stage's sky/fog colour.
+ */
+export const QROSITY_STAGE: Brand = {
+  ...QROSITY,
+  ink: '#1A0D0F',
+  panel: '#2B1B1D',
+  line: '#4A2E31',
+  text: '#FFF6EC',
+  muted: '#D9B8B0',
+  accent: '#FFD23F',
+  onAccent: '#1A0D0F',
+  positive: '#5BE08C',
+  negative: '#FF5A6E',
+  glow: '#FF7A1A',
+};
+
 export const BRANDS = { 'the-signal': SIGNAL, 'q-rosity': QROSITY } as const;
 
 /** rgba() helper for glows and plates: alpha('#FFB020', 0.2). */

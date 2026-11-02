@@ -5,6 +5,7 @@
 //   node remotion/scripts/frames.mjs SignalAnchoring 0,2s,10s,25s,last --scale=0.5
 //   node remotion/scripts/frames.mjs SignalAnchoring beats --scale=0.5      # every beat boundary + midpoints
 //   node remotion/scripts/frames.mjs SignalAnchoring 0,2s --guides           # overlay safe-area guides
+//   node remotion/scripts/frames.mjs QrosityVolcano beats --gl=swangle       # 3D scene on a no-GPU box
 //
 // Frame spec: plain integers are frames, "2s"/"2.5s" are seconds, "last" is the final frame,
 // "beats" expands to frame 0, each beat start (+12 frames, so entrances have landed), each beat
@@ -33,10 +34,15 @@ const GUIDES = args.includes('--guides');
 const BROWSER = process.env.REMOTION_BROWSER_EXECUTABLE || opt('browser', undefined);
 // Behind a corporate proxy / sandbox with a private CA, Google Fonts fail with
 // ERR_CERT_AUTHORITY_INVALID inside headless Chrome. Opt in with REMOTION_IGNORE_CERT_ERRORS=1.
-const CHROMIUM = { gl: 'angle', ignoreCertificateErrors: process.env.REMOTION_IGNORE_CERT_ERRORS === '1' };
+// OpenGL renderer for <ThreeCanvas> scenes (Q-ROSITY): `angle` on a desktop with a GPU (default),
+// `swangle` (SwiftShader-ANGLE, CPU) on a machine without one — CI, cloud boxes, Lambda. `swiftshader`
+// and `egl` fail with "Error creating WebGL context" there. Pass --gl=swangle or REMOTION_GL=swangle.
+// The remotion.config.ts setting does NOT apply to these Node-API scripts, so it is passed here.
+const GL = opt('gl', process.env.REMOTION_GL || 'angle');
+const CHROMIUM = { gl: GL, ignoreCertificateErrors: process.env.REMOTION_IGNORE_CERT_ERRORS === '1' };
 
 if (!id) {
-  console.error('usage: node remotion/scripts/frames.mjs <CompId> <frames|beats> [--scale=0.5] [--guides]');
+  console.error('usage: node remotion/scripts/frames.mjs <CompId> <frames|beats> [--scale=0.5] [--guides] [--gl=angle|swangle]');
   process.exit(1);
 }
 
@@ -93,7 +99,7 @@ const parseSpec = (s) => {
 };
 
 const frames = parseSpec(spec).map((f) => Math.max(0, Math.min(last, f)));
-console.log(`${id}: ${durationInFrames} frames @ ${fps} fps (${(durationInFrames / fps).toFixed(1)} s). Rendering ${frames.length} stills at scale ${SCALE}${GUIDES ? ' with guides' : ''}.`);
+console.log(`${id}: ${durationInFrames} frames @ ${fps} fps (${(durationInFrames / fps).toFixed(1)} s). Rendering ${frames.length} stills at scale ${SCALE}${GUIDES ? ' with guides' : ''} (gl=${GL}).`);
 
 const files = [];
 for (const frame of frames) {
@@ -114,8 +120,11 @@ for (const frame of frames) {
   console.log(`  -> ${path.relative(root, out)}   (t=${(frame / fps).toFixed(2)}s)`);
 }
 
-// Contact sheet: tile up to 8 per row, each thumbnail 270px wide (= phone at arm's length).
-try {
+// Contact sheet: tile up to 4 per row, each thumbnail 270px wide (= phone at arm's length).
+// (xstack needs >= 2 inputs; a single still is its own sheet.)
+if (files.length < 2) {
+  console.log('  (single still: no contact sheet)');
+} else try {
   const cols = Math.min(files.length, 4);
   const rows = Math.ceil(files.length / cols);
   const sheet = path.join(outDir, `${id}-sheet.png`);
