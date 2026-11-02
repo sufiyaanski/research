@@ -1,0 +1,33 @@
+{
+  "id": "qrosity-001-no-sleep",
+  "channel": "qrosity",
+  "title": "What if you never slept again?",
+  "composition": "QrosityNoSleep",
+  "format": { "width": 1080, "height": 1920, "fps": 60, "durationSec": 58 },
+  "voiceStatus": "estimated (run tools/gen_voice.py)",
+  "vo": [
+    { "beat": "premise",     "text": "What if you never slept again? Not tired. Just... never.", "start": 0.2, "end": 4.3,
+      "tts": "What if you never slept again? Not tired. Just... never." },
+    { "beat": "pov-1",       "text": "Night one. You feel incredible. Eight free hours. You learn guitar. You clean everything.", "start": 4.7, "end": 11.4 },
+    { "beat": "pov-2",       "text": "Night three. Your brain is a browser with 400 tabs open. Your hands don't feel like yours.", "start": 11.8, "end": 19.2 },
+    { "beat": "pov-3",       "text": "Night eleven. The record is 11 days. After that, nobody knows — because nobody has made it further.", "start": 19.6, "end": 28.2,
+      "tts": "[whispers] Night eleven. The record is 11 days. After that, nobody knows — because nobody has made it further." },
+    { "beat": "turn",        "text": "But here's the thing. Sleep isn't rest. It's a wash cycle.", "start": 28.6, "end": 33.0 },
+    { "beat": "consequence", "text": "Every night, your brain shrinks by a fifth and flushes out the waste it made all day. Skip it, and the waste stays.", "start": 33.4, "end": 42.4 },
+    { "beat": "consequence", "text": "Which means the version of you that never sleeps isn't a superhero. It's a room nobody cleans.", "start": 42.8, "end": 49.9 },
+    { "beat": "loop",        "text": "So... what if you never slept again? You'd finally understand why you do.", "start": 50.4, "end": 55.7 }
+  ],
+  "beats": [
+    { "id": "premise",     "start": 0.0,  "end": 4.7,  "visual": "Blocky character in bed, eyes snap open; moon hangs above; fully composed at frame 0", "sfx": ["pop-reveal@0.4"] },
+    { "id": "pov-1",       "start": 4.7,  "end": 11.8, "visual": "Character sprints through night chores; clock spins; confetti", "sfx": ["block-step@5.1", "block-step@5.4", "block-step@5.7", "chime-reward@10.2"] },
+    { "id": "pov-2",       "start": 11.8, "end": 19.6, "visual": "Browser tabs stack up on its head; hands float off slightly", "sfx": ["ui-click-soft@13.9", "ui-click-soft@14.2", "ui-click-soft@14.5", "whoosh-wind@17.2?"] },
+    { "id": "pov-3",       "start": 19.6, "end": 28.6, "visual": "Calendar flips to day 11; a question mark where day 12 should be", "sfx": ["page-flip@21.9", "swell@26.8"] },
+    { "id": "turn",        "start": 28.6, "end": 33.4, "visual": "Cut to black; a washing machine door opens on the brain", "sfx": ["whoosh-soft@28.6", "ui-click-soft@31.6"] },
+    { "id": "consequence", "start": 33.4, "end": 50.4, "visual": "Brain shrinks 20%, waste particles flush; then a cluttered room fills with trash", "sfx": ["pop-reveal@36.2", "block-step@44.6", "block-step@44.9"] },
+    { "id": "loop",        "start": 50.4, "end": 58.0, "visual": "Back to the bed; eyes close; final frame matches frame 0 with eyes shut", "sfx": ["whoosh-soft@50.4", "chime-reward@55.4?"] }
+  ],
+  "sources": [
+    { "claim": "11-day no-sleep record", "ref": "Randy Gardner, 1964 (264 h) — verify in facts.json" },
+    { "claim": "brain 'shrinks by a fifth' / flushes waste during sleep", "ref": "Xie et al. 2013, Science (interstitial space +60% in sleeping mice) — paraphrase; verify wording" }
+  ]
+}

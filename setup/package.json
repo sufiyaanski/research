@@ -1,0 +1,38 @@
+{
+  "name": "signal-reels-kit",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Claude Code + Remotion kit for The Signal and Q-ROSITY short-form reels (1080x1920 @ 60 fps).",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio remotion/src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "vo:estimate": "node remotion/scripts/estimate-vo.mjs",
+    "frames": "node remotion/scripts/frames.mjs",
+    "render": "node remotion/scripts/render.mjs",
+    "render:draft": "node remotion/scripts/render.mjs --scale=0.5",
+    "check": "node remotion/scripts/check-media.mjs",
+    "review": "node -e \"console.log('Open review/index.html in a browser (file:// works), then load the mp4 from out/.')\""
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.540",
+    "@remotion/captions": "4.0.540",
+    "@remotion/cli": "4.0.540",
+    "@remotion/google-fonts": "4.0.540",
+    "@remotion/paths": "4.0.540",
+    "@remotion/renderer": "4.0.540",
+    "@remotion/transitions": "4.0.540",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "remotion": "4.0.540",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.10",
+    "@types/react-dom": "19.1.7",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

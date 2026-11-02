@@ -1,0 +1,22 @@
+{
+  "episode": "signal-001-anchoring",
+  "channel": "the-signal",
+  "composition": "SignalAnchoring",
+  "status": "draft",
+  "title": "Nobody bought this $429 bread maker (on purpose)",
+  "hook": "Nobody bought this.",
+  "altHooks": ["This price exists to lose.", "The $429 nobody buys."],
+  "caption": "The $429 bread maker was never meant to sell. It was there to make $275 feel reasonable. That's anchoring: your brain grabs the first number it sees. In 1974 a rigged wheel moved people's answers by 20 points. Who chose the first number you saw today?",
+  "hashtags": ["#pricepsychology", "#anchoring", "#behavioraleconomics", "#marketing", "#thesignal"],
+  "sources": ["https://www.science.org/doi/10.1126/science.185.4157.1124", "https://doi.org/10.1177/002224379202900301"],
+  "voice": { "provider": null, "voiceId": null, "status": "placeholder timings in vo.gen.ts" },
+  "render": { "draft": "out/SignalAnchoring-draft.mp4", "final": null, "fps": 60, "size": "1080x1920", "durationSec": 51 },
+  "qa": {
+    "rounds": 2,
+    "score": null,
+    "rubric": { "hook": null, "readability": null, "oneIdea": null, "motion": null, "sync": null, "pacing": null, "sound": null, "loop": null, "safeZones": null, "brandFacts": null },
+    "selfReview": "Stills read 3x. Fixed: stamp over price, tag floating above shelf, 3-line headlines, wheel late after cut, chart annotation over question, source lines wrapping. Open: no VO/audio yet; captions duplicate the headline on the hook beat; empty lower-middle band on tag-only frames.",
+    "notes": []
+  },
+  "postingNotes": "Trial-reel variant plan: render 3 versions with altHooks (same body), post to non-followers, keep the hook with the best 3-second retention."
+}

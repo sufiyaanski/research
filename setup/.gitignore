@@ -1,0 +1,9 @@
+node_modules/
+out/
+/qa/
+*.log
+.DS_Store
+.env
+remotion/public/voice/
+episodes/*/voice/
+episodes/*/output/

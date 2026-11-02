@@ -1,0 +1,51 @@
+{
+  "episode": "signal-001-anchoring",
+  "rule": "Every number on screen or in VO must be listed here with a source URL. `display` is the exact on-screen string. `confidence`: verified = read in the primary source; secondary = reputable secondary source; anecdote = widely reported story, label it on screen.",
+  "facts": [
+    {
+      "id": "ws-breadmaker-prices",
+      "claim": "Williams-Sonoma sold a bread maker at $275 that sold poorly; after adding a larger model at $429 (roughly 1.5x the price), sales of the $275 model roughly doubled.",
+      "value": [275, 429],
+      "unit": "USD",
+      "display": ["$275", "$429", "≈2×"],
+      "source": "https://doi.org/10.1177/002224379202900301",
+      "sourceTitle": "Simonson & Tversky (1992), 'Choice in Context: Tradeoff Contrast and Extremeness Aversion', Journal of Marketing Research 29(3) — the compromise/decoy effect; the Williams-Sonoma bread-maker story is the standard illustration (also told in Ariely, 'Predictably Irrational', 2008, and in HBR).",
+      "quote": "Widely reported anecdote; exact sales figures were never published, 'nearly doubled' is how the story is told.",
+      "confidence": "anecdote",
+      "onScreenSource": "Simonson & Tversky (1992) · Williams-Sonoma, as reported",
+      "note": "VO says 'almost twice the price' for $275 → $429 (1.56×). Acceptable as spoken rounding; do not display '2× the price'."
+    },
+    {
+      "id": "tk-1974-wheel",
+      "claim": "Tversky & Kahneman (1974) spun a wheel of fortune rigged to stop at 10 or 65, then asked subjects the percentage of African countries in the UN. Median estimates were 25 (wheel = 10) and 45 (wheel = 65).",
+      "value": { "wheelLow": 10, "wheelHigh": 65, "medianLow": 25, "medianHigh": 45 },
+      "unit": "percent",
+      "display": ["10", "65", "25%", "45%"],
+      "source": "https://www.science.org/doi/10.1126/science.185.4157.1124",
+      "sourceTitle": "Tversky, A. & Kahneman, D. (1974). Judgment under Uncertainty: Heuristics and Biases. Science, 185(4157), 1124–1131.",
+      "quote": "The median estimates of the percentage of African countries in the United Nations were 25 and 45 for groups that received 10 and 65, respectively, as starting points.",
+      "confidence": "verified",
+      "onScreenSource": "Tversky & Kahneman, Science (1974), median estimates"
+    },
+    {
+      "id": "everyday-anchors",
+      "claim": "Illustrative everyday anchors: a $90 steak on a menu, a tag reading 'was $199 / now $129'.",
+      "value": [90, 199, 129],
+      "unit": "USD",
+      "display": ["$90", "was $199", "$129"],
+      "source": "n/a — illustrative examples, not data",
+      "confidence": "illustration",
+      "onScreenSource": null,
+      "note": "Not presented as measurements; no source line needed, but never present them as 'a study found'."
+    }
+  ],
+  "notUsed": [
+    {
+      "id": "ariely-ssn",
+      "claim": "Ariely, Loewenstein & Prelec (2003): subjects with higher last-two SSN digits bid more for the same goods (e.g. cordless keyboard ≈ $56 vs ≈ $16 top vs bottom quintile).",
+      "source": "https://doi.org/10.1162/00335530360535153",
+      "confidence": "secondary",
+      "why": "Reserve for a follow-up episode; exact figures must be re-read in the paper before use."
+    }
+  ]
+}

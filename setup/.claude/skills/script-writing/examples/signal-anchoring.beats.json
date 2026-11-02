@@ -1,0 +1,34 @@
+{
+  "id": "signal-002-left-digit",
+  "channel": "the-signal",
+  "title": "Why the $9.99 trick still works on you",
+  "composition": "SignalLeftDigit",
+  "format": { "width": 1080, "height": 1920, "fps": 60, "durationSec": 54 },
+  "voiceStatus": "estimated (run tools/gen_voice.py)",
+  "vo": [
+    { "beat": "hook",     "text": "$9.99 is a lie your brain believes.", "start": 0.2, "end": 2.9 },
+    { "beat": "idea",     "text": "Your brain reads prices left to right — and stops early. The first digit sets the anchor.", "start": 3.2, "end": 10.0 },
+    { "beat": "reveal-1", "text": "Step one. Shoppers were shown a shirt at $34, then at $39.", "start": 10.4, "end": 15.3 },
+    { "beat": "reveal-1", "text": "The $39 shirt sold 24 percent more. Higher price. More sales.", "start": 15.6, "end": 20.2 },
+    { "beat": "reveal-2", "text": "Step two. Prices ending in nine beat round prices in 60 percent of tests.", "start": 20.6, "end": 26.1 },
+    { "beat": "reveal-3", "text": "Step three. Drop the 9 to a 7 — $9.97 — and the effect barely moves. It was never about the 9.", "start": 26.5, "end": 35.4 },
+    { "beat": "twist",    "text": "It's the left digit. Your brain banks the 9 dollars and rounds the rest to zero.", "start": 35.8, "end": 42.0 },
+    { "beat": "payoff",   "text": "So the trick isn't 99 cents. It's one cent — the one that moves the first number.", "start": 42.4, "end": 49.1 },
+    { "beat": "loop",     "text": "Which is why $9.99 is a lie your brain believes.", "start": 49.5, "end": 53.2 }
+  ],
+  "beats": [
+    { "id": "hook",     "start": 0.0,  "end": 3.2,  "visual": "Giant $9.99 price tag; the 9.99 pulses; fully composed at frame 0", "sfx": ["impact-soft@0.05"] },
+    { "id": "idea",     "start": 3.2,  "end": 10.4, "visual": "Eye-scan line sweeps left-to-right over 9.99, stops at the first 9; anchor marker drops", "sfx": ["whoosh-soft@3.2", "pop-reveal@9.3"] },
+    { "id": "reveal-1", "start": 10.4, "end": 20.6, "visual": "Two shirts $34 vs $39; bar grows to +24% and snaps on the word '24'", "sfx": ["whoosh-soft@10.4?", "pop-reveal@16.9"] },
+    { "id": "reveal-2", "start": 20.6, "end": 26.5, "visual": "Grid of 10 price tags, 6 light up; counter 0 -> 60% snaps on '60'", "sfx": ["pop-reveal@25.0"] },
+    { "id": "reveal-3", "start": 26.5, "end": 35.8, "visual": "9.99 morphs to 9.97; effect bar barely moves", "sfx": ["ui-click-soft@28.6", "error-buzz-soft@31.6?"] },
+    { "id": "twist",    "start": 35.8, "end": 42.4, "visual": "Left digit 9 swells, .99 fades to .00", "sfx": ["riser-soft@35.8", "impact-soft@35.8"] },
+    { "id": "payoff",   "start": 42.4, "end": 49.5, "visual": "$10.00 -> $9.99: a single cent flips the first digit", "sfx": ["coin-drop@45.6", "chime-reward@48.6"] },
+    { "id": "loop",     "start": 49.5, "end": 54.0, "visual": "Return to the hook composition; final frame matches frame 0", "sfx": ["whoosh-soft@49.5"] }
+  ],
+  "sources": [
+    { "claim": "$34 -> $39 catalog test, +24% sales", "ref": "Anderson & Simester (2003), Quantitative Marketing and Economics — verify exact figure in facts.json" },
+    { "claim": "9-endings beat round prices in 60% of tests", "ref": "PLACEHOLDER — replace with a sourced figure before production" },
+    { "claim": "$9.97 effect barely moves", "ref": "PLACEHOLDER — left-digit effect literature (Thomas & Morwitz 2005); verify" }
+  ]
+}

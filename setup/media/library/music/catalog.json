@@ -1,0 +1,69 @@
+{
+  "_schema": {
+    "note": "Shared MUSIC bed manifest. Read by tools/mix_music.py (--bed <id> -> file). Beds are continuous instrumental loops/tracks that sit UNDER the voice (ducked -20 dB relative to VO during speech by default). Files live in media/library/music/clips/ and are NOT committed (binary). Add a bed by dropping the file in clips/ and appending an entry here (or `tools/gen_sfx.py --import --kind music`). Record source + license for every bed: music is the asset most likely to get a reel muted or claimed.",
+    "fields": {
+      "id": "stable kebab-case name by MOOD/FUNCTION, not by episode",
+      "file": "path relative to media/library/music/",
+      "mood": "calm | focus | tension | playful | warm",
+      "bpm": "tempo, so visual pulses can be aligned (optional)",
+      "key": "musical key (optional)",
+      "duration_s": "length; mix_music.py loops shorter beds (-stream_loop) to cover the video",
+      "loop_safe": "true when the file loops without a click (trimmed on a bar boundary)",
+      "loudness_lufs": "integrated loudness of the file as stored (mix_music.py measures anyway; informational)",
+      "has_drums": "drums under narration fight the consonants — prefer false for Signal explainers",
+      "channels": "which channel(s) this bed is approved for: signal | qrosity",
+      "source": "elevenlabs:music | file:<origin> | url",
+      "license": "owner and terms"
+    }
+  },
+  "clips": [
+    {
+      "id": "signal-focus-pad",
+      "file": "clips/signal-focus-pad.mp3",
+      "mood": "focus",
+      "bpm": 84,
+      "key": "D minor",
+      "duration_s": 64.0,
+      "loop_safe": true,
+      "loudness_lufs": -20.0,
+      "has_drums": false,
+      "channels": ["signal"],
+      "source": "elevenlabs:music",
+      "model": "music_v2",
+      "license": "ElevenLabs generated (text-to-music); owner: the generating account; commercial use per that account's ElevenLabs plan",
+      "prompt": "Minimal, modern, analytical background bed for a short explainer about pricing psychology. Warm soft synth pad with a slow subtle pulse, no drums, no melody hook, consistent energy, designed to sit under a calm male narrator. 84 BPM, D minor, instrumental, 64 seconds, loopable."
+    },
+    {
+      "id": "signal-tension-pulse",
+      "file": "clips/signal-tension-pulse.mp3",
+      "mood": "tension",
+      "bpm": 92,
+      "key": "A minor",
+      "duration_s": 64.0,
+      "loop_safe": true,
+      "loudness_lufs": -20.0,
+      "has_drums": false,
+      "channels": ["signal"],
+      "source": "elevenlabs:music",
+      "model": "music_v2",
+      "license": "ElevenLabs generated (text-to-music); owner: the generating account; commercial use per that account's ElevenLabs plan",
+      "prompt": "Understated tense electronic pulse for a numbers-driven reveal. Low sustained synth bass pulse at 92 BPM, airy high pad, no drums, no lead melody, slowly building but never dropping, instrumental, 64 seconds, loopable."
+    },
+    {
+      "id": "qrosity-playful-blocks",
+      "file": "clips/qrosity-playful-blocks.mp3",
+      "mood": "playful",
+      "bpm": 100,
+      "key": "C major",
+      "duration_s": 64.0,
+      "loop_safe": true,
+      "loudness_lufs": -20.0,
+      "has_drums": true,
+      "channels": ["qrosity"],
+      "source": "elevenlabs:music",
+      "model": "music_v2",
+      "license": "ElevenLabs generated (text-to-music); owner: the generating account; commercial use per that account's ElevenLabs plan",
+      "prompt": "Light, curious, playful bed for a what-if animated short with a blocky toy character. Soft marimba and plucked synth, light muted percussion, bright but not busy, leaves room for a narrator, 100 BPM, C major, instrumental, 64 seconds, loopable."
+    }
+  ]
+}

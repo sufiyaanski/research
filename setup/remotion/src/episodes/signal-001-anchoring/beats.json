@@ -1,0 +1,32 @@
+{
+  "id": "signal-001-anchoring",
+  "channel": "the-signal",
+  "title": "Nobody bought this: price anchoring",
+  "composition": "SignalAnchoring",
+  "format": { "width": 1080, "height": 1920, "fps": 60, "durationSec": 51 },
+  "voiceStatus": "estimated (run a TTS tool with word timestamps and regenerate vo.gen.ts)",
+  "vo": [
+    { "beat": "hook", "text": "This $429 bread maker was never meant to sell.", "start": 0.3, "end": 3.4 },
+    { "beat": "setup", "text": "Williams-Sonoma had one bread maker. $275.", "start": 3.9, "end": 6.9 },
+    { "beat": "setup", "text": "It sat on the shelf. Nobody bought it.", "start": 7.4, "end": 10.5 },
+    { "beat": "turn", "text": "So they added a second one, almost twice the price.", "start": 11.2, "end": 15.0 },
+    { "beat": "turn", "text": "Sales of the cheap one nearly doubled.", "start": 15.4, "end": 18.2 },
+    { "beat": "why", "text": "Your brain has no idea what a bread maker is worth.", "start": 18.8, "end": 23.0 },
+    { "beat": "why", "text": "It grabs the first number it sees. That's anchoring.", "start": 23.3, "end": 26.8 },
+    { "beat": "proof", "text": "In 1974, Kahneman and Tversky spun a rigged wheel.", "start": 27.4, "end": 30.8 },
+    { "beat": "proof", "text": "Then asked: what share of UN countries are African?", "start": 31.2, "end": 34.6 },
+    { "beat": "proof", "text": "Wheel said 10: people guessed 25%. Wheel said 65: they guessed 45%.", "start": 35.0, "end": 39.4 },
+    { "beat": "everyday", "text": "That's why the menu has a $90 steak, and the tag says was $199.", "start": 39.8, "end": 44.8 },
+    { "beat": "everyday", "text": "The anchor isn't the product.", "start": 45.0, "end": 46.6 },
+    { "beat": "payoff", "text": "It's the first number. So ask: who chose it?", "start": 46.8, "end": 49.8 }
+  ],
+  "beats": [
+    { "id": "hook", "start": 0, "end": 3.6, "visual": "Headline 'Nobody bought this.' + hero $429 tag, fully composed on frame 0", "sfx": ["impact-soft@0.05"] },
+    { "id": "setup", "start": 3.6, "end": 11.0, "visual": "Shelf with the lone $275 tag; 'NOT SELLING' stamp lands on 'Nobody'", "sfx": ["whoosh-soft@3.5", "stamp-hit@8.9"] },
+    { "id": "turn", "start": 11.0, "end": 18.5, "visual": "$429 tag slides in beside $275; BEFORE/AFTER bars, AFTER ≈2x", "sfx": ["pop-reveal@11.4", "riser-soft@15.0", "impact-soft@16.9"] },
+    { "id": "why", "start": 18.5, "end": 27.0, "visual": "'What is it worth?' then the value scale: $429 anchor drops, $275 reads as fair", "sfx": ["ui-click-soft@23.6", "pop-reveal@25.4"] },
+    { "id": "proof", "start": 27.0, "end": 39.5, "visual": "Rigged wheel spins to 10; two bars 25% vs 45% land on the spoken numbers", "sfx": ["clock-tick-soft@27.5", "impact-soft@36.3", "impact-soft@38.6"] },
+    { "id": "everyday", "start": 39.5, "end": 46.5, "visual": "$90 steak tag, WAS $199 / NOW $129 tag; 'The anchor isn't the product.'", "sfx": ["pop-reveal@41.4", "pop-reveal@43.6"] },
+    { "id": "payoff", "start": 46.5, "end": 51.0, "visual": "$429 tag returns to the hook position; 'Who chose the first number?' dissolves back to the hook headline (loop)", "sfx": ["impact-deep-soft@47.0"] }
+  ]
+}
