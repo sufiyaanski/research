@@ -1,0 +1,395 @@
+{
+  "fps": 30,
+  "source": "vo",
+  "durationInFrames": 450,
+  "beats": [
+    3,
+    25,
+    34,
+    50,
+    55,
+    61,
+    79,
+    86,
+    96,
+    105,
+    115,
+    121,
+    140,
+    147,
+    157,
+    166,
+    170,
+    175,
+    193,
+    199,
+    205,
+    214,
+    223,
+    226,
+    235,
+    255,
+    261,
+    268,
+    291,
+    316,
+    326,
+    331,
+    350,
+    370,
+    379,
+    383,
+    393
+  ],
+  "downbeats": [
+    3,
+    79,
+    140,
+    193,
+    255,
+    316,
+    370
+  ],
+  "words": [
+    {
+      "w": "$9.99",
+      "start": 3,
+      "end": 23
+    },
+    {
+      "w": "isn't",
+      "start": 25,
+      "end": 32
+    },
+    {
+      "w": "$10",
+      "start": 34,
+      "end": 49
+    },
+    {
+      "w": "to",
+      "start": 50,
+      "end": 53
+    },
+    {
+      "w": "your",
+      "start": 55,
+      "end": 59
+    },
+    {
+      "w": "brain.",
+      "start": 61,
+      "end": 72
+    },
+    {
+      "w": "One",
+      "start": 79,
+      "end": 84
+    },
+    {
+      "w": "cent",
+      "start": 86,
+      "end": 94
+    },
+    {
+      "w": "less",
+      "start": 96,
+      "end": 103
+    },
+    {
+      "w": "feels",
+      "start": 105,
+      "end": 113
+    },
+    {
+      "w": "way",
+      "start": 115,
+      "end": 119
+    },
+    {
+      "w": "cheaper.",
+      "start": 121,
+      "end": 134
+    },
+    {
+      "w": "Your",
+      "start": 140,
+      "end": 145
+    },
+    {
+      "w": "eyes",
+      "start": 147,
+      "end": 155
+    },
+    {
+      "w": "stop",
+      "start": 157,
+      "end": 164
+    },
+    {
+      "w": "at",
+      "start": 166,
+      "end": 169
+    },
+    {
+      "w": "the",
+      "start": 170,
+      "end": 173
+    },
+    {
+      "w": "9.",
+      "start": 175,
+      "end": 186
+    },
+    {
+      "w": "So",
+      "start": 193,
+      "end": 197
+    },
+    {
+      "w": "your",
+      "start": 199,
+      "end": 203
+    },
+    {
+      "w": "brain",
+      "start": 205,
+      "end": 212
+    },
+    {
+      "w": "files",
+      "start": 214,
+      "end": 221
+    },
+    {
+      "w": "it",
+      "start": 223,
+      "end": 224
+    },
+    {
+      "w": "under",
+      "start": 226,
+      "end": 233
+    },
+    {
+      "w": "$9,",
+      "start": 235,
+      "end": 250
+    },
+    {
+      "w": "but",
+      "start": 255,
+      "end": 259
+    },
+    {
+      "w": "you",
+      "start": 261,
+      "end": 266
+    },
+    {
+      "w": "pay",
+      "start": 268,
+      "end": 277
+    },
+    {
+      "w": "$10.",
+      "start": 291,
+      "end": 309
+    },
+    {
+      "w": "That's",
+      "start": 316,
+      "end": 324
+    },
+    {
+      "w": "the",
+      "start": 326,
+      "end": 329
+    },
+    {
+      "w": "left-digit",
+      "start": 331,
+      "end": 348
+    },
+    {
+      "w": "effect.",
+      "start": 350,
+      "end": 363
+    },
+    {
+      "w": "Read",
+      "start": 370,
+      "end": 377
+    },
+    {
+      "w": "the",
+      "start": 379,
+      "end": 382
+    },
+    {
+      "w": "whole",
+      "start": 383,
+      "end": 391
+    },
+    {
+      "w": "price.",
+      "start": 393,
+      "end": 406
+    }
+  ],
+  "phrases": [
+    {
+      "start": 3,
+      "end": 72,
+      "text": "$9.99 isn't $10 to your brain."
+    },
+    {
+      "start": 79,
+      "end": 134,
+      "text": "One cent less feels way cheaper."
+    },
+    {
+      "start": 140,
+      "end": 186,
+      "text": "Your eyes stop at the 9."
+    },
+    {
+      "start": 193,
+      "end": 250,
+      "text": "So your brain files it under $9,"
+    },
+    {
+      "start": 255,
+      "end": 309,
+      "text": "but you pay $10."
+    },
+    {
+      "start": 316,
+      "end": 363,
+      "text": "That's the left-digit effect."
+    },
+    {
+      "start": 370,
+      "end": 406,
+      "text": "Read the whole price."
+    }
+  ],
+  "chunks": [
+    {
+      "text": "$9.99 isn't $10",
+      "start": 2,
+      "end": 49,
+      "pops": [
+        3,
+        34
+      ],
+      "wordStart": 0,
+      "wordEnd": 3
+    },
+    {
+      "text": "to your brain.",
+      "start": 49,
+      "end": 78,
+      "pops": [],
+      "wordStart": 3,
+      "wordEnd": 6
+    },
+    {
+      "text": "One cent less",
+      "start": 78,
+      "end": 104,
+      "pops": [
+        86
+      ],
+      "wordStart": 6,
+      "wordEnd": 9
+    },
+    {
+      "text": "feels way cheaper.",
+      "start": 104,
+      "end": 139,
+      "pops": [
+        121
+      ],
+      "wordStart": 9,
+      "wordEnd": 12
+    },
+    {
+      "text": "Your eyes stop",
+      "start": 139,
+      "end": 165,
+      "pops": [],
+      "wordStart": 12,
+      "wordEnd": 15
+    },
+    {
+      "text": "at the 9.",
+      "start": 165,
+      "end": 192,
+      "pops": [
+        175
+      ],
+      "wordStart": 15,
+      "wordEnd": 18
+    },
+    {
+      "text": "So your brain files",
+      "start": 192,
+      "end": 222,
+      "pops": [],
+      "wordStart": 18,
+      "wordEnd": 22
+    },
+    {
+      "text": "it under $9,",
+      "start": 222,
+      "end": 254,
+      "pops": [
+        235
+      ],
+      "wordStart": 22,
+      "wordEnd": 25
+    },
+    {
+      "text": "but you pay $10.",
+      "start": 254,
+      "end": 315,
+      "pops": [
+        291
+      ],
+      "wordStart": 25,
+      "wordEnd": 29
+    },
+    {
+      "text": "That's the left-digit effect.",
+      "start": 315,
+      "end": 369,
+      "pops": [],
+      "wordStart": 29,
+      "wordEnd": 33
+    },
+    {
+      "text": "Read the whole price.",
+      "start": 369,
+      "end": 406,
+      "pops": [
+        393
+      ],
+      "wordStart": 33,
+      "wordEnd": 37
+    }
+  ],
+  "pops": [
+    3,
+    34,
+    86,
+    121,
+    175,
+    235,
+    291,
+    393
+  ],
+  "popRegex": "\\$|%|cent|price|cheap|\\d",
+  "warnings": [],
+  "sourceFile": "words.json"
+}

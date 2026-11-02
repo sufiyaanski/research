@@ -1,0 +1,424 @@
+{
+  "fps": 30,
+  "source": "vo",
+  "durationInFrames": 450,
+  "beats": [
+    3,
+    9,
+    15,
+    24,
+    35,
+    40,
+    52,
+    73,
+    93,
+    98,
+    109,
+    130,
+    137,
+    149,
+    157,
+    178,
+    184,
+    188,
+    200,
+    224,
+    233,
+    244,
+    247,
+    251,
+    276,
+    281,
+    294,
+    299,
+    313,
+    318,
+    333,
+    352,
+    358,
+    367,
+    370,
+    374,
+    397,
+    402,
+    407,
+    416
+  ],
+  "downbeats": [
+    3,
+    93,
+    130,
+    178,
+    224,
+    276,
+    294,
+    313,
+    333,
+    352,
+    367,
+    397
+  ],
+  "words": [
+    {
+      "w": "What",
+      "start": 3,
+      "end": 8
+    },
+    {
+      "w": "if",
+      "start": 9,
+      "end": 13
+    },
+    {
+      "w": "every",
+      "start": 15,
+      "end": 23
+    },
+    {
+      "w": "screen",
+      "start": 24,
+      "end": 33
+    },
+    {
+      "w": "on",
+      "start": 35,
+      "end": 38
+    },
+    {
+      "w": "Earth",
+      "start": 40,
+      "end": 50
+    },
+    {
+      "w": "went",
+      "start": 52,
+      "end": 59
+    },
+    {
+      "w": "black?",
+      "start": 73,
+      "end": 86
+    },
+    {
+      "w": "For",
+      "start": 93,
+      "end": 97
+    },
+    {
+      "w": "10",
+      "start": 98,
+      "end": 107
+    },
+    {
+      "w": "seconds.",
+      "start": 109,
+      "end": 124
+    },
+    {
+      "w": "Your",
+      "start": 130,
+      "end": 135
+    },
+    {
+      "w": "street",
+      "start": 137,
+      "end": 147
+    },
+    {
+      "w": "goes",
+      "start": 149,
+      "end": 155
+    },
+    {
+      "w": "dark.",
+      "start": 157,
+      "end": 171
+    },
+    {
+      "w": "Then",
+      "start": 178,
+      "end": 182
+    },
+    {
+      "w": "the",
+      "start": 184,
+      "end": 186
+    },
+    {
+      "w": "entire",
+      "start": 188,
+      "end": 199
+    },
+    {
+      "w": "city.",
+      "start": 200,
+      "end": 217
+    },
+    {
+      "w": "Every",
+      "start": 224,
+      "end": 232
+    },
+    {
+      "w": "plane",
+      "start": 233,
+      "end": 242
+    },
+    {
+      "w": "in",
+      "start": 244,
+      "end": 246
+    },
+    {
+      "w": "the",
+      "start": 247,
+      "end": 250
+    },
+    {
+      "w": "sky.",
+      "start": 251,
+      "end": 269
+    },
+    {
+      "w": "No",
+      "start": 276,
+      "end": 280
+    },
+    {
+      "w": "maps,",
+      "start": 281,
+      "end": 290
+    },
+    {
+      "w": "no",
+      "start": 294,
+      "end": 298
+    },
+    {
+      "w": "money,",
+      "start": 299,
+      "end": 309
+    },
+    {
+      "w": "no",
+      "start": 313,
+      "end": 316
+    },
+    {
+      "w": "messages,",
+      "start": 318,
+      "end": 331
+    },
+    {
+      "w": "nothing.",
+      "start": 333,
+      "end": 345
+    },
+    {
+      "w": "Just",
+      "start": 352,
+      "end": 356
+    },
+    {
+      "w": "you,",
+      "start": 358,
+      "end": 365
+    },
+    {
+      "w": "in",
+      "start": 367,
+      "end": 369
+    },
+    {
+      "w": "the",
+      "start": 370,
+      "end": 373
+    },
+    {
+      "w": "dark.",
+      "start": 374,
+      "end": 389
+    },
+    {
+      "w": "And",
+      "start": 397,
+      "end": 400
+    },
+    {
+      "w": "you",
+      "start": 402,
+      "end": 406
+    },
+    {
+      "w": "keep",
+      "start": 407,
+      "end": 414
+    },
+    {
+      "w": "scrolling.",
+      "start": 416,
+      "end": 434
+    }
+  ],
+  "phrases": [
+    {
+      "start": 3,
+      "end": 86,
+      "text": "What if every screen on Earth went black?"
+    },
+    {
+      "start": 93,
+      "end": 124,
+      "text": "For 10 seconds."
+    },
+    {
+      "start": 130,
+      "end": 171,
+      "text": "Your street goes dark."
+    },
+    {
+      "start": 178,
+      "end": 217,
+      "text": "Then the entire city."
+    },
+    {
+      "start": 224,
+      "end": 269,
+      "text": "Every plane in the sky."
+    },
+    {
+      "start": 276,
+      "end": 290,
+      "text": "No maps,"
+    },
+    {
+      "start": 294,
+      "end": 309,
+      "text": "no money,"
+    },
+    {
+      "start": 313,
+      "end": 331,
+      "text": "no messages,"
+    },
+    {
+      "start": 333,
+      "end": 345,
+      "text": "nothing."
+    },
+    {
+      "start": 352,
+      "end": 365,
+      "text": "Just you,"
+    },
+    {
+      "start": 367,
+      "end": 389,
+      "text": "in the dark."
+    },
+    {
+      "start": 397,
+      "end": 434,
+      "text": "And you keep scrolling."
+    }
+  ],
+  "chunks": [
+    {
+      "text": "What if every screen",
+      "start": 2,
+      "end": 34,
+      "pops": [],
+      "wordStart": 0,
+      "wordEnd": 4
+    },
+    {
+      "text": "on Earth went black?",
+      "start": 34,
+      "end": 92,
+      "pops": [
+        73
+      ],
+      "wordStart": 4,
+      "wordEnd": 8
+    },
+    {
+      "text": "For 10 seconds.",
+      "start": 92,
+      "end": 129,
+      "pops": [
+        98
+      ],
+      "wordStart": 8,
+      "wordEnd": 11
+    },
+    {
+      "text": "Your street goes dark.",
+      "start": 129,
+      "end": 177,
+      "pops": [
+        157
+      ],
+      "wordStart": 11,
+      "wordEnd": 15
+    },
+    {
+      "text": "Then the entire city.",
+      "start": 177,
+      "end": 223,
+      "pops": [],
+      "wordStart": 15,
+      "wordEnd": 19
+    },
+    {
+      "text": "Every plane in the sky.",
+      "start": 223,
+      "end": 275,
+      "pops": [],
+      "wordStart": 19,
+      "wordEnd": 24
+    },
+    {
+      "text": "No maps, no money,",
+      "start": 275,
+      "end": 312,
+      "pops": [],
+      "wordStart": 24,
+      "wordEnd": 28
+    },
+    {
+      "text": "no messages, nothing.",
+      "start": 312,
+      "end": 351,
+      "pops": [],
+      "wordStart": 28,
+      "wordEnd": 31
+    },
+    {
+      "text": "Just you, in the dark.",
+      "start": 351,
+      "end": 389,
+      "pops": [
+        374
+      ],
+      "wordStart": 31,
+      "wordEnd": 36
+    },
+    {
+      "text": "And you keep scrolling.",
+      "start": 396,
+      "end": 434,
+      "pops": [],
+      "wordStart": 36,
+      "wordEnd": 40
+    }
+  ],
+  "pops": [
+    73,
+    98,
+    157,
+    374
+  ],
+  "popRegex": "\\d|black|dark",
+  "warnings": [],
+  "sourceFile": "words.json"
+}

@@ -1,0 +1,90 @@
+# SignalDemo — The Signal, "$9.99 isn't $10" (left-digit effect). 15 s, 1080x1920 @ 30 fps.
+# Shot list as STATES on the VO beat grid (beatsFile = word onsets from words.json).
+# Every shot starts on a word onset; `end` is exclusive (= next shot's start).
+# sfx[].at is RELATIVE to the shot start and is where the sound's PEAK lands.
+# Count-up ticks: the composition reads its counter steps FROM these tick cues (picture and sound
+# can't drift). Count A: 9 steps over 42 f (1.4 s) landing on "$9," (235). Count B: 10 steps over
+# 36 f (1.2 s) landing on "$10." (291).
+# Regenerate: node beat-grid/make-beats.mjs --from-shotlist examples/signal-demo/shotlist.yaml --out examples/signal-demo/shotlist.json
+id: SignalDemo
+fps: 30
+width: 1080
+height: 1920
+durationInFrames: 450
+beatsFile: beats.json
+shots:
+  - id: hook
+    start: 0
+    end: 79
+    action: $9.99 tag hangs on its string, the person looks at it; on "$10" the tag flips to $10.00
+    caption: $9.99 isn't $10
+    sfx:
+      - { id: click, at: 34, gain: 3 }
+    state: tag shows $10.00, headline YOUR BRAIN GETS FOOLED, person looking at the tag
+  - id: flip
+    start: 79
+    end: 140
+    action: a red −1¢ sticker lands on "cent"; the tag flips back to $9.99 on "less"; price pops on "cheaper"
+    caption: One cent less
+    sfx:
+      - { id: click, at: 17, gain: 3 }
+      - { id: pop, at: 42, gain: 0 }
+    state: tag shows $9.99 with the −1¢ sticker, person happy
+  - id: digit
+    start: 140
+    end: 193
+    action: tag pushes in; ".99" greys out, an ink box draws around the left 9; person points; the 9 pops on "9"
+    caption: Your eyes stop
+    sfx:
+      - { id: pop, at: 35, gain: 3 }
+    state: big tag, "$9" boxed in ink, ".99" faded, person pointing at it
+  - id: feels
+    start: 193
+    end: 255
+    action: bar A grows and counts $1→$9, landing on "$9"; bar B waits as a dashed "?" outline
+    caption: it under $9,
+    sfx:
+      - { id: tick, at: 5, gain: -3 }
+      - { id: tick, at: 9, gain: -3 }
+      - { id: tick, at: 14, gain: -3 }
+      - { id: tick, at: 19, gain: -3 }
+      - { id: tick, at: 23, gain: -3 }
+      - { id: tick, at: 28, gain: -3 }
+      - { id: tick, at: 33, gain: -3 }
+      - { id: tick, at: 37, gain: -3 }
+      - { id: pop, at: 42, gain: 3 }
+    state: bar A "FEELS LIKE" $9 landed, bar B empty dashed outline, person looking at the bars
+  - id: reveal
+    start: 255
+    end: 316
+    action: bar B counts $1→$10 through the pause and lands on "$10."; riser → cash-register; person's shocked take
+    caption: but you pay $10
+    sfx:
+      - { id: tick, at: 4, gain: -3 }
+      - { id: tick, at: 7, gain: -3 }
+      - { id: tick, at: 11, gain: -3 }
+      - { id: tick, at: 14, gain: -3 }
+      - { id: tick, at: 18, gain: -3 }
+      - { id: tick, at: 22, gain: -3 }
+      - { id: tick, at: 25, gain: -3 }
+      - { id: tick, at: 29, gain: -3 }
+      - { id: tick, at: 32, gain: -3 }
+      - { id: riser, at: 36, gain: -4 }
+      - { id: cash-register, at: 36, gain: 2 }
+    state: bar B "YOU PAY" $10 taller than bar A, person in the shocked pose
+  - id: effect
+    start: 316
+    end: 370
+    action: LEFT-DIGIT EFFECT headline rises out of its mask on "left-digit"; the study line wipes in under the tag
+    caption: That's the left-digit effect
+    sfx: []
+    state: headline THE LEFT-DIGIT EFFECT, small $9.99 tag with the 9 boxed, source line, person worried
+  - id: payoff
+    start: 370
+    end: 450
+    action: READ THE WHOLE PRICE lands; ".99" turns red and underlines on "price"; frame-0 headline returns (thump)
+    caption: Read the whole price
+    sfx:
+      - { id: pop, at: 23, gain: 3 }
+      - { id: thump, at: 64, gain: 3 }
+    state: identical to frame 0 — $9.99 tag, YOUR BRAIN GETS FOOLED, person looking at the tag (loop seam)

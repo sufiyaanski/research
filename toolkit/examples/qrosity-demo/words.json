@@ -1,0 +1,205 @@
+{
+ "note": "Hand-timed VO word timings in seconds (no TTS in this environment). ~2.8 words/s; every pause <= 0.24 s except the one 0.45 s pause before the reveal word 'black?'. '10' is spoken 'ten' and displayed as 10.",
+ "words": [
+  {
+   "w": "What",
+   "start": 0.1,
+   "end": 0.26
+  },
+  {
+   "w": "if",
+   "start": 0.31,
+   "end": 0.43
+  },
+  {
+   "w": "every",
+   "start": 0.49,
+   "end": 0.75
+  },
+  {
+   "w": "screen",
+   "start": 0.81,
+   "end": 1.11
+  },
+  {
+   "w": "on",
+   "start": 1.17,
+   "end": 1.27
+  },
+  {
+   "w": "Earth",
+   "start": 1.33,
+   "end": 1.67
+  },
+  {
+   "w": "went",
+   "start": 1.73,
+   "end": 1.97
+  },
+  {
+   "w": "black?",
+   "start": 2.42,
+   "end": 2.88
+  },
+  {
+   "w": "For",
+   "start": 3.1,
+   "end": 3.22
+  },
+  {
+   "w": "10",
+   "start": 3.28,
+   "end": 3.58
+  },
+  {
+   "w": "seconds.",
+   "start": 3.64,
+   "end": 4.12
+  },
+  {
+   "w": "Your",
+   "start": 4.34,
+   "end": 4.5
+  },
+  {
+   "w": "street",
+   "start": 4.56,
+   "end": 4.9
+  },
+  {
+   "w": "goes",
+   "start": 4.96,
+   "end": 5.16
+  },
+  {
+   "w": "dark.",
+   "start": 5.22,
+   "end": 5.7
+  },
+  {
+   "w": "Then",
+   "start": 5.92,
+   "end": 6.06
+  },
+  {
+   "w": "the",
+   "start": 6.12,
+   "end": 6.2
+  },
+  {
+   "w": "entire",
+   "start": 6.26,
+   "end": 6.62
+  },
+  {
+   "w": "city.",
+   "start": 6.68,
+   "end": 7.24
+  },
+  {
+   "w": "Every",
+   "start": 7.46,
+   "end": 7.72
+  },
+  {
+   "w": "plane",
+   "start": 7.78,
+   "end": 8.06
+  },
+  {
+   "w": "in",
+   "start": 8.12,
+   "end": 8.2
+  },
+  {
+   "w": "the",
+   "start": 8.24,
+   "end": 8.32
+  },
+  {
+   "w": "sky.",
+   "start": 8.38,
+   "end": 8.98
+  },
+  {
+   "w": "No",
+   "start": 9.2,
+   "end": 9.32
+  },
+  {
+   "w": "maps,",
+   "start": 9.38,
+   "end": 9.68
+  },
+  {
+   "w": "no",
+   "start": 9.8,
+   "end": 9.92
+  },
+  {
+   "w": "money,",
+   "start": 9.98,
+   "end": 10.3
+  },
+  {
+   "w": "no",
+   "start": 10.42,
+   "end": 10.54
+  },
+  {
+   "w": "messages,",
+   "start": 10.6,
+   "end": 11.04
+  },
+  {
+   "w": "nothing.",
+   "start": 11.1,
+   "end": 11.5
+  },
+  {
+   "w": "Just",
+   "start": 11.72,
+   "end": 11.88
+  },
+  {
+   "w": "you,",
+   "start": 11.94,
+   "end": 12.16
+  },
+  {
+   "w": "in",
+   "start": 12.22,
+   "end": 12.3
+  },
+  {
+   "w": "the",
+   "start": 12.34,
+   "end": 12.42
+  },
+  {
+   "w": "dark.",
+   "start": 12.48,
+   "end": 12.98
+  },
+  {
+   "w": "And",
+   "start": 13.22,
+   "end": 13.34
+  },
+  {
+   "w": "you",
+   "start": 13.4,
+   "end": 13.52
+  },
+  {
+   "w": "keep",
+   "start": 13.58,
+   "end": 13.8
+  },
+  {
+   "w": "scrolling.",
+   "start": 13.86,
+   "end": 14.46
+  }
+ ]
+}

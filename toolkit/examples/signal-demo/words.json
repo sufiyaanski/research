@@ -1,0 +1,190 @@
+{
+ "note": "Hand-timed VO word timings in seconds (no TTS in this environment). ~2.75 words/s; every pause <= 0.24 s except the one 0.47 s pause right before the reveal word '$10.'. Numbers are spoken as displayed: '$9.99' = 'nine ninety-nine', '$10' = 'ten dollars', '9' = 'nine', '$9' = 'nine dollars'.",
+ "words": [
+  {
+   "w": "$9.99",
+   "start": 0.1,
+   "end": 0.78
+  },
+  {
+   "w": "isn't",
+   "start": 0.84,
+   "end": 1.08
+  },
+  {
+   "w": "$10",
+   "start": 1.14,
+   "end": 1.62
+  },
+  {
+   "w": "to",
+   "start": 1.68,
+   "end": 1.78
+  },
+  {
+   "w": "your",
+   "start": 1.82,
+   "end": 1.98
+  },
+  {
+   "w": "brain.",
+   "start": 2.04,
+   "end": 2.4
+  },
+  {
+   "w": "One",
+   "start": 2.62,
+   "end": 2.8
+  },
+  {
+   "w": "cent",
+   "start": 2.86,
+   "end": 3.14
+  },
+  {
+   "w": "less",
+   "start": 3.2,
+   "end": 3.44
+  },
+  {
+   "w": "feels",
+   "start": 3.5,
+   "end": 3.76
+  },
+  {
+   "w": "way",
+   "start": 3.82,
+   "end": 3.98
+  },
+  {
+   "w": "cheaper.",
+   "start": 4.04,
+   "end": 4.46
+  },
+  {
+   "w": "Your",
+   "start": 4.68,
+   "end": 4.84
+  },
+  {
+   "w": "eyes",
+   "start": 4.9,
+   "end": 5.16
+  },
+  {
+   "w": "stop",
+   "start": 5.22,
+   "end": 5.48
+  },
+  {
+   "w": "at",
+   "start": 5.54,
+   "end": 5.62
+  },
+  {
+   "w": "the",
+   "start": 5.66,
+   "end": 5.76
+  },
+  {
+   "w": "9.",
+   "start": 5.82,
+   "end": 6.2
+  },
+  {
+   "w": "So",
+   "start": 6.44,
+   "end": 6.58
+  },
+  {
+   "w": "your",
+   "start": 6.64,
+   "end": 6.76
+  },
+  {
+   "w": "brain",
+   "start": 6.82,
+   "end": 7.06
+  },
+  {
+   "w": "files",
+   "start": 7.12,
+   "end": 7.36
+  },
+  {
+   "w": "it",
+   "start": 7.42,
+   "end": 7.48
+  },
+  {
+   "w": "under",
+   "start": 7.54,
+   "end": 7.76
+  },
+  {
+   "w": "$9,",
+   "start": 7.82,
+   "end": 8.32
+  },
+  {
+   "w": "but",
+   "start": 8.5,
+   "end": 8.64
+  },
+  {
+   "w": "you",
+   "start": 8.7,
+   "end": 8.86
+  },
+  {
+   "w": "pay",
+   "start": 8.92,
+   "end": 9.24
+  },
+  {
+   "w": "$10.",
+   "start": 9.71,
+   "end": 10.3
+  },
+  {
+   "w": "That's",
+   "start": 10.54,
+   "end": 10.8
+  },
+  {
+   "w": "the",
+   "start": 10.86,
+   "end": 10.96
+  },
+  {
+   "w": "left-digit",
+   "start": 11.02,
+   "end": 11.6
+  },
+  {
+   "w": "effect.",
+   "start": 11.66,
+   "end": 12.1
+  },
+  {
+   "w": "Read",
+   "start": 12.34,
+   "end": 12.56
+  },
+  {
+   "w": "the",
+   "start": 12.62,
+   "end": 12.72
+  },
+  {
+   "w": "whole",
+   "start": 12.78,
+   "end": 13.04
+  },
+  {
+   "w": "price.",
+   "start": 13.1,
+   "end": 13.54
+  }
+ ]
+}

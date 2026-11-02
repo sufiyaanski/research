@@ -1,0 +1,181 @@
+{
+  "id": "QrosityDemo",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "durationInFrames": 450,
+  "beatsFile": "beats.json",
+  "shots": [
+    {
+      "id": "hook",
+      "start": 0,
+      "end": 73,
+      "action": "push-in on Q in his bedroom, face lit only by his phone and the monitor; WHAT IF title over the scene",
+      "caption": "What if every screen",
+      "sfx": [],
+      "state": "Q mid-scroll, phone + monitor glowing, WHAT IF title on screen"
+    },
+    {
+      "id": "blackout",
+      "start": 73,
+      "end": 130,
+      "beat": 7,
+      "action": "on \"black?\" every screen dies — room drops to moonlight, 7-frame shake, Q's shocked take; \"10\" countdown lands on \"10\"",
+      "caption": "For 10 seconds",
+      "sfx": [
+        {
+          "id": "riser",
+          "at": 0,
+          "gain": -4
+        },
+        {
+          "id": "impact",
+          "at": 0,
+          "gain": 1
+        },
+        {
+          "id": "pop",
+          "at": 25,
+          "gain": 3
+        },
+        {
+          "id": "tick",
+          "at": 55,
+          "gain": -3
+        }
+      ],
+      "state": "dark bedroom lit by the window only, Q shocked, countdown 9"
+    },
+    {
+      "id": "street",
+      "start": 130,
+      "end": 178,
+      "beat": 11,
+      "action": "Q in the middle of his street; billboards and TV-lit windows die in a wave rolling from the far end toward him",
+      "caption": "Your street goes dark",
+      "sfx": [
+        {
+          "id": "whoosh",
+          "at": 0,
+          "gain": -3
+        },
+        {
+          "id": "tick",
+          "at": 28,
+          "gain": -3
+        }
+      ],
+      "state": "street dark except the warm lamps, Q worried, countdown 8"
+    },
+    {
+      "id": "city",
+      "start": 178,
+      "end": 224,
+      "beat": 15,
+      "action": "low angle on Q on a rooftop; the skyline's screens and billboards go dark left to right behind him",
+      "caption": "Then the entire city",
+      "sfx": [
+        {
+          "id": "whoosh",
+          "at": 0,
+          "gain": -3
+        },
+        {
+          "id": "tick",
+          "at": 10,
+          "gain": -3
+        },
+        {
+          "id": "tick",
+          "at": 40,
+          "gain": -3
+        }
+      ],
+      "state": "skyline black, Q pointing at it, countdown 6"
+    },
+    {
+      "id": "world",
+      "start": 224,
+      "end": 276,
+      "beat": 19,
+      "action": "orbit around a blocky night-side Earth with Q standing on top; city lights and planes' lights go out in a sweep",
+      "caption": "Every plane in the sky",
+      "sfx": [
+        {
+          "id": "whoosh",
+          "at": 0,
+          "gain": -3
+        },
+        {
+          "id": "tick",
+          "at": 24,
+          "gain": -3
+        }
+      ],
+      "state": "dark globe, planes drifting dark, Q tiny on top, countdown 5"
+    },
+    {
+      "id": "dark",
+      "start": 276,
+      "end": 352,
+      "beat": 24,
+      "action": "back on the dark street, low angle — Q jabs a dead ATM screen; nothing answers",
+      "caption": "No maps, no money",
+      "sfx": [
+        {
+          "id": "tick",
+          "at": 2,
+          "gain": -3
+        },
+        {
+          "id": "tick",
+          "at": 32,
+          "gain": -3
+        },
+        {
+          "id": "tick",
+          "at": 62,
+          "gain": -3
+        }
+      ],
+      "state": "Q pointing at a black ATM screen, countdown 2"
+    },
+    {
+      "id": "alone",
+      "start": 352,
+      "end": 397,
+      "beat": 31,
+      "action": "bust of Q alone in the dark bedroom, moon rim only; the countdown hits 1",
+      "caption": "Just you, in the dark",
+      "sfx": [
+        {
+          "id": "tick",
+          "at": 16,
+          "gain": -3
+        }
+      ],
+      "state": "Q worried in the dark, countdown 1"
+    },
+    {
+      "id": "loop",
+      "start": 397,
+      "end": 450,
+      "beat": 36,
+      "action": "screens snap back on (click) — light floods Q's face, he goes straight back to scrolling; camera glides to the frame-0 shot, WHAT IF lands (thump)",
+      "caption": "And you keep scrolling",
+      "sfx": [
+        {
+          "id": "click",
+          "at": 1,
+          "gain": 3
+        },
+        {
+          "id": "thump",
+          "at": 38,
+          "gain": 3
+        }
+      ],
+      "state": "identical to frame 0 — Q scrolling, phone lit, WHAT IF title (loop seam)"
+    }
+  ]
+}

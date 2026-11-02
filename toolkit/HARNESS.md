@@ -143,3 +143,7 @@ Round N scores attached. Fix ONLY shots <a>, <b>, <c>. For each: the problem, th
 
 ## Learned from reviews
 (append: `- <rule> — <episode id>, <date>`)
+- A bar's height is locked to the number it displays (step-eased per counter step), never eased on its own clock — at mid-count it showed $8 taller than $9 — SignalDemo, 2026-11-02
+- Money words with a `$`/digit stay hidden in the caption until spoken, so the chunk never spoils the reveal — SignalDemo, 2026-11-02
+- 3D over overlays (fov 36°): head below the title/countdown when `target.y ≥ 3.1 − 0.142·dist`, AND the face above the caption block (chin above y ≈ 1050); check both on every still — QrosityDemo, 2026-11-02
+- Mix: catalog SFX peak at −3 dBFS, so cues at +3 dB clip over a bed — run the SfxTrack at −6 dB master, and duck the bed through the pre-reveal pause so riser + impact don't sum to 0 dBFS — QrosityDemo, 2026-11-02
