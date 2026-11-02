@@ -1,0 +1,43 @@
+{
+  "name": "motion-toolkit",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Reusable Remotion toolkit for The Signal and Q-ROSITY vertical reels (1080x1920 @ 30 fps): reference -> style guide, beat grid, code-synthesised SFX + music bed, self-critique loop.",
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "audio": "node sfx/synth.mjs && node sfx/music-bed.mjs --bpm 120 --duration 15",
+    "sfx": "node sfx/synth.mjs",
+    "bed": "node sfx/music-bed.mjs",
+    "beats": "node beat-grid/make-beats.mjs",
+    "style-guide": "node scripts/style-guide-from-reference/index.mjs",
+    "critique": "node critique/critique.mjs",
+    "score": "node critique/score.mjs",
+    "render:smoke": "remotion render ToolkitSmoke out/ToolkitSmoke.mp4"
+  },
+  "dependencies": {
+    "@react-three/fiber": "9.8.2",
+    "@remotion/bundler": "4.0.540",
+    "@remotion/cli": "4.0.540",
+    "@remotion/google-fonts": "4.0.540",
+    "@remotion/media": "4.0.540",
+    "@remotion/renderer": "4.0.540",
+    "@remotion/three": "4.0.540",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "remotion": "4.0.540",
+    "three": "0.187.0",
+    "yaml": "2.8.1",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.10",
+    "@types/react-dom": "19.1.7",
+    "@types/three": "0.187.0",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=22.18"
+  }
+}
