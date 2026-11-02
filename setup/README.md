@@ -90,7 +90,9 @@ review/index.html                local review app (file://, no build)
 
 ## Adding real voice
 
-Generate the VO per line with a TTS that returns word timestamps (ElevenLabs
+If `tools/gen_voice.py` and the `/voice-captions` skill are present (parallel workstream), use them:
+`python3 -I tools/gen_voice.py --beats remotion/src/episodes/<id>/beats.json` writes real word
+times into `beats.json` and `vo.gen.ts` directly (same contract). Otherwise, generate the VO per line with a TTS that returns word timestamps (ElevenLabs
 `/with-timestamps`, or WhisperX on any recording), write `words: [{w, start, end}]` on each
 `vo[]` line in `beats.json` (global seconds), run `npm run vo:estimate -- <id>` — captions
 retime, nothing else changes. Mux: `ffmpeg -i out/<Comp>.mp4 -i voice.wav -map 0:v -map 1:a -c:v copy -c:a aac -b:a 192k out/<Comp>-voiced.mp4`.

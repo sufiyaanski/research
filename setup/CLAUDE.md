@@ -7,7 +7,7 @@ reasoning and the numbers behind these live in `.claude/skills/reel-design-rules
 - Run everything from `setup/`. Node 22, npm, ffmpeg/ffprobe on PATH.
 - Compositions are **1080×1920 @ 60 fps**. Derive frames from `fps` (`2 * fps`), never write `60`.
 - Episode = `remotion/src/episodes/<id>/{Episode.tsx, beats.json, vo.gen.ts}` + `episodes/<id>/{script.md, facts.json, sfx-plan.json, publish.json, qa/}`.
-- Skills: `/make-signal-reel` (the recipe), `/reel-design-rules`, `/frame-qa`, `/review-loop`, plus the official `remotion-*` skills. Read `channels/<channel>/brand.md` before touching a scene.
+- Skills: `/make-signal-reel` (the recipe), `/reel-design-rules`, `/frame-qa`, `/review-loop`, plus the official `remotion-*` skills; voice/sound passes live in `/voice-captions`, `/sound-design`, `/script-writing` (tools/*.py) when present. Read `channels/<channel>/brand.md` before touching a scene.
 
 ## R1. Always QA before video
 - `npm run frames -- <Comp> beats --scale=0.5`, then **READ every PNG** (phone scale) and fix. Only then `npm run render`.

@@ -15,21 +15,25 @@
     "review": "node -e \"console.log('Open review/index.html in a browser (file:// works), then load the mp4 from out/.')\""
   },
   "dependencies": {
+    "@react-three/fiber": "9.8.2",
     "@remotion/bundler": "4.0.540",
     "@remotion/captions": "4.0.540",
     "@remotion/cli": "4.0.540",
     "@remotion/google-fonts": "4.0.540",
     "@remotion/paths": "4.0.540",
     "@remotion/renderer": "4.0.540",
+    "@remotion/three": "4.0.540",
     "@remotion/transitions": "4.0.540",
     "react": "19.1.1",
     "react-dom": "19.1.1",
     "remotion": "4.0.540",
+    "three": "0.187.0",
     "zod": "3.25.76"
   },
   "devDependencies": {
     "@types/react": "19.1.10",
     "@types/react-dom": "19.1.7",
+    "@types/three": "0.187.0",
     "typescript": "5.9.3"
   },
   "engines": {
