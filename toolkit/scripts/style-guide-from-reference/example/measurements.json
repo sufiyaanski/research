@@ -82,8 +82,28 @@
     "meanLuma": 24,
     "method": "4-bit/channel histogram of all sampled frames at 64 px, bins merged within RGB distance 30"
   },
+  "changes": {
+    "threshold": 0.0216,
+    "times": [
+      3.5,
+      4,
+      11,
+      18.5,
+      25.5,
+      27,
+      39.5,
+      43.5,
+      46.5,
+      50
+    ],
+    "count": 11,
+    "mean": 4.636,
+    "median": 3.5,
+    "min": 0.5,
+    "max": 12.5
+  },
   "shots": {
-    "threshold": 0.3,
+    "threshold": 0.1,
     "cuts": [],
     "lengthsSec": [
       51

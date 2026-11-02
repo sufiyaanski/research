@@ -46,14 +46,18 @@ Mean luma: **24/255** (dark ground).
 
 ## Shot lengths
 
-**Measured** with `select='gt(scene,0.3)'` (hard cuts / big changes only — morphs and in-place
-builds are NOT counted, so real "beats" are usually shorter):
+**Measured** with `select='gt(scene,0.1)'` (fell back from 0.3: too few cuts) — hard cuts only; morphs,
+crossfades and in-place builds are NOT counted, so real "beats" are usually shorter:
 
 | shots | mean | median | min | max |
 |---|---|---|---|---|
 | 1 | 51.00 s (1530 f@30) | 51.00 s | 51.00 s (1530 f) | 51.00 s (1530 f) |
 
-Cuts at: (none detected — try --scene 0.2)
+Cuts at: (none detected — the reference builds in place / crossfades)
+
+**Measured visual change events** (mean |Δpixel| between consecutive 0.5 s samples > 2.2 %):
+10 events, interval mean **4.64 s** (139 f@30), median 3.50 s, min 0.50 s, max 12.50 s.
+At: 3.5s, 4.0s, 11.0s, 18.5s, 25.5s, 27.0s, 39.5s, 43.5s, 46.5s, 50.0s
 
 - Rhythm notes (what changes every beat inside a shot?): _…_
 

@@ -110,16 +110,44 @@ meanLuma /= totalPx;
 console.log(`  palette: ${dominant.map((d) => `${d.hex} ${d.pct}%`).join(', ')}`);
 
 // ------------------------------------------------------------------ shot lengths (scene changes)
-const sc = run('ffmpeg', ['-hide_banner', '-nostats', '-i', input, '-vf', `select='gt(scene,${SCENE})',showinfo`, '-an', '-f', 'null', '-'], { allowFail: true });
-const cuts = [...String(sc.stderr).matchAll(/pts_time:([\d.]+)/g)].map((m) => Number(m[1])).filter((t) => t > 0.05 && t < duration - 0.05);
+const detectCuts = (th) => {
+  const sc = run('ffmpeg', ['-hide_banner', '-nostats', '-i', input, '-vf', `select='gt(scene,${th})',showinfo`, '-an', '-f', 'null', '-'], { allowFail: true });
+  return [...String(sc.stderr).matchAll(/pts_time:([\d.]+)/g)].map((m) => Number(m[1])).filter((t) => t > 0.05 && t < duration - 0.05);
+};
+let sceneUsed = SCENE;
+let cuts = detectCuts(SCENE);
+for (const th of [0.2, 0.1]) {
+  if (cuts.length >= 2 || th >= sceneUsed) continue;
+  sceneUsed = th;
+  cuts = detectCuts(th);
+}
 const bounds = [0, ...cuts, duration];
 const shots = bounds.slice(1).map((t, i) => t - bounds[i]);
 const stat = (xs) => {
+  if (!xs.length) return { count: 0, mean: 0, median: 0, min: 0, max: 0 };
   const s = [...xs].sort((p, q) => p - q);
   return { count: s.length, mean: s.reduce((p, q) => p + q, 0) / s.length, median: s[Math.floor(s.length / 2)], min: s[0], max: s[s.length - 1] };
 };
 const shotStats = stat(shots);
-console.log(`  shots (scene > ${SCENE}): ${shotStats.count}, mean ${shotStats.mean.toFixed(2)} s, min ${shotStats.min.toFixed(2)} s, max ${shotStats.max.toFixed(2)} s`);
+console.log(`  shots (scene > ${sceneUsed}): ${shotStats.count}, mean ${shotStats.mean.toFixed(2)} s, min ${shotStats.min.toFixed(2)} s, max ${shotStats.max.toFixed(2)} s`);
+
+// change events: mean |Δpixel| between consecutive sampled frames (catches builds/morphs that the
+// scene detector misses). Event = diff > max(1.5 %, mean + 1 σ).
+const frameBytes = raw.length / frames.length;
+const diffs = [];
+for (let f = 1; f < frames.length; f++) {
+  let d = 0;
+  const o0 = (f - 1) * frameBytes, o1 = f * frameBytes;
+  for (let i = 0; i < frameBytes; i++) d += Math.abs(raw[o1 + i] - raw[o0 + i]);
+  diffs.push(d / frameBytes / 255);
+}
+const dMean = diffs.reduce((p, q) => p + q, 0) / Math.max(1, diffs.length);
+const dStd = Math.sqrt(diffs.reduce((p, q) => p + (q - dMean) ** 2, 0) / Math.max(1, diffs.length));
+const dTh = Math.max(0.015, dMean + dStd);
+const changeTimes = diffs.map((d, i) => (d > dTh ? (i + 1) * EVERY : null)).filter((t) => t !== null);
+const changeGaps = [0, ...changeTimes, duration].slice(1).map((t, i, arr) => t - (i === 0 ? 0 : arr[i - 1]));
+const changeStats = stat(changeGaps);
+console.log(`  visual change events: ${changeTimes.length} (Δ > ${(dTh * 100).toFixed(1)} %), mean interval ${changeStats.mean.toFixed(2)} s`);
 
 // ------------------------------------------------------------------ loudness
 let loud = null;
@@ -139,7 +167,8 @@ const measurements = {
   width: v.width, height: v.height, fps: +srcFps.toFixed(3), durationSec: +duration.toFixed(3),
   every: EVERY, frames: frames.length,
   palette: { dominant, accents, meanLuma: Math.round(meanLuma), method: '4-bit/channel histogram of all sampled frames at 64 px, bins merged within RGB distance 30' },
-  shots: { threshold: SCENE, cuts: cuts.map((t) => +t.toFixed(3)), lengthsSec: shots.map((x) => +x.toFixed(3)), ...Object.fromEntries(Object.entries(shotStats).map(([k, x]) => [k, +x.toFixed(3)])) },
+  changes: { threshold: +dTh.toFixed(4), times: changeTimes, ...Object.fromEntries(Object.entries(changeStats).map(([k, x]) => [k, +x.toFixed(3)])) },
+  shots: { threshold: sceneUsed, cuts: cuts.map((t) => +t.toFixed(3)), lengthsSec: shots.map((x) => +x.toFixed(3)), ...Object.fromEntries(Object.entries(shotStats).map(([k, x]) => [k, +x.toFixed(3)])) },
   loudness: loud,
 };
 writeFileSync(path.join(OUT, 'measurements.json'), JSON.stringify(measurements, null, 2) + '\n');
@@ -186,14 +215,18 @@ Mean luma: **${Math.round(meanLuma)}/255** (${meanLuma < 80 ? 'dark ground' : me
 
 ## Shot lengths
 
-**Measured** with \`select='gt(scene,${SCENE})'\` (hard cuts / big changes only — morphs and in-place
-builds are NOT counted, so real "beats" are usually shorter):
+**Measured** with \`select='gt(scene,${sceneUsed})'\`${sceneUsed !== SCENE ? ` (fell back from ${SCENE}: too few cuts)` : ''} — hard cuts only; morphs,
+crossfades and in-place builds are NOT counted, so real "beats" are usually shorter:
 
 | shots | mean | median | min | max |
 |---|---|---|---|---|
 | ${shotStats.count} | ${shotStats.mean.toFixed(2)} s (${f30(shotStats.mean)} f@30) | ${shotStats.median.toFixed(2)} s | ${shotStats.min.toFixed(2)} s (${f30(shotStats.min)} f) | ${shotStats.max.toFixed(2)} s (${f30(shotStats.max)} f) |
 
-Cuts at: ${cuts.length ? cuts.map((t) => `${t.toFixed(2)}s`).join(', ') : '(none detected — try --scene 0.2)'}
+Cuts at: ${cuts.length ? cuts.map((t) => `${t.toFixed(2)}s`).join(', ') : '(none detected — the reference builds in place / crossfades)'}
+
+**Measured visual change events** (mean |Δpixel| between consecutive ${EVERY} s samples > ${(dTh * 100).toFixed(1)} %):
+${changeTimes.length} events, interval mean **${changeStats.mean.toFixed(2)} s** (${f30(changeStats.mean)} f@30), median ${changeStats.median.toFixed(2)} s, min ${changeStats.min.toFixed(2)} s, max ${changeStats.max.toFixed(2)} s.
+At: ${changeTimes.map((t) => `${t.toFixed(1)}s`).join(', ') || '—'}
 
 - Rhythm notes (what changes every beat inside a shot?): _…_
 
